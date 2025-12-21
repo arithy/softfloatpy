@@ -1,0 +1,10 @@
+include python/src/softfloatpy.pyx
+include python/src/_softfloat.pxd
+include python/src/_version.py
+include extern/berkeley-softfloat-3/build/Linux-RISCV64-GCC/platform.h
+include extern/berkeley-softfloat-3/source/RISCV/specialize.h
+include extern/berkeley-softfloat-3/source/include/opts-GCC.h
+include extern/berkeley-softfloat-3/source/include/primitives.h
+include extern/berkeley-softfloat-3/source/include/primitiveTypes.h
+include extern/berkeley-softfloat-3/source/include/softfloat.h
+include extern/berkeley-softfloat-3/source/include/softfloat_types.h

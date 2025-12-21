@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./python/src"
+    ],
+    "makefile.configureOnOpen": false
+}

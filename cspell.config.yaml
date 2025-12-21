@@ -1,0 +1,69 @@
+version: "0.2"
+ignorePaths: []
+dictionaryDefinitions: []
+dictionaries: []
+words:
+  - apidoc
+  - Arihiro
+  - bfloat
+  - bint
+  - bysource
+  - cdef
+  - cimport
+  - classmethod
+  - compl
+  - cpdef
+  - ctypedef
+  - cython
+  - cythonize
+  - doctest
+  - doctests
+  - DSOFTFLOAT
+  - elif
+  - embedsignature
+  - errorlevel
+  - floordiv
+  - Hauser
+  - iadd
+  - iand
+  - ifloordiv
+  - ilshift
+  - imod
+  - imul
+  - includehidden
+  - irshift
+  - isub
+  - itruediv
+  - ixor
+  - libc
+  - lshift
+  - mypy
+  - ndim
+  - popd
+  - pushd
+  - pycache
+  - PYDOCOUTDIR
+  - PYDOCSRCDIR
+  - pypa
+  - pypi
+  - PYROOTDIR
+  - pytest
+  - recip
+  - RISCV
+  - rshift
+  - setuptools
+  - sigstore
+  - softfloat
+  - softfloatpy
+  - SOURCEDIR
+  - SPHINXBUILD
+  - SPHINXOPTS
+  - stdint
+  - testpypi
+  - toctree
+  - truediv
+  - undoc
+  - warningiserror
+  - Yoshida
+ignoreWords: []
+import: []
