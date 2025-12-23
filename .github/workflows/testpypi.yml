@@ -18,8 +18,6 @@ jobs:
           - macos-15-intel
         python-version:
           - '3.11'
-          - '3.12'
-          - '3.13'
 
     runs-on: ${{ matrix.os }}
 
@@ -46,8 +44,9 @@ jobs:
       - name: Store distribution
         uses: actions/upload-artifact@v6
         with:
-          name: python-package-distributions
+          name: python-${{ matrix.python-version }}-package-for-${{ matrix.os }}
           path: dist/
+          retention-days: 1
 
   testpypi:
     name: Publish test distribution
@@ -68,8 +67,9 @@ jobs:
       - name: Download distribution
         uses: actions/download-artifact@v7
         with:
-          name: python-package-distributions
+          pattern: python-*-package-for-*
           path: dist/
+          merge-multiple: true
 
       - name: Publish distribution to TestPyPI
         uses: pypa/gh-action-pypi-publish@release/v1
