@@ -6,18 +6,62 @@ on:
       - main
 
 jobs:
-  dist:
-    name: Build distribution packages
+  dist-on-linux:
+    name: Build distribution packages for Linux
 
     strategy:
       matrix:
         os:
           - ubuntu-24.04
           - ubuntu-24.04-arm
-          - macos-15
+        python-version:
+          - '3.11'
+          - '3.12'
+          - '3.13'
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install setuptools wheel build cython
+          python -m pip install auditwheel
+
+      - name: Build wheel and source tarball
+        run: |
+          python -m build
+          auditwheel repair dist/softfloatpy-*.whl
+
+      - name: Store built wheel
+        uses: actions/upload-artifact@v6
+        with:
+          name: python-${{ matrix.python-version }}-package-for-${{ matrix.os }}
+          path: wheelhouse/softfloatpy-*.whl
+          retention-days: 1
+
+  dist-on-macos:
+    name: Build distribution packages for macOS
+
+    strategy:
+      matrix:
+        os:
+#          - macos-15
           - macos-15-intel
         python-version:
           - '3.11'
+          - '3.12'
+          - '3.13'
 
     runs-on: ${{ matrix.os }}
 
@@ -41,18 +85,61 @@ jobs:
         run: |
           python -m build
 
-      - name: Store distribution
+      - name: Store built wheel
         uses: actions/upload-artifact@v6
         with:
           name: python-${{ matrix.python-version }}-package-for-${{ matrix.os }}
-          path: dist/
+          path: dist/softfloatpy-*.whl
+          retention-days: 1
+
+  dist-on-windows:
+    name: Build distribution packages for Windows
+
+    strategy:
+      matrix:
+        os:
+          - windows-2025
+        python-version:
+          - '3.11'
+          - '3.12'
+          - '3.13'
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install setuptools wheel build cython
+
+      - name: Build wheel and source tarball
+        run: |
+          python -m build
+
+      - name: Store built wheel
+        uses: actions/upload-artifact@v6
+        with:
+          name: python-${{ matrix.python-version }}-package-for-${{ matrix.os }}
+          path: dist/softfloatpy-*.whl
           retention-days: 1
 
   testpypi:
     name: Publish test distribution
 
     needs:
-      - dist
+      - dist-on-linux
+      - dist-on-macos
+      - dist-on-windows
 
     runs-on: ubuntu-latest
 
@@ -75,3 +162,4 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
+          verbose: true
