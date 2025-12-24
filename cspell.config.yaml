@@ -37,6 +37,7 @@ words:
   - ixor
   - libc
   - lshift
+  - MSVC
   - mypy
   - ndim
   - popd

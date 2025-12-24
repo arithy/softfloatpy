@@ -3,11 +3,10 @@ from Cython.Build import cythonize
 
 
 _SOFTFLOAT_SRCDIR: str = 'extern/berkeley-softfloat-3/source'
-_SOFTFLOAT_BUILDDIR: str = 'extern/berkeley-softfloat-3/build'
+_SOFTFLOAT_BUILDDIR: str = 'c/berkeley-softfloat-3/build'
 
-# RISC-V option is selected because it is the most general.
-_SOFTFLOAT_PLATFORM: str = 'Linux-RISCV64-GCC'
-_SOFTFLOAT_SPECIALIZE: str = 'RISCV'
+_SOFTFLOAT_SPECIALIZE: str = 'RISCV'  # RISC-V option is selected because it is the most general.
+_SOFTFLOAT_PLATFORM: str = 'General'
 
 
 setup(
@@ -203,7 +202,6 @@ setup(
                         's_commonNaNToF64UI.c',
                         's_propagateNaNF64UI.c',
                         's_f128UIToCommonNaN.c',
-                        's_commonNaNToF128UI.c',
                         's_propagateNaNF128UI.c',
                         'softfloat_raiseFlags.c'
                     ]
