@@ -42,12 +42,15 @@ jobs:
         run: |
           python -m build
           auditwheel repair dist/softfloatpy-*.whl
+          mv dist/softfloatpy-*.tar.gz wheelhouse/.
 
       - name: Store built wheel
         uses: actions/upload-artifact@v6
         with:
           name: python-${{ matrix.python-version }}-package-for-${{ matrix.os }}
-          path: wheelhouse/softfloatpy-*.whl
+          path: |
+            wheelhouse/softfloatpy-*.whl
+            wheelhouse/softfloatpy-*.tar.gz
           retention-days: 1
 
   dist-on-macos:
@@ -186,7 +189,7 @@ jobs:
       - name: Sign distribution with Sigstore
         uses: sigstore/gh-action-sigstore-python@v3.0.0
         with:
-          inputs: ./dist/*.whl
+          inputs: dist/
 
       - name: Upload artifact signatures to GitHub Release
         env:

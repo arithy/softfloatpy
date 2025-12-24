@@ -53,6 +53,7 @@ words:
   - recip
   - RISCV
   - rshift
+  - sdist
   - setuptools
   - sigstore
   - softfloat

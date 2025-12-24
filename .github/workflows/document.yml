@@ -49,6 +49,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./python/docs/build/html
+          retention-days: 1
 
   doc-deploy:
     name: Deploy documentation
