@@ -5,6 +5,7 @@ dictionaries: []
 words:
   - apidoc
   - Arihiro
+  - auditwheel
   - bfloat
   - bint
   - bysource
