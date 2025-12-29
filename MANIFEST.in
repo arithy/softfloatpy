@@ -1,4 +1,4 @@
-include python/src/_softfloat.pxd
+include python/src/softfloat.pxd
 include python/src/softfloatpy/_core.pyx
 include python/src/softfloatpy/_core.pyi
 include python/src/softfloatpy/py.typed

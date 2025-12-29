@@ -32,7 +32,7 @@ from libc.stdint cimport (
     uint_fast8_t
 )
 
-cimport _softfloat as sf
+cimport softfloat as sf
 
 
 cdef extern from "internals.h":

@@ -43,6 +43,7 @@ words:
   - ndim
   - popd
   - pushd
+  - pxd
   - pycache
   - PYDOCOUTDIR
   - PYDOCSRCDIR
