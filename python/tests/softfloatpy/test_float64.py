@@ -22,7 +22,7 @@
 
 import math
 
-import softfloatpy as sf  # type: ignore
+import softfloatpy as sf
 
 _SIGNALING_NAN: bytes = b'\xff\xf0\x00\x00\x00\x00\x00\x01'
 

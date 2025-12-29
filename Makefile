@@ -30,7 +30,7 @@ type:
 
 test:
 	$(PYTHON) -m pip install --quiet --force-reinstall $(WHEEL_OUTDIR)/softfloatpy-*.whl
-	$(PYTHON) -m pytest $(PYROOTDIR) -vv --doctest-modules
+	$(PYTHON) -m pytest $(PYROOTDIR)/tests -vv --doctest-modules
 
 dist:
 	$(PYTHON) -m build
@@ -44,4 +44,4 @@ doc:
 	$(SPHINX_BUILD) -b html $(PYDOCSRCDIR) $(PYDOCOUTDIR)/html
 
 clean:
-	rm -rf $(PYDOCOUTDIR) $(PYROOTDIR)/src/softfloatpy.egg-info ./dist ./wheelhouse
+	rm -rf $(PYDOCOUTDIR) $(PYROOTDIR)/src/softfloatpy.egg-info ./dist ./wheelhouse $(find . -name '__pycache__')

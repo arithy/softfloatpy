@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import softfloatpy as sf  # type: ignore
+import softfloatpy as sf
 
 _SIGNALING_NAN: bytes = b'\xff\x81'
 
