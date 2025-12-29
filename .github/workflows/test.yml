@@ -63,7 +63,7 @@ jobs:
 
       - name: Test code with pytest
         run: |
-          python -m pytest ./python --doctest-modules
+          python -m pytest ./python/tests --doctest-modules
 
   test-on-macos:
     name: Test on macOS
@@ -115,7 +115,7 @@ jobs:
 
       - name: Test code with pytest
         run: |
-          python -m pytest ./python --doctest-modules
+          python -m pytest ./python/tests --doctest-modules
 
   test-on-windows:
     name: Test on Windows
@@ -166,4 +166,4 @@ jobs:
 
       - name: Test code with pytest
         run: |
-          python -m pytest ./python --doctest-modules
+          python -m pytest ./python/tests --doctest-modules
