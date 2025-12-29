@@ -3,12 +3,7 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-import sys
-import os
-
-sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + "/../../src/"))
-
-import _version  # noqa: E402
+import softfloatpy
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -16,7 +11,7 @@ import _version  # noqa: E402
 project = 'SoftFloatPy'
 author = 'Arihiro Yoshida'
 copyright = '2024-%Y ' + author
-version = _version.__version__
+version = softfloatpy.__version__
 release = version
 
 # -- General configuration ---------------------------------------------------

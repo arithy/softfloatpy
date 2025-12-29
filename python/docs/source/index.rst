@@ -8,3 +8,4 @@ SoftFloatPy Documentation
 
    readme
    apidoc/softfloatpy
+   genindex
