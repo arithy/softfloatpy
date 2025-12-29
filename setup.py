@@ -12,9 +12,9 @@ _SOFTFLOAT_PLATFORM: str = 'General'
 setup(
     ext_modules=cythonize([
         Extension(
-            'softfloatpy',
+            'softfloatpy._core',
             [
-                'python/src/softfloatpy.pyx',
+                'python/src/softfloatpy/_core.pyx',
                 *(
                     f'{_SOFTFLOAT_SRCDIR}/{s}' for s in [
                         's_eq128.c',

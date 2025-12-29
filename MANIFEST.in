@@ -1,6 +1,8 @@
-include python/src/softfloatpy.pyx
 include python/src/_softfloat.pxd
-include python/src/_version.py
+include python/src/softfloatpy/_core.pyx
+include python/src/softfloatpy/_core.pyi
+include python/src/softfloatpy/py.typed
+include python/src/softfloatpy/_version.py
 include c/berkeley-softfloat-3/build/General/platform.h
 include extern/berkeley-softfloat-3/source/RISCV/specialize.h
 include extern/berkeley-softfloat-3/source/include/opts-GCC.h
