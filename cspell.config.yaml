@@ -34,6 +34,7 @@ words:
   - imul
   - includehidden
   - irshift
+  - isinstance
   - isub
   - itruediv
   - ixor

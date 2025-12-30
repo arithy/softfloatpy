@@ -34,148 +34,230 @@ def test_f32_bytes() -> None:
 
 def test_f32_float() -> None:
     f: float = -12.5
-    assert sf.Float32.from_float(f).to_float() == f
-    assert str(sf.Float32.from_float(f)) == str(f)
+    o: sf.Float32 = sf.Float32.from_float(f)
+    assert o.to_float() == f
+    assert str(o) == str(f)
+
+
+def test_f32_to_bf16() -> None:
+    f: float = -12.5
+    o: sf.Float32 = sf.Float32.from_float(f)
+    assert sf.f32_to_bf16(o).to_float() == f
 
 
 def test_f32_to_ui32() -> None:
     f: float = 12.3
-    assert sf.f32_to_ui32(sf.Float32.from_float(f), sf.RoundingMode.MIN).to_int() == math.floor(f)
+    o: sf.Float32 = sf.Float32.from_float(f)
+    assert sf.f32_to_ui32(o, sf.RoundingMode.MIN).to_int() == math.floor(f)
+    assert sf.f32_to_ui32(o, sf.RoundingMode.MIN).to_bytes() == o.to_ui32(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f32_to_ui64() -> None:
     f: float = 12.3
-    assert sf.f32_to_ui64(sf.Float32.from_float(f), sf.RoundingMode.MIN).to_int() == math.floor(f)
+    o: sf.Float32 = sf.Float32.from_float(f)
+    assert sf.f32_to_ui64(o, sf.RoundingMode.MIN).to_int() == math.floor(f)
+    assert sf.f32_to_ui64(o, sf.RoundingMode.MIN).to_bytes() == o.to_ui64(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f32_to_i32() -> None:
     f: float = -12.3
-    assert sf.f32_to_i32(sf.Float32.from_float(f), sf.RoundingMode.MIN).to_int() == math.floor(f)
+    o: sf.Float32 = sf.Float32.from_float(f)
+    assert sf.f32_to_i32(o, sf.RoundingMode.MIN).to_int() == math.floor(f)
+    assert sf.f32_to_i32(o, sf.RoundingMode.MIN).to_bytes() == o.to_i32(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f32_to_i64() -> None:
     f: float = -12.3
-    assert sf.f32_to_i64(sf.Float32.from_float(f), sf.RoundingMode.MIN).to_int() == math.floor(f)
+    o: sf.Float32 = sf.Float32.from_float(f)
+    assert sf.f32_to_i64(o, sf.RoundingMode.MIN).to_int() == math.floor(f)
+    assert sf.f32_to_i64(o, sf.RoundingMode.MIN).to_bytes() == o.to_i64(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f32_to_f16() -> None:
     f: float = -12.5
-    assert sf.f32_to_f16(sf.Float32.from_float(f)).to_float() == f
+    o: sf.Float32 = sf.Float32.from_float(f)
+    assert sf.f32_to_f16(o).to_float() == f
+    assert sf.f32_to_f16(o).to_bytes() == o.to_f16().to_bytes()
 
 
 def test_f32_to_f64() -> None:
     f: float = -12.5
-    assert sf.f32_to_f64(sf.Float32.from_float(f)).to_float() == f
+    o: sf.Float32 = sf.Float32.from_float(f)
+    assert sf.f32_to_f64(o).to_float() == f
+    assert sf.f32_to_f64(o).to_bytes() == o.to_f64().to_bytes()
 
 
 def test_f32_to_f128() -> None:
     f: float = -12.5
-    assert sf.f32_to_f128(sf.Float32.from_float(f)).to_float() == f
+    o: sf.Float32 = sf.Float32.from_float(f)
+    assert sf.f32_to_f128(o).to_float() == f
+    assert sf.f32_to_f128(o).to_bytes() == o.to_f128().to_bytes()
 
 
 def test_f32_round_to_int() -> None:
     f: float = -12.3
-    assert sf.f32_round_to_int(sf.Float32.from_float(f), sf.RoundingMode.MIN).to_float() == math.floor(f)
+    o: sf.Float32 = sf.Float32.from_float(f)
+    assert sf.f32_round_to_int(o, sf.RoundingMode.MIN).to_float() == math.floor(f)
+    assert sf.f32_round_to_int(o, sf.RoundingMode.MIN).to_bytes() == o.round_to_int(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f32_add() -> None:
     x: float = -12.5
     y: float = 3.25
-    assert sf.f32_add(sf.Float32.from_float(x), sf.Float32.from_float(y)).to_float() == x + y
+    o: sf.Float32 = sf.Float32.from_float(x)
+    p: sf.Float32 = sf.Float32.from_float(y)
+    assert sf.f32_add(o, p).to_float() == x + y
+    assert sf.f32_add(o, p).to_bytes() == sf.Float32.add(o, p).to_bytes()
 
 
 def test_f32_sub() -> None:
     x: float = -12.5
     y: float = 3.25
-    assert sf.f32_sub(sf.Float32.from_float(x), sf.Float32.from_float(y)).to_float() == x - y
+    o: sf.Float32 = sf.Float32.from_float(x)
+    p: sf.Float32 = sf.Float32.from_float(y)
+    assert sf.f32_sub(o, p).to_float() == x - y
+    assert sf.f32_sub(o, p).to_bytes() == sf.Float32.sub(o, p).to_bytes()
 
 
 def test_f32_mul() -> None:
     x: float = -12.5
     y: float = 3.25
-    assert sf.f32_mul(sf.Float32.from_float(x), sf.Float32.from_float(y)).to_float() == x * y
+    o: sf.Float32 = sf.Float32.from_float(x)
+    p: sf.Float32 = sf.Float32.from_float(y)
+    assert sf.f32_mul(o, p).to_float() == x * y
+    assert sf.f32_mul(o, p).to_bytes() == sf.Float32.mul(o, p).to_bytes()
 
 
 def test_f32_mul_add() -> None:
     x: float = -12.5
     y: float = 3.25
     z: float = -0.125
-    assert sf.f32_mul_add(
-        sf.Float32.from_float(x), sf.Float32.from_float(y), sf.Float32.from_float(z)
-    ).to_float() == x * y + z
+    o: sf.Float32 = sf.Float32.from_float(x)
+    p: sf.Float32 = sf.Float32.from_float(y)
+    q: sf.Float32 = sf.Float32.from_float(z)
+    assert sf.f32_mul_add(o, p, q).to_float() == x * y + z
+    assert sf.f32_mul_add(o, p, q).to_bytes() == sf.Float32.mul_add(o, p, q).to_bytes()
 
 
 def test_f32_div() -> None:
     for x, y in [(8.75, 3.5), (-8.75, 3.5), (8.75, -3.5), (-8.75, -3.5)]:
-        assert sf.f32_div(sf.Float32.from_float(x), sf.Float32.from_float(y)).to_float() == x / y
+        o: sf.Float32 = sf.Float32.from_float(x)
+        p: sf.Float32 = sf.Float32.from_float(y)
+        assert sf.f32_div(o, p).to_float() == x / y
+        assert sf.f32_div(o, p).to_bytes() == sf.Float32.div(o, p).to_bytes()
 
 
 def test_f32_rem() -> None:
     for x, y in [(8.75, 3.5), (-8.75, 3.5), (8.75, -3.5), (-8.75, -3.5)]:
         z: float = x / y
-        assert sf.f32_rem(sf.Float32.from_float(x), sf.Float32.from_float(y)).to_float() == x - y * (math.floor(z) if z >= 0 else math.ceil(z))
+        o: sf.Float32 = sf.Float32.from_float(x)
+        p: sf.Float32 = sf.Float32.from_float(y)
+        assert sf.f32_rem(o, p).to_float() == x - y * (math.floor(z) if z >= 0 else math.ceil(z))
+        assert sf.f32_rem(o, p).to_bytes() == sf.Float32.rem(o, p).to_bytes()
 
 
 def test_f32_sqrt() -> None:
     x: float = 2.25
-    assert sf.f32_sqrt(sf.Float32.from_float(x)).to_float() == math.sqrt(x)
+    o: sf.Float32 = sf.Float32.from_float(x)
+    assert sf.f32_sqrt(o).to_float() == math.sqrt(x)
+    assert sf.f32_sqrt(o).to_bytes() == sf.Float32.sqrt(o).to_bytes()
 
 
 def test_f32_eq() -> None:
     x: float = -12.5
     y: float = 3.25
-    assert sf.f32_eq(sf.Float32.from_float(x), sf.Float32.from_float(x))
-    assert not sf.f32_eq(sf.Float32.from_float(x), sf.Float32.from_float(y))
+    o: sf.Float32 = sf.Float32.from_float(x)
+    p: sf.Float32 = sf.Float32.from_float(y)
+    assert sf.f32_eq(o, o)
+    assert not sf.f32_eq(o, p)
+    assert sf.Float32.eq(o, o)
+    assert not sf.Float32.eq(o, p)
 
 
 def test_f32_le() -> None:
     x: float = -12.5
     y: float = 3.25
-    assert sf.f32_le(sf.Float32.from_float(x), sf.Float32.from_float(x))
-    assert sf.f32_le(sf.Float32.from_float(x), sf.Float32.from_float(y))
-    assert not sf.f32_le(sf.Float32.from_float(y), sf.Float32.from_float(x))
+    o: sf.Float32 = sf.Float32.from_float(x)
+    p: sf.Float32 = sf.Float32.from_float(y)
+    assert sf.f32_le(o, o)
+    assert sf.f32_le(o, p)
+    assert not sf.f32_le(p, o)
+    assert sf.Float32.le(o, o)
+    assert sf.Float32.le(o, p)
+    assert not sf.Float32.le(p, o)
 
 
 def test_f32_lt() -> None:
     x: float = -12.5
     y: float = 3.25
-    assert not sf.f32_lt(sf.Float32.from_float(x), sf.Float32.from_float(x))
-    assert sf.f32_lt(sf.Float32.from_float(x), sf.Float32.from_float(y))
-    assert not sf.f32_lt(sf.Float32.from_float(y), sf.Float32.from_float(x))
+    o: sf.Float32 = sf.Float32.from_float(x)
+    p: sf.Float32 = sf.Float32.from_float(y)
+    assert not sf.f32_lt(o, o)
+    assert sf.f32_lt(o, p)
+    assert not sf.f32_lt(p, o)
+    assert not sf.Float32.lt(o, o)
+    assert sf.Float32.lt(o, p)
+    assert not sf.Float32.lt(p, o)
 
 
 def test_f32_eq_signaling() -> None:
     x: float = -12.5
+    o: sf.Float32 = sf.Float32.from_float(x)
+    p: sf.Float32 = sf.Float32.from_bytes(_SIGNALING_NAN)
     sf.set_exception_flags(0)
-    assert sf.f32_eq_signaling(sf.Float32.from_float(x), sf.Float32.from_float(x))
+    assert sf.f32_eq_signaling(o, o)
     assert not sf.test_exception_flags(sf.ExceptionFlag.INVALID)
     sf.set_exception_flags(0)
-    assert not sf.f32_eq_signaling(sf.Float32.from_float(x), sf.Float32.from_bytes(_SIGNALING_NAN))
+    assert not sf.f32_eq_signaling(o, p)
+    assert sf.test_exception_flags(sf.ExceptionFlag.INVALID)
+    sf.set_exception_flags(0)
+    assert sf.Float32.eq_signaling(o, o)
+    assert not sf.test_exception_flags(sf.ExceptionFlag.INVALID)
+    sf.set_exception_flags(0)
+    assert not sf.Float32.eq_signaling(o, p)
     assert sf.test_exception_flags(sf.ExceptionFlag.INVALID)
 
 
 def test_f32_le_quiet() -> None:
     x: float = -12.5
+    o: sf.Float32 = sf.Float32.from_float(x)
+    p: sf.Float32 = sf.Float32.from_bytes(_SIGNALING_NAN)
     sf.set_exception_flags(0)
-    assert sf.f32_le_quiet(sf.Float32.from_float(x), sf.Float32.from_float(x))
+    assert sf.f32_le_quiet(o, o)
     assert not sf.test_exception_flags(sf.ExceptionFlag.INVALID)
     sf.set_exception_flags(0)
-    assert not sf.f32_le_quiet(sf.Float32.from_float(x), sf.Float32.from_bytes(_SIGNALING_NAN))
+    assert not sf.f32_le_quiet(o, p)
+    assert sf.test_exception_flags(sf.ExceptionFlag.INVALID)
+    sf.set_exception_flags(0)
+    assert sf.Float32.le_quiet(o, o)
+    assert not sf.test_exception_flags(sf.ExceptionFlag.INVALID)
+    sf.set_exception_flags(0)
+    assert not sf.Float32.le_quiet(o, p)
     assert sf.test_exception_flags(sf.ExceptionFlag.INVALID)
 
 
 def test_f32_lt_quiet() -> None:
     x: float = -12.5
+    o: sf.Float32 = sf.Float32.from_float(x)
+    p: sf.Float32 = sf.Float32.from_bytes(_SIGNALING_NAN)
     sf.set_exception_flags(0)
-    assert not sf.f32_lt_quiet(sf.Float32.from_float(x), sf.Float32.from_float(x))
+    assert not sf.f32_lt_quiet(o, o)
     assert not sf.test_exception_flags(sf.ExceptionFlag.INVALID)
     sf.set_exception_flags(0)
-    assert not sf.f32_lt_quiet(sf.Float32.from_float(x), sf.Float32.from_bytes(_SIGNALING_NAN))
+    assert not sf.f32_lt_quiet(o, p)
+    assert sf.test_exception_flags(sf.ExceptionFlag.INVALID)
+    sf.set_exception_flags(0)
+    assert not sf.Float32.lt_quiet(o, o)
+    assert not sf.test_exception_flags(sf.ExceptionFlag.INVALID)
+    sf.set_exception_flags(0)
+    assert not sf.Float32.lt_quiet(o, p)
     assert sf.test_exception_flags(sf.ExceptionFlag.INVALID)
 
 
 def test_f32_is_signaling_nan() -> None:
-    assert sf.f32_is_signaling_nan(sf.Float32.from_bytes(_SIGNALING_NAN))
+    o: sf.Float32 = sf.Float32.from_bytes(_SIGNALING_NAN)
+    assert sf.f32_is_signaling_nan(o)
+    assert o.is_signaling_nan()
 
 
 def test_operators() -> None:

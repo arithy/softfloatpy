@@ -38,13 +38,12 @@ def test_bf16_float() -> None:
 
 def test_bf16_to_f32() -> None:
     f: float = -12.5
-    assert sf.bf16_to_f32(sf.BFloat16.from_float(f)).to_float() == f
-
-
-def test_f32_to_bf16() -> None:
-    f: float = -12.5
-    assert sf.f32_to_bf16(sf.Float32.from_float(f)).to_float() == f
+    o: sf.BFloat16 = sf.BFloat16.from_float(f)
+    assert sf.bf16_to_f32(o).to_float() == f
+    assert sf.bf16_to_f32(o).to_bytes() == o.to_f32().to_bytes()
 
 
 def test_bf16_is_signaling_nan() -> None:
-    assert sf.bf16_is_signaling_nan(sf.BFloat16.from_bytes(_SIGNALING_NAN))
+    o: sf.BFloat16 = sf.BFloat16.from_bytes(_SIGNALING_NAN)
+    assert sf.bf16_is_signaling_nan(o)
+    assert o.is_signaling_nan()

@@ -34,148 +34,224 @@ def test_f128_bytes() -> None:
 
 def test_f128_float() -> None:
     f: float = -12.5
-    assert sf.Float128.from_float(f).to_float() == f
-    assert str(sf.Float128.from_float(f)) == str(f)
+    o: sf.Float128 = sf.Float128.from_float(f)
+    assert o.to_float() == f
+    assert str(o) == str(f)
 
 
 def test_f128_to_ui32() -> None:
     f: float = 12.3
-    assert sf.f128_to_ui32(sf.Float128.from_float(f), sf.RoundingMode.MIN).to_int() == math.floor(f)
+    o: sf.Float128 = sf.Float128.from_float(f)
+    assert sf.f128_to_ui32(o, sf.RoundingMode.MIN).to_int() == math.floor(f)
+    assert sf.f128_to_ui32(o, sf.RoundingMode.MIN).to_bytes() == o.to_ui32(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f128_to_ui64() -> None:
     f: float = 12.3
-    assert sf.f128_to_ui64(sf.Float128.from_float(f), sf.RoundingMode.MIN).to_int() == math.floor(f)
+    o: sf.Float128 = sf.Float128.from_float(f)
+    assert sf.f128_to_ui64(o, sf.RoundingMode.MIN).to_int() == math.floor(f)
+    assert sf.f128_to_ui64(o, sf.RoundingMode.MIN).to_bytes() == o.to_ui64(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f128_to_i32() -> None:
     f: float = -12.3
-    assert sf.f128_to_i32(sf.Float128.from_float(f), sf.RoundingMode.MIN).to_int() == math.floor(f)
+    o: sf.Float128 = sf.Float128.from_float(f)
+    assert sf.f128_to_i32(o, sf.RoundingMode.MIN).to_int() == math.floor(f)
+    assert sf.f128_to_i32(o, sf.RoundingMode.MIN).to_bytes() == o.to_i32(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f128_to_i64() -> None:
     f: float = -12.3
-    assert sf.f128_to_i64(sf.Float128.from_float(f), sf.RoundingMode.MIN).to_int() == math.floor(f)
+    o: sf.Float128 = sf.Float128.from_float(f)
+    assert sf.f128_to_i64(o, sf.RoundingMode.MIN).to_int() == math.floor(f)
+    assert sf.f128_to_i64(o, sf.RoundingMode.MIN).to_bytes() == o.to_i64(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f128_to_f16() -> None:
     f: float = -12.5
-    assert sf.f128_to_f16(sf.Float128.from_float(f)).to_float() == f
+    o: sf.Float128 = sf.Float128.from_float(f)
+    assert sf.f128_to_f16(o).to_float() == f
+    assert sf.f128_to_f16(o).to_bytes() == o.to_f16().to_bytes()
 
 
 def test_f128_to_f32() -> None:
     f: float = -12.5
-    assert sf.f128_to_f32(sf.Float128.from_float(f)).to_float() == f
+    o: sf.Float128 = sf.Float128.from_float(f)
+    assert sf.f128_to_f32(o).to_float() == f
+    assert sf.f128_to_f32(o).to_bytes() == o.to_f32().to_bytes()
 
 
 def test_f128_to_f64() -> None:
     f: float = -12.5
-    assert sf.f128_to_f64(sf.Float128.from_float(f)).to_float() == f
+    o: sf.Float128 = sf.Float128.from_float(f)
+    assert sf.f128_to_f64(o).to_float() == f
+    assert sf.f128_to_f64(o).to_bytes() == o.to_f64().to_bytes()
 
 
 def test_f128_round_to_int() -> None:
     f: float = -12.3
-    assert sf.f128_round_to_int(sf.Float128.from_float(f), sf.RoundingMode.MIN).to_float() == math.floor(f)
+    o: sf.Float128 = sf.Float128.from_float(f)
+    assert sf.f128_round_to_int(o, sf.RoundingMode.MIN).to_float() == math.floor(f)
+    assert sf.f128_round_to_int(o, sf.RoundingMode.MIN).to_bytes() == o.round_to_int(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f128_add() -> None:
     x: float = -12.5
     y: float = 3.25
-    assert sf.f128_add(sf.Float128.from_float(x), sf.Float128.from_float(y)).to_float() == x + y
+    o: sf.Float128 = sf.Float128.from_float(x)
+    p: sf.Float128 = sf.Float128.from_float(y)
+    assert sf.f128_add(o, p).to_float() == x + y
+    assert sf.f128_add(o, p).to_bytes() == sf.Float128.add(o, p).to_bytes()
 
 
 def test_f128_sub() -> None:
     x: float = -12.5
     y: float = 3.25
-    assert sf.f128_sub(sf.Float128.from_float(x), sf.Float128.from_float(y)).to_float() == x - y
+    o: sf.Float128 = sf.Float128.from_float(x)
+    p: sf.Float128 = sf.Float128.from_float(y)
+    assert sf.f128_sub(o, p).to_float() == x - y
+    assert sf.f128_sub(o, p).to_bytes() == sf.Float128.sub(o, p).to_bytes()
 
 
 def test_f128_mul() -> None:
     x: float = -12.5
     y: float = 3.25
-    assert sf.f128_mul(sf.Float128.from_float(x), sf.Float128.from_float(y)).to_float() == x * y
+    o: sf.Float128 = sf.Float128.from_float(x)
+    p: sf.Float128 = sf.Float128.from_float(y)
+    assert sf.f128_mul(o, p).to_float() == x * y
+    assert sf.f128_mul(o, p).to_bytes() == sf.Float128.mul(o, p).to_bytes()
 
 
 def test_f128_mul_add() -> None:
     x: float = -12.5
     y: float = 3.25
     z: float = -0.125
-    assert sf.f128_mul_add(
-        sf.Float128.from_float(x), sf.Float128.from_float(y), sf.Float128.from_float(z)
-    ).to_float() == x * y + z
+    o: sf.Float128 = sf.Float128.from_float(x)
+    p: sf.Float128 = sf.Float128.from_float(y)
+    q: sf.Float128 = sf.Float128.from_float(z)
+    assert sf.f128_mul_add(o, p, q).to_float() == x * y + z
+    assert sf.f128_mul_add(o, p, q).to_bytes() == sf.Float128.mul_add(o, p, q).to_bytes()
 
 
 def test_f128_div() -> None:
     for x, y in [(8.75, 3.5), (-8.75, 3.5), (8.75, -3.5), (-8.75, -3.5)]:
-        assert sf.f128_div(sf.Float128.from_float(x), sf.Float128.from_float(y)).to_float() == x / y
+        o: sf.Float128 = sf.Float128.from_float(x)
+        p: sf.Float128 = sf.Float128.from_float(y)
+        assert sf.f128_div(o, p).to_float() == x / y
+        assert sf.f128_div(o, p).to_bytes() == sf.Float128.div(o, p).to_bytes()
 
 
 def test_f128_rem() -> None:
     for x, y in [(8.75, 3.5), (-8.75, 3.5), (8.75, -3.5), (-8.75, -3.5)]:
         z: float = x / y
-        assert sf.f128_rem(sf.Float128.from_float(x), sf.Float128.from_float(y)).to_float() == x - y * (math.floor(z) if z >= 0 else math.ceil(z))
+        o: sf.Float128 = sf.Float128.from_float(x)
+        p: sf.Float128 = sf.Float128.from_float(y)
+        assert sf.f128_rem(o, p).to_float() == x - y * (math.floor(z) if z >= 0 else math.ceil(z))
+        assert sf.f128_rem(o, p).to_bytes() == sf.Float128.rem(o, p).to_bytes()
 
 
 def test_f128_sqrt() -> None:
     x: float = 2.25
-    assert sf.f128_sqrt(sf.Float128.from_float(x)).to_float() == math.sqrt(x)
+    o: sf.Float128 = sf.Float128.from_float(x)
+    assert sf.f128_sqrt(o).to_float() == math.sqrt(x)
+    assert sf.f128_sqrt(o).to_bytes() == sf.Float128.sqrt(o).to_bytes()
 
 
 def test_f128_eq() -> None:
     x: float = -12.5
     y: float = 3.25
-    assert sf.f128_eq(sf.Float128.from_float(x), sf.Float128.from_float(x))
-    assert not sf.f128_eq(sf.Float128.from_float(x), sf.Float128.from_float(y))
+    o: sf.Float128 = sf.Float128.from_float(x)
+    p: sf.Float128 = sf.Float128.from_float(y)
+    assert sf.f128_eq(o, o)
+    assert not sf.f128_eq(o, p)
+    assert sf.Float128.eq(o, o)
+    assert not sf.Float128.eq(o, p)
 
 
 def test_f128_le() -> None:
     x: float = -12.5
     y: float = 3.25
-    assert sf.f128_le(sf.Float128.from_float(x), sf.Float128.from_float(x))
-    assert sf.f128_le(sf.Float128.from_float(x), sf.Float128.from_float(y))
-    assert not sf.f128_le(sf.Float128.from_float(y), sf.Float128.from_float(x))
+    o: sf.Float128 = sf.Float128.from_float(x)
+    p: sf.Float128 = sf.Float128.from_float(y)
+    assert sf.f128_le(o, o)
+    assert sf.f128_le(o, p)
+    assert not sf.f128_le(p, o)
+    assert sf.Float128.le(o, o)
+    assert sf.Float128.le(o, p)
+    assert not sf.Float128.le(p, o)
 
 
 def test_f128_lt() -> None:
     x: float = -12.5
     y: float = 3.25
-    assert not sf.f128_lt(sf.Float128.from_float(x), sf.Float128.from_float(x))
-    assert sf.f128_lt(sf.Float128.from_float(x), sf.Float128.from_float(y))
-    assert not sf.f128_lt(sf.Float128.from_float(y), sf.Float128.from_float(x))
+    o: sf.Float128 = sf.Float128.from_float(x)
+    p: sf.Float128 = sf.Float128.from_float(y)
+    assert not sf.f128_lt(o, o)
+    assert sf.f128_lt(o, p)
+    assert not sf.f128_lt(p, o)
+    assert not sf.Float128.lt(o, o)
+    assert sf.Float128.lt(o, p)
+    assert not sf.Float128.lt(p, o)
 
 
 def test_f128_eq_signaling() -> None:
     x: float = -12.5
+    o: sf.Float128 = sf.Float128.from_float(x)
+    p: sf.Float128 = sf.Float128.from_bytes(_SIGNALING_NAN)
     sf.set_exception_flags(0)
-    assert sf.f128_eq_signaling(sf.Float128.from_float(x), sf.Float128.from_float(x))
+    assert sf.f128_eq_signaling(o, o)
     assert not sf.test_exception_flags(sf.ExceptionFlag.INVALID)
     sf.set_exception_flags(0)
-    assert not sf.f128_eq_signaling(sf.Float128.from_float(x), sf.Float128.from_bytes(_SIGNALING_NAN))
+    assert not sf.f128_eq_signaling(o, p)
+    assert sf.test_exception_flags(sf.ExceptionFlag.INVALID)
+    sf.set_exception_flags(0)
+    assert sf.Float128.eq_signaling(o, o)
+    assert not sf.test_exception_flags(sf.ExceptionFlag.INVALID)
+    sf.set_exception_flags(0)
+    assert not sf.Float128.eq_signaling(o, p)
     assert sf.test_exception_flags(sf.ExceptionFlag.INVALID)
 
 
 def test_f128_le_quiet() -> None:
     x: float = -12.5
+    o: sf.Float128 = sf.Float128.from_float(x)
+    p: sf.Float128 = sf.Float128.from_bytes(_SIGNALING_NAN)
     sf.set_exception_flags(0)
-    assert sf.f128_le_quiet(sf.Float128.from_float(x), sf.Float128.from_float(x))
+    assert sf.f128_le_quiet(o, o)
     assert not sf.test_exception_flags(sf.ExceptionFlag.INVALID)
     sf.set_exception_flags(0)
-    assert not sf.f128_le_quiet(sf.Float128.from_float(x), sf.Float128.from_bytes(_SIGNALING_NAN))
+    assert not sf.f128_le_quiet(o, p)
+    assert sf.test_exception_flags(sf.ExceptionFlag.INVALID)
+    sf.set_exception_flags(0)
+    assert sf.Float128.le_quiet(o, o)
+    assert not sf.test_exception_flags(sf.ExceptionFlag.INVALID)
+    sf.set_exception_flags(0)
+    assert not sf.Float128.le_quiet(o, p)
     assert sf.test_exception_flags(sf.ExceptionFlag.INVALID)
 
 
 def test_f128_lt_quiet() -> None:
     x: float = -12.5
+    o: sf.Float128 = sf.Float128.from_float(x)
+    p: sf.Float128 = sf.Float128.from_bytes(_SIGNALING_NAN)
     sf.set_exception_flags(0)
-    assert not sf.f128_lt_quiet(sf.Float128.from_float(x), sf.Float128.from_float(x))
+    assert not sf.f128_lt_quiet(o, o)
     assert not sf.test_exception_flags(sf.ExceptionFlag.INVALID)
     sf.set_exception_flags(0)
-    assert not sf.f128_lt_quiet(sf.Float128.from_float(x), sf.Float128.from_bytes(_SIGNALING_NAN))
+    assert not sf.f128_lt_quiet(o, p)
+    assert sf.test_exception_flags(sf.ExceptionFlag.INVALID)
+    sf.set_exception_flags(0)
+    assert not sf.Float128.lt_quiet(o, o)
+    assert not sf.test_exception_flags(sf.ExceptionFlag.INVALID)
+    sf.set_exception_flags(0)
+    assert not sf.Float128.lt_quiet(o, p)
     assert sf.test_exception_flags(sf.ExceptionFlag.INVALID)
 
 
 def test_f128_is_signaling_nan() -> None:
-    assert sf.f128_is_signaling_nan(sf.Float128.from_bytes(_SIGNALING_NAN))
+    o: sf.Float128 = sf.Float128.from_bytes(_SIGNALING_NAN)
+    assert sf.f128_is_signaling_nan(o)
+    assert o.is_signaling_nan()
 
 
 def test_operators() -> None:

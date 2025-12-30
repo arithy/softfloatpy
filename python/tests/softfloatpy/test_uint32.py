@@ -30,28 +30,37 @@ def test_ui32_bytes() -> None:
 
 def test_ui32_int() -> None:
     i: int = 0xedcb4321
-    assert sf.UInt32.from_int(i).to_int() == i
-    assert str(sf.UInt32.from_int(i)) == str(i)
+    o: sf.UInt32 = sf.UInt32.from_int(i)
+    assert o.to_int() == i
+    assert str(o) == str(i)
 
 
 def test_ui32_to_f16() -> None:
     i: int = 123
-    assert sf.ui32_to_f16(sf.UInt32.from_int(i)).to_float() == float(i)
+    o: sf.UInt32 = sf.UInt32.from_int(i)
+    assert sf.ui32_to_f16(o).to_float() == float(i)
+    assert sf.ui32_to_f16(o).to_bytes() == o.to_f16().to_bytes()
 
 
 def test_ui32_to_f32() -> None:
     i: int = 123
-    assert sf.ui32_to_f32(sf.UInt32.from_int(i)).to_float() == float(i)
+    o: sf.UInt32 = sf.UInt32.from_int(i)
+    assert sf.ui32_to_f32(o).to_float() == float(i)
+    assert sf.ui32_to_f32(o).to_bytes() == o.to_f32().to_bytes()
 
 
 def test_ui32_to_f64() -> None:
     i: int = 123
-    assert sf.ui32_to_f64(sf.UInt32.from_int(i)).to_float() == float(i)
+    o: sf.UInt32 = sf.UInt32.from_int(i)
+    assert sf.ui32_to_f64(o).to_float() == float(i)
+    assert sf.ui32_to_f64(o).to_bytes() == o.to_f64().to_bytes()
 
 
 def test_ui32_to_f128() -> None:
     i: int = 123
-    assert sf.ui32_to_f128(sf.UInt32.from_int(i)).to_float() == float(i)
+    o: sf.UInt32 = sf.UInt32.from_int(i)
+    assert sf.ui32_to_f128(o).to_float() == float(i)
+    assert sf.ui32_to_f128(o).to_bytes() == o.to_f128().to_bytes()
 
 
 def test_operators() -> None:
