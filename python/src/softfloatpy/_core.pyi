@@ -25,11 +25,26 @@ from enum import IntEnum, IntFlag
 
 
 class TininessMode(IntEnum):
+    """The tininess detection modes.
+
+    - ``BEFORE_ROUNDING``: Detecting tininess before rounding.
+    - ``AFTER_ROUNDING``: Detecting tininess after rounding.
+
+    """
     BEFORE_ROUNDING = ...
     AFTER_ROUNDING = ...
 
 
 class RoundingMode(IntEnum):
+    """The rounding modes.
+
+    - ``NEAR_EVEN``: Rounding to nearest, with ties to even.
+    - ``NEAR_MAX_MAG``: Rounding to nearest, with ties to maximum magnitude (away from zero).
+    - ``MIN_MAG``: Rounding to minimum magnitude (toward zero).
+    - ``MIN``: Rounding to minimum (down).
+    - ``MAX``: Rounding to maximum (up).
+
+    """
     NEAR_EVEN = ...
     MIN_MAG = ...
     MIN = ...
@@ -38,6 +53,15 @@ class RoundingMode(IntEnum):
 
 
 class ExceptionFlag(IntFlag):
+    """The floating-point exception flags.
+
+    - ``INEXACT``: The exception set if the rounded value is different from the mathematically exact result of the operation.
+    - ``UNDERFLOW``: The exception set if the rounded value is tiny and inexact.
+    - ``OVERFLOW``: The exception set if the absolute value of the rounded value is too large to be represented.
+    - ``INFINITE``: The exception set if the result is infinite given finite operands.
+    - ``INVALID``: The exception set if a finite or infinite result cannot be returned.
+
+    """
     INEXACT = ...
     UNDERFLOW = ...
     OVERFLOW = ...
@@ -46,796 +70,4240 @@ class ExceptionFlag(IntFlag):
 
 
 class UInt32:
+    """A 32-bit unsigned integer.
+
+    The object is immutable.
+
+    The following operators are supported:
+
+    - unary operators: ``+``, ``~``.
+    - binary operators: ``+``, ``-``, ``*``, ``//``, ``%``,
+      ``<<``, ``>>``, ``&``, ``|``, ``^``, ``<``, ``<=``, ``>``, ``>=``, ``==``, ``!=``,
+      ``+=``, ``-=``, ``*=``, ``//=``, ``%=``, ``<<=``, ``>>=``, ``&=``, ``|=``, ``^=``.
+
+    The following operators are unsupported:
+
+    - unary operators: ``-``.
+    - binary operators: ``**``, ``/``, ``**=``, ``/=``.
+
+    """
 
     @classmethod
-    def from_bytes(cls, src: bytes) -> UInt32: ...
+    def from_bytes(cls, src: bytes) -> Self:
+        """Creates a new instance from the specified byte sequence.
 
-    def to_bytes(self) -> bytes: ...
+        Args:
+            src: The byte sequence representing the native data with big endian.
+                 The length must be at least 4.
+
+        Returns:
+            A new instance created from the specified byte sequence.
+
+        """
+        ...
+
+    def to_bytes(self) -> bytes:
+        """Returns the native data as a byte sequence.
+
+        Returns:
+            A byte sequence representing the native data with big endian.
+            The length is 4.
+
+        """
+        ...
 
     @classmethod
-    def from_int(cls, src: int) -> UInt32: ...
+    def from_int(cls, src: int) -> Self:
+        """Creates a new instance from the specified integer.
 
-    def to_int(self) -> int: ...
+        Args:
+            src: The integer from which a new instance is created.
 
-    def __str__(self) -> str: ...
+        Returns:
+            A new instance created from the specified integer.
 
-    def __pos__(self) -> Self: ...
+        """
+        ...
 
-    def __neg__(self) -> Self: ...
+    def to_int(self) -> int:
+        """Returns the native data as an integer.
 
-    def __invert__(self) -> Self: ...
+        Returns:
+            An integer that represents the native data.
 
-    def __add__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __sub__(self, other: Self) -> Self: ...
+    def to_f16(self) -> Float16:
+        """Converts the 32-bit unsigned integer to an IEEE 754 binary16 floating point.
 
-    def __mul__(self, other: Self) -> Self: ...
+        Returns:
+            The IEEE 754 binary16 floating point.
 
-    def __floordiv__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __mod__(self, other: Self) -> Self: ...
+    def to_f32(self) -> Float32:
+        """Converts the 32-bit unsigned integer to an IEEE 754 binary32 floating point.
 
-    def __lshift__(self, other: Self) -> Self: ...
+        Returns:
+            The IEEE 754 binary32 floating point.
 
-    def __rshift__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __and__(self, other: Self) -> Self: ...
+    def to_f64(self) -> Float64:
+        """Converts the 32-bit unsigned integer to an IEEE 754 binary64 floating point.
 
-    def __or__(self, other: Self) -> Self: ...
+        Returns:
+            The IEEE 754 binary64 floating point.
 
-    def __xor__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __lt__(self, other: Self) -> bool: ...
+    def to_f128(self) -> Float128:
+        """Converts the 32-bit unsigned integer to an IEEE 754 binary128 floating point.
 
-    def __le__(self, other: Self) -> bool: ...
+        Returns:
+            The IEEE 754 binary128 floating point.
 
-    def __gt__(self, other: Self) -> bool: ...
+        """
+        ...
 
-    def __ge__(self, other: Self) -> bool: ...
+    def __str__(self) -> str:
+        ...
 
-    def __eq__(self, other: object) -> bool: ...
+    def __pos__(self) -> Self:
+        ...
 
-    def __ne__(self, other: object) -> bool: ...
+    def __neg__(self) -> Self:
+        ...
 
-    def __iadd__(self, other: Self) -> Self: ...
+    def __invert__(self) -> Self:
+        ...
 
-    def __isub__(self, other: Self) -> Self: ...
+    def __add__(self, other: Self) -> Self:
+        ...
 
-    def __imul__(self, other: Self) -> Self: ...
+    def __sub__(self, other: Self) -> Self:
+        ...
 
-    def __ifloordiv__(self, other: Self) -> Self: ...
+    def __mul__(self, other: Self) -> Self:
+        ...
 
-    def __imod__(self, other: Self) -> Self: ...
+    def __floordiv__(self, other: Self) -> Self:
+        ...
 
-    def __ilshift__(self, other: Self) -> Self: ...
+    def __mod__(self, other: Self) -> Self:
+        ...
 
-    def __irshift__(self, other: Self) -> Self: ...
+    def __lshift__(self, other: Self) -> Self:
+        ...
 
-    def __iand__(self, other: Self) -> Self: ...
+    def __rshift__(self, other: Self) -> Self:
+        ...
 
-    def __ior__(self, other: Self) -> Self: ...
+    def __and__(self, other: Self) -> Self:
+        ...
 
-    def __ixor__(self, other: Self) -> Self: ...
+    def __or__(self, other: Self) -> Self:
+        ...
+
+    def __xor__(self, other: Self) -> Self:
+        ...
+
+    def __lt__(self, other: Self) -> bool:
+        ...
+
+    def __le__(self, other: Self) -> bool:
+        ...
+
+    def __gt__(self, other: Self) -> bool:
+        ...
+
+    def __ge__(self, other: Self) -> bool:
+        ...
+
+    def __eq__(self, other: object) -> bool:
+        ...
+
+    def __ne__(self, other: object) -> bool:
+        ...
+
+    def __iadd__(self, other: Self) -> Self:
+        ...
+
+    def __isub__(self, other: Self) -> Self:
+        ...
+
+    def __imul__(self, other: Self) -> Self:
+        ...
+
+    def __ifloordiv__(self, other: Self) -> Self:
+        ...
+
+    def __imod__(self, other: Self) -> Self:
+        ...
+
+    def __ilshift__(self, other: Self) -> Self:
+        ...
+
+    def __irshift__(self, other: Self) -> Self:
+        ...
+
+    def __iand__(self, other: Self) -> Self:
+        ...
+
+    def __ior__(self, other: Self) -> Self:
+        ...
+
+    def __ixor__(self, other: Self) -> Self:
+        ...
 
 
 class UInt64:
+    """A 64-bit unsigned integer.
+
+    The object is immutable.
+
+    The following operators are supported:
+
+    - unary operators: ``+``, ``~``.
+    - binary operators: ``+``, ``-``, ``*``, ``//``, ``%``,
+      ``<<``, ``>>``, ``&``, ``|``, ``^``, ``<``, ``<=``, ``>``, ``>=``, ``==``, ``!=``,
+      ``+=``, ``-=``, ``*=``, ``//=``, ``%=``, ``<<=``, ``>>=``, ``&=``, ``|=``, ``^=``.
+
+    The following operators are unsupported:
+
+    - unary operators: ``-``.
+    - binary operators: ``**``, ``/``, ``**=``, ``/=``.
+
+    """
 
     @classmethod
-    def from_bytes(cls, src: bytes) -> UInt64: ...
+    def from_bytes(cls, src: bytes) -> Self:
+        """Creates a new instance from the specified byte sequence.
 
-    def to_bytes(self) -> bytes: ...
+        Args:
+            src: The byte sequence representing the native data with big endian.
+                 The length must be at least 8.
+
+        Returns:
+            A new instance created from the specified byte sequence.
+
+        """
+        ...
+
+    def to_bytes(self) -> bytes:
+        """Returns the native data as a byte sequence.
+
+        Returns:
+            A byte sequence representing the native data with big endian.
+            The length is 8.
+
+        """
+        ...
 
     @classmethod
-    def from_int(cls, src: int) -> UInt64: ...
+    def from_int(cls, src: int) -> Self:
+        """Creates a new instance from the specified integer.
 
-    def to_int(self) -> int: ...
+        Args:
+            src: The integer from which a new instance is created.
 
-    def __str__(self) -> str: ...
+        Returns:
+            A new instance created from the specified integer.
 
-    def __pos__(self) -> Self: ...
+        """
+        ...
 
-    def __neg__(self) -> Self: ...
+    def to_int(self) -> int:
+        """Returns the native data as an integer.
 
-    def __invert__(self) -> Self: ...
+        Returns:
+            An integer that represents the native data.
 
-    def __add__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __sub__(self, other: Self) -> Self: ...
+    def to_f16(self) -> Float16:
+        """Converts the 64-bit unsigned integer to an IEEE 754 binary16 floating point.
 
-    def __mul__(self, other: Self) -> Self: ...
+        Returns:
+            The IEEE 754 binary16 floating point.
 
-    def __floordiv__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __mod__(self, other: Self) -> Self: ...
+    def to_f32(self) -> Float32:
+        """Converts the 64-bit unsigned integer to an IEEE 754 binary32 floating point.
 
-    def __lshift__(self, other: Self) -> Self: ...
+        Returns:
+            The IEEE 754 binary32 floating point.
 
-    def __rshift__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __and__(self, other: Self) -> Self: ...
+    def to_f64(self) -> Float64:
+        """Converts the 64-bit unsigned integer to an IEEE 754 binary64 floating point.
 
-    def __or__(self, other: Self) -> Self: ...
+        Returns:
+            The IEEE 754 binary64 floating point.
 
-    def __xor__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __lt__(self, other: Self) -> bool: ...
+    def to_f128(self) -> Float128:
+        """Converts the 64-bit unsigned integer to an IEEE 754 binary128 floating point.
 
-    def __le__(self, other: Self) -> bool: ...
+        Returns:
+            The IEEE 754 binary128 floating point.
 
-    def __gt__(self, other: Self) -> bool: ...
+        """
+        ...
 
-    def __ge__(self, other: Self) -> bool: ...
+    def __str__(self) -> str:
+        ...
 
-    def __eq__(self, other: object) -> bool: ...
+    def __pos__(self) -> Self:
+        ...
 
-    def __ne__(self, other: object) -> bool: ...
+    def __neg__(self) -> Self:
+        ...
 
-    def __iadd__(self, other: Self) -> Self: ...
+    def __invert__(self) -> Self:
+        ...
 
-    def __isub__(self, other: Self) -> Self: ...
+    def __add__(self, other: Self) -> Self:
+        ...
 
-    def __imul__(self, other: Self) -> Self: ...
+    def __sub__(self, other: Self) -> Self:
+        ...
 
-    def __ifloordiv__(self, other: Self) -> Self: ...
+    def __mul__(self, other: Self) -> Self:
+        ...
 
-    def __imod__(self, other: Self) -> Self: ...
+    def __floordiv__(self, other: Self) -> Self:
+        ...
 
-    def __ilshift__(self, other: Self) -> Self: ...
+    def __mod__(self, other: Self) -> Self:
+        ...
 
-    def __irshift__(self, other: Self) -> Self: ...
+    def __lshift__(self, other: Self) -> Self:
+        ...
 
-    def __iand__(self, other: Self) -> Self: ...
+    def __rshift__(self, other: Self) -> Self:
+        ...
 
-    def __ior__(self, other: Self) -> Self: ...
+    def __and__(self, other: Self) -> Self:
+        ...
 
-    def __ixor__(self, other: Self) -> Self: ...
+    def __or__(self, other: Self) -> Self:
+        ...
+
+    def __xor__(self, other: Self) -> Self:
+        ...
+
+    def __lt__(self, other: Self) -> bool:
+        ...
+
+    def __le__(self, other: Self) -> bool:
+        ...
+
+    def __gt__(self, other: Self) -> bool:
+        ...
+
+    def __ge__(self, other: Self) -> bool:
+        ...
+
+    def __eq__(self, other: object) -> bool:
+        ...
+
+    def __ne__(self, other: object) -> bool:
+        ...
+
+    def __iadd__(self, other: Self) -> Self:
+        ...
+
+    def __isub__(self, other: Self) -> Self:
+        ...
+
+    def __imul__(self, other: Self) -> Self:
+        ...
+
+    def __ifloordiv__(self, other: Self) -> Self:
+        ...
+
+    def __imod__(self, other: Self) -> Self:
+        ...
+
+    def __ilshift__(self, other: Self) -> Self:
+        ...
+
+    def __irshift__(self, other: Self) -> Self:
+        ...
+
+    def __iand__(self, other: Self) -> Self:
+        ...
+
+    def __ior__(self, other: Self) -> Self:
+        ...
+
+    def __ixor__(self, other: Self) -> Self:
+        ...
 
 
 class Int32:
+    """A 32-bit signed integer.
+
+    The object is immutable.
+
+    The following operators are supported:
+
+    - unary operators: ``+``, ``-``, ``~``.
+    - binary operators: ``+``, ``-``, ``*``, ``//``, ``%``,
+      ``<<``, ``>>``, ``&``, ``|``, ``^``, ``<``, ``<=``, ``>``, ``>=``, ``==``, ``!=``,
+      ``+=``, ``-=``, ``*=``, ``//=``, ``%=``, ``<<=``, ``>>=``, ``&=``, ``|=``, ``^=``.
+
+    The following operators are unsupported:
+
+    - binary operators: ``**``, ``/``, ``**=``, ``/=``.
+
+    """
 
     @classmethod
-    def from_bytes(cls, src: bytes) -> Int32: ...
+    def from_bytes(cls, src: bytes) -> Self:
+        """Creates a new instance from the specified byte sequence.
 
-    def to_bytes(self) -> bytes: ...
+        Args:
+            src: The byte sequence representing the native data with big endian.
+                 The length must be at least 4.
+
+        Returns:
+            A new instance created from the specified byte sequence.
+
+        """
+        ...
+
+    def to_bytes(self) -> bytes:
+        """Returns the native data as a byte sequence.
+
+        Returns:
+            A byte sequence representing the native data with big endian.
+            The length is 4.
+
+        """
+        ...
 
     @classmethod
-    def from_int(cls, src: int) -> Int32: ...
+    def from_int(cls, src: int) -> Self:
+        """Creates a new instance from the specified integer.
 
-    def to_int(self) -> int: ...
+        Args:
+            src: The integer from which a new instance is created.
 
-    def __str__(self) -> str: ...
+        Returns:
+            A new instance created from the specified integer.
 
-    def __pos__(self) -> Self: ...
+        """
+        ...
 
-    def __neg__(self) -> Self: ...
+    def to_int(self) -> int:
+        """Returns the native data as an integer.
 
-    def __invert__(self) -> Self: ...
+        Returns:
+            An integer that represents the native data.
 
-    def __add__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __sub__(self, other: Self) -> Self: ...
+    def to_f16(self) -> Float16:
+        """Converts the 32-bit signed integer to an IEEE 754 binary16 floating point.
 
-    def __mul__(self, other: Self) -> Self: ...
+        Returns:
+            The IEEE 754 binary16 floating point.
 
-    def __floordiv__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __mod__(self, other: Self) -> Self: ...
+    def to_f32(self) -> Float32:
+        """Converts the 32-bit signed integer to an IEEE 754 binary32 floating point.
 
-    def __lshift__(self, other: Self) -> Self: ...
+        Returns:
+            The IEEE 754 binary32 floating point.
 
-    def __rshift__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __and__(self, other: Self) -> Self: ...
+    def to_f64(self) -> Float64:
+        """Converts the 32-bit signed integer to an IEEE 754 binary64 floating point.
 
-    def __or__(self, other: Self) -> Self: ...
+        Returns:
+            The IEEE 754 binary64 floating point.
 
-    def __xor__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __lt__(self, other: Self) -> bool: ...
+    def to_f128(self) -> Float128:
+        """Converts the 32-bit signed integer to an IEEE 754 binary128 floating point.
 
-    def __le__(self, other: Self) -> bool: ...
+        Returns:
+            The IEEE 754 binary128 floating point.
 
-    def __gt__(self, other: Self) -> bool: ...
+        """
+        ...
 
-    def __ge__(self, other: Self) -> bool: ...
+    def __str__(self) -> str:
+        ...
 
-    def __eq__(self, other: object) -> bool: ...
+    def __pos__(self) -> Self:
+        ...
 
-    def __ne__(self, other: object) -> bool: ...
+    def __neg__(self) -> Self:
+        ...
 
-    def __iadd__(self, other: Self) -> Self: ...
+    def __invert__(self) -> Self:
+        ...
 
-    def __isub__(self, other: Self) -> Self: ...
+    def __add__(self, other: Self) -> Self:
+        ...
 
-    def __imul__(self, other: Self) -> Self: ...
+    def __sub__(self, other: Self) -> Self:
+        ...
 
-    def __ifloordiv__(self, other: Self) -> Self: ...
+    def __mul__(self, other: Self) -> Self:
+        ...
 
-    def __imod__(self, other: Self) -> Self: ...
+    def __floordiv__(self, other: Self) -> Self:
+        ...
 
-    def __ilshift__(self, other: Self) -> Self: ...
+    def __mod__(self, other: Self) -> Self:
+        ...
 
-    def __irshift__(self, other: Self) -> Self: ...
+    def __lshift__(self, other: Self) -> Self:
+        ...
 
-    def __iand__(self, other: Self) -> Self: ...
+    def __rshift__(self, other: Self) -> Self:
+        ...
 
-    def __ior__(self, other: Self) -> Self: ...
+    def __and__(self, other: Self) -> Self:
+        ...
 
-    def __ixor__(self, other: Self) -> Self: ...
+    def __or__(self, other: Self) -> Self:
+        ...
+
+    def __xor__(self, other: Self) -> Self:
+        ...
+
+    def __lt__(self, other: Self) -> bool:
+        ...
+
+    def __le__(self, other: Self) -> bool:
+        ...
+
+    def __gt__(self, other: Self) -> bool:
+        ...
+
+    def __ge__(self, other: Self) -> bool:
+        ...
+
+    def __eq__(self, other: object) -> bool:
+        ...
+
+    def __ne__(self, other: object) -> bool:
+        ...
+
+    def __iadd__(self, other: Self) -> Self:
+        ...
+
+    def __isub__(self, other: Self) -> Self:
+        ...
+
+    def __imul__(self, other: Self) -> Self:
+        ...
+
+    def __ifloordiv__(self, other: Self) -> Self:
+        ...
+
+    def __imod__(self, other: Self) -> Self:
+        ...
+
+    def __ilshift__(self, other: Self) -> Self:
+        ...
+
+    def __irshift__(self, other: Self) -> Self:
+        ...
+
+    def __iand__(self, other: Self) -> Self:
+        ...
+
+    def __ior__(self, other: Self) -> Self:
+        ...
+
+    def __ixor__(self, other: Self) -> Self:
+        ...
 
 
 class Int64:
+    """A 64-bit signed integer.
+
+    The object is immutable.
+
+    The following operators are supported:
+
+    - unary operators: ``+``, ``-``, ``~``.
+    - binary operators: ``+``, ``-``, ``*``, ``//``, ``%``,
+      ``<<``, ``>>``, ``&``, ``|``, ``^``, ``<``, ``<=``, ``>``, ``>=``, ``==``, ``!=``,
+      ``+=``, ``-=``, ``*=``, ``//=``, ``%=``, ``<<=``, ``>>=``, ``&=``, ``|=``, ``^=``.
+
+    The following operators are unsupported:
+
+    - binary operators: ``**``, ``/``, ``**=``, ``/=``.
+
+    """
 
     @classmethod
-    def from_bytes(cls, src: bytes) -> Int64: ...
+    def from_bytes(cls, src: bytes) -> Self:
+        """Creates a new instance from the specified byte sequence.
 
-    def to_bytes(self) -> bytes: ...
+        Args:
+            src: The byte sequence representing the native data with big endian.
+                 The length must be at least 8.
+
+        Returns:
+            A new instance created from the specified byte sequence.
+
+        """
+        ...
+
+    def to_bytes(self) -> bytes:
+        """Returns the native data as a byte sequence.
+
+        Returns:
+            A byte sequence representing the native data with big endian.
+            The length is 8.
+
+        """
+        ...
 
     @classmethod
-    def from_int(cls, src: int) -> Int64: ...
+    def from_int(cls, src: int) -> Self:
+        """Creates a new instance from the specified integer.
 
-    def to_int(self) -> int: ...
+        Args:
+            src: The integer from which a new instance is created.
 
-    def __str__(self) -> str: ...
+        Returns:
+            A new instance created from the specified integer.
 
-    def __pos__(self) -> Self: ...
+        """
+        ...
 
-    def __neg__(self) -> Self: ...
+    def to_int(self) -> int:
+        """Returns the native data as an integer.
 
-    def __invert__(self) -> Self: ...
+        Returns:
+            An integer that represents the native data.
 
-    def __add__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __sub__(self, other: Self) -> Self: ...
+    def to_f16(self) -> Float16:
+        """Converts the 64-bit signed integer to an IEEE 754 binary16 floating point.
 
-    def __mul__(self, other: Self) -> Self: ...
+        Returns:
+            The IEEE 754 binary16 floating point.
 
-    def __floordiv__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __mod__(self, other: Self) -> Self: ...
+    def to_f32(self) -> Float32:
+        """Converts the 64-bit signed integer to an IEEE 754 binary32 floating point.
 
-    def __lshift__(self, other: Self) -> Self: ...
+        Returns:
+            The IEEE 754 binary32 floating point.
 
-    def __rshift__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __and__(self, other: Self) -> Self: ...
+    def to_f64(self) -> Float64:
+        """Converts the 64-bit signed integer to an IEEE 754 binary64 floating point.
 
-    def __or__(self, other: Self) -> Self: ...
+        Returns:
+            The IEEE 754 binary64 floating point.
 
-    def __xor__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __lt__(self, other: Self) -> bool: ...
+    def to_f128(self) -> Float128:
+        """Converts the 64-bit signed integer to an IEEE 754 binary128 floating point.
 
-    def __le__(self, other: Self) -> bool: ...
+        Returns:
+            The IEEE 754 binary128 floating point.
 
-    def __gt__(self, other: Self) -> bool: ...
+        """
+        ...
 
-    def __ge__(self, other: Self) -> bool: ...
+    def __str__(self) -> str:
+        ...
 
-    def __eq__(self, other: object) -> bool: ...
+    def __pos__(self) -> Self:
+        ...
 
-    def __ne__(self, other: object) -> bool: ...
+    def __neg__(self) -> Self:
+        ...
 
-    def __iadd__(self, other: Self) -> Self: ...
+    def __invert__(self) -> Self:
+        ...
 
-    def __isub__(self, other: Self) -> Self: ...
+    def __add__(self, other: Self) -> Self:
+        ...
 
-    def __imul__(self, other: Self) -> Self: ...
+    def __sub__(self, other: Self) -> Self:
+        ...
 
-    def __ifloordiv__(self, other: Self) -> Self: ...
+    def __mul__(self, other: Self) -> Self:
+        ...
 
-    def __imod__(self, other: Self) -> Self: ...
+    def __floordiv__(self, other: Self) -> Self:
+        ...
 
-    def __ilshift__(self, other: Self) -> Self: ...
+    def __mod__(self, other: Self) -> Self:
+        ...
 
-    def __irshift__(self, other: Self) -> Self: ...
+    def __lshift__(self, other: Self) -> Self:
+        ...
 
-    def __iand__(self, other: Self) -> Self: ...
+    def __rshift__(self, other: Self) -> Self:
+        ...
 
-    def __ior__(self, other: Self) -> Self: ...
+    def __and__(self, other: Self) -> Self:
+        ...
 
-    def __ixor__(self, other: Self) -> Self: ...
+    def __or__(self, other: Self) -> Self:
+        ...
+
+    def __xor__(self, other: Self) -> Self:
+        ...
+
+    def __lt__(self, other: Self) -> bool:
+        ...
+
+    def __le__(self, other: Self) -> bool:
+        ...
+
+    def __gt__(self, other: Self) -> bool:
+        ...
+
+    def __ge__(self, other: Self) -> bool:
+        ...
+
+    def __eq__(self, other: object) -> bool:
+        ...
+
+    def __ne__(self, other: object) -> bool:
+        ...
+
+    def __iadd__(self, other: Self) -> Self:
+        ...
+
+    def __isub__(self, other: Self) -> Self:
+        ...
+
+    def __imul__(self, other: Self) -> Self:
+        ...
+
+    def __ifloordiv__(self, other: Self) -> Self:
+        ...
+
+    def __imod__(self, other: Self) -> Self:
+        ...
+
+    def __ilshift__(self, other: Self) -> Self:
+        ...
+
+    def __irshift__(self, other: Self) -> Self:
+        ...
+
+    def __iand__(self, other: Self) -> Self:
+        ...
+
+    def __ior__(self, other: Self) -> Self:
+        ...
+
+    def __ixor__(self, other: Self) -> Self:
+        ...
 
 
 class BFloat16:
+    """A 16-bit brain floating point.
+
+    The object is immutable.
+
+    No operators are supported.
+
+    """
 
     @classmethod
-    def from_bytes(cls, src: bytes) -> BFloat16: ...
+    def from_bytes(cls, src: bytes) -> Self:
+        """Creates a new instance from the specified byte sequence.
 
-    def to_bytes(self) -> bytes: ...
+        Args:
+            src: The byte sequence representing the native data with big endian.
+                 The length must be at least 2.
+
+        Returns:
+            A new instance created from the specified byte sequence.
+
+        """
+        ...
+
+    def to_bytes(self) -> bytes:
+        """Returns the native data as a byte sequence.
+
+        Returns:
+            A byte sequence representing the native data with big endian.
+            The length is 2.
+
+        """
+        ...
 
     @classmethod
-    def from_float(cls, src: float) -> BFloat16: ...
+    def from_float(cls, src: float) -> Self:
+        """Creates a new instance from the specified floating point.
 
-    def to_float(self) -> float: ...
+        Args:
+            src: The floating point from which a new instance is created.
 
-    def __str__(self) -> str: ...
+        Returns:
+            A new instance created from the specified floating point.
+
+        """
+        ...
+
+    def to_float(self) -> float:
+        """Returns the native data as a floating point.
+
+        Returns:
+            A floating point that represents the native data.
+
+        """
+        ...
+
+    def to_f32(self) -> Float32:
+        """Converts the 16-bit brain floating point to an IEEE 754 binary32 floating point.
+
+        Returns:
+            The IEEE 754 binary32 floating point.
+
+        """
+        ...
+
+    def is_signaling_nan(self) -> bool:
+        """Tests if the 16-bit brain floating point is a signaling NaN.
+
+        Returns:
+            ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def __str__(self) -> str:
+        ...
 
 
 class Float16:
+    """An IEEE 754 binary16 floating point.
+
+    The object is immutable.
+
+    The following operators are supported:
+
+    - unary operators: ``+``, ``-``.
+    - binary operators: ``+``, ``-``, ``*``, ``/``, ``//``, ``%``,
+      ``<``, ``<=``, ``>``, ``>=``, ``==``, ``!=``,
+      ``+=``, ``-=``, ``*=``, ``/=``, ``//=``, ``%=``.
+
+    The following operators are unsupported:
+
+    - unary operator: ``~``.
+    - binary operators: ``<<``, ``>>``, ``&``, ``|``, ``^``, ``**``,
+      ``<<=``, ``>>=``, ``&=``, ``|=``, ``^=``, ``**=``.
+
+    """
 
     @classmethod
-    def from_bytes(cls, src: bytes) -> Float16: ...
+    def from_bytes(cls, src: bytes) -> Self:
+        """Creates a new instance from the specified byte sequence.
 
-    def to_bytes(self) -> bytes: ...
+        Args:
+            src: The byte sequence representing the native data with big endian.
+                 The length must be at least 2.
+
+        Returns:
+            A new instance created from the specified byte sequence.
+
+        """
+        ...
+
+    def to_bytes(self) -> bytes:
+        """Returns the native data as a byte sequence.
+
+        Returns:
+            A byte sequence representing the native data with big endian.
+            The length is 2.
+
+        """
+        ...
 
     @classmethod
-    def from_float(cls, src: float) -> Float16: ...
+    def from_float(cls, src: float) -> Self:
+        """Creates a new instance from the specified floating point.
 
-    def to_float(self) -> float: ...
+        Args:
+            src: The floating point from which a new instance is created.
 
-    def __str__(self) -> str: ...
+        Returns:
+            A new instance created from the specified floating point.
 
-    def __pos__(self) -> Self: ...
+        """
+        ...
 
-    def __neg__(self) -> Self: ...
+    def to_float(self) -> float:
+        """Returns the native data as a floating point.
 
-    def __add__(self, other: Self) -> Self: ...
+        Returns:
+            A floating point that represents the native data.
 
-    def __sub__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __mul__(self, other: Self) -> Self: ...
+    def to_ui32(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> UInt32:
+        """Converts the IEEE 754 binary16 floating point to a 32-bit unsigned integer.
 
-    def __truediv__(self, other: Self) -> Self: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __floordiv__(self, other: Self) -> Self: ...
+        Returns:
+            The 32-bit unsigned integer.
 
-    def __mod__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __lt__(self, other: Self) -> bool: ...
+    def to_ui64(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> UInt64:
+        """Converts the IEEE 754 binary16 floating point to a 64-bit unsigned integer.
 
-    def __le__(self, other: Self) -> bool: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __gt__(self, other: Self) -> bool: ...
+        Returns:
+            The 64-bit unsigned integer.
 
-    def __ge__(self, other: Self) -> bool: ...
+        """
+        ...
 
-    def __eq__(self, other: object) -> bool: ...
+    def to_i32(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> Int32:
+        """Converts the IEEE 754 binary16 floating point to a 32-bit signed integer.
 
-    def __ne__(self, other: object) -> bool: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __iadd__(self, other: Self) -> Self: ...
+        Returns:
+            The 32-bit signed integer.
 
-    def __isub__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __imul__(self, other: Self) -> Self: ...
+    def to_i64(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> Int64:
+        """Converts the IEEE 754 binary16 floating point to a 64-bit signed integer.
 
-    def __itruediv__(self, other: Self) -> Self: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __ifloordiv__(self, other: Self) -> Self: ...
+        Returns:
+            The 64-bit signed integer.
 
-    def __imod__(self, other: Self) -> Self: ...
+        """
+        ...
+
+    def to_f32(self) -> Float32:
+        """Converts the IEEE 754 binary16 floating point to a binary32 floating point.
+
+        Returns:
+            The IEEE 754 binary32 floating point.
+
+        """
+        ...
+
+    def to_f64(self) -> Float64:
+        """Converts the IEEE 754 binary16 floating point to a binary64 floating point.
+
+        Returns:
+            The IEEE 754 binary64 floating point.
+
+        """
+        ...
+
+    def to_f128(self) -> Float128:
+        """Converts the IEEE 754 binary16 floating point to a binary128 floating point.
+
+        Returns:
+            The IEEE 754 binary128 floating point.
+
+        """
+        ...
+
+    def round_to_int(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> Self:
+        """Rounds the number.
+
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact rounding is unable.
+
+        Returns:
+            The resulted integer.
+
+        """
+        ...
+
+    @classmethod
+    def add(cls, x: Self, y: Self) -> Self:
+        """Adds the IEEE 754 binary16 floating points.
+
+        Args:
+            x: The floating point to be added.
+            y: The floating point to add.
+
+        Returns:
+            The resulted number (``x + y``).
+
+        """
+        ...
+
+    @classmethod
+    def sub(cls, x: Self, y: Self) -> Self:
+        """Subtracts the IEEE 754 binary16 floating points.
+
+        Args:
+            x: The floating point to be subtracted.
+            y: The floating point to subtract.
+
+        Returns:
+            The resulted number (``x - y``).
+
+        """
+        ...
+
+    @classmethod
+    def mul(cls, x: Self, y: Self) -> Self:
+        """Multiplies the IEEE 754 binary16 floating points.
+
+        Args:
+            x: The floating point to be multiplied.
+            y: The floating point to multiply.
+
+        Returns:
+            The resulted number (``x * y``).
+
+        """
+        ...
+
+    @classmethod
+    def mul_add(cls, x: Self, y: Self, z: Self) -> Self:
+        """Multiplies and Adds the IEEE 754 binary16 floating points.
+
+        Args:
+            x: The floating point to be multiplied.
+            y: The floating point to multiply.
+            z: The floating point to add.
+
+        Returns:
+            The resulted number (``x * y + z``).
+
+        """
+        ...
+
+    @classmethod
+    def div(cls, x: Self, y: Self) -> Self:
+        """Divides the IEEE 754 binary16 floating points.
+
+        Args:
+            x: The floating point to be divided.
+            y: The floating point to divide.
+
+        Returns:
+            The resulted number (``x / y``).
+
+        """
+        ...
+
+    @classmethod
+    def rem(cls, x: Self, y: Self) -> Self:
+        """Calculates a remainder by dividing the IEEE 754 binary16 floating points.
+
+        Args:
+            x: The floating point to be divided.
+            y: The floating point to divide.
+
+        Returns:
+            The resulted number (``x % y``).
+
+        """
+        ...
+
+    @classmethod
+    def sqrt(cls, x: Self) -> Self:
+        """Calculates a square root of the IEEE 754 binary16 floating point.
+
+        Args:
+            x: The floating point whose square root is to be calculated.
+
+        Returns:
+            The resulted number (``sqrt(x)``).
+
+        """
+        ...
+
+    @classmethod
+    def eq(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is equal to the second one expressed as IEEE 754 binary16 floating points.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+        """
+        ...
+
+    @classmethod
+    def le(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary16 floating points.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+        """
+        ...
+
+    @classmethod
+    def lt(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than the second one expressed as IEEE 754 binary16 floating points.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+        """
+        ...
+
+    @classmethod
+    def eq_signaling(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is equal to the second one expressed as IEEE 754 binary16 floating points.
+
+        The invalid exception is raised for any NaN input, not just for signaling NaNs.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+        """
+        ...
+
+    @classmethod
+    def le_quiet(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary16 floating points.
+
+        The invalid exception is not raised for quiet NaNs.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+        """
+        ...
+
+    @classmethod
+    def lt_quiet(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than the second one expressed as IEEE 754 binary16 floating points.
+
+        The invalid exception is not raised for quiet NaNs.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+        """
+        ...
+
+    def is_signaling_nan(self) -> bool:
+        """Tests if the IEEE 754 binary16 floating point is a signaling NaN.
+
+        Returns:
+            ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def __str__(self) -> str:
+        ...
+
+    def __pos__(self) -> Self:
+        ...
+
+    def __neg__(self) -> Self:
+        ...
+
+    def __add__(self, other: Self) -> Self:
+        ...
+
+    def __sub__(self, other: Self) -> Self:
+        ...
+
+    def __mul__(self, other: Self) -> Self:
+        ...
+
+    def __truediv__(self, other: Self) -> Self:
+        ...
+
+    def __floordiv__(self, other: Self) -> Self:
+        ...
+
+    def __mod__(self, other: Self) -> Self:
+        ...
+
+    def __lt__(self, other: Self) -> bool:
+        ...
+
+    def __le__(self, other: Self) -> bool:
+        ...
+
+    def __gt__(self, other: Self) -> bool:
+        ...
+
+    def __ge__(self, other: Self) -> bool:
+        ...
+
+    def __eq__(self, other: object) -> bool:
+        ...
+
+    def __ne__(self, other: object) -> bool:
+        ...
+
+    def __iadd__(self, other: Self) -> Self:
+        ...
+
+    def __isub__(self, other: Self) -> Self:
+        ...
+
+    def __imul__(self, other: Self) -> Self:
+        ...
+
+    def __itruediv__(self, other: Self) -> Self:
+        ...
+
+    def __ifloordiv__(self, other: Self) -> Self:
+        ...
+
+    def __imod__(self, other: Self) -> Self:
+        ...
 
 
 class Float32:
+    """An IEEE 754 binary32 floating point.
+
+    The object is immutable.
+
+    The following operators are supported:
+
+    - unary operators: ``+``, ``-``.
+    - binary operators: ``+``, ``-``, ``*``, ``/``, ``//``, ``%``,
+      ``<``, ``<=``, ``>``, ``>=``, ``==``, ``!=``,
+      ``+=``, ``-=``, ``*=``, ``/=``, ``//=``, ``%=``.
+
+    The following operators are unsupported:
+
+    - unary operator: ``~``.
+    - binary operators: ``<<``, ``>>``, ``&``, ``|``, ``^``, ``**``,
+      ``<<=``, ``>>=``, ``&=``, ``|=``, ``^=``, ``**=``.
+
+    """
 
     @classmethod
-    def from_bytes(cls, src: bytes) -> Float32: ...
+    def from_bytes(cls, src: bytes) -> Self:
+        """Creates a new instance from the specified byte sequence.
 
-    def to_bytes(self) -> bytes: ...
+        Args:
+            src: The byte sequence representing the native data with big endian.
+                 The length must be at least 4.
+
+        Returns:
+            A new instance created from the specified byte sequence.
+
+        """
+        ...
+
+    def to_bytes(self) -> bytes:
+        """Returns the native data as a byte sequence.
+
+        Returns:
+            A byte sequence representing the native data with big endian.
+            The length is 4.
+
+        """
+        ...
 
     @classmethod
-    def from_float(cls, src: float) -> Float32: ...
+    def from_float(cls, src: float) -> Self:
+        """Creates a new instance from the specified floating point.
 
-    def to_float(self) -> float: ...
+        Args:
+            src: The floating point from which a new instance is created.
 
-    def __str__(self) -> str: ...
+        Returns:
+            A new instance created from the specified floating point.
 
-    def __pos__(self) -> Self: ...
+        """
+        ...
 
-    def __neg__(self) -> Self: ...
+    def to_float(self) -> float:
+        """Returns the native data as a floating point.
 
-    def __add__(self, other: Self) -> Self: ...
+        Returns:
+            A floating point that represents the native data.
 
-    def __sub__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __mul__(self, other: Self) -> Self: ...
+    def to_bf16(self) -> BFloat16:
+        """Converts the IEEE 754 binary32 floating point to a 16-bit brain floating point.
 
-    def __truediv__(self, other: Self) -> Self: ...
+        Returns:
+            The 16-bit brain floating point.
 
-    def __floordiv__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __mod__(self, other: Self) -> Self: ...
+    def to_ui32(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> UInt32:
+        """Converts the IEEE 754 binary32 floating point to a 32-bit unsigned integer.
 
-    def __lt__(self, other: Self) -> bool: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __le__(self, other: Self) -> bool: ...
+        Returns:
+            The 32-bit unsigned integer.
 
-    def __gt__(self, other: Self) -> bool: ...
+        """
+        ...
 
-    def __ge__(self, other: Self) -> bool: ...
+    def to_ui64(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> UInt64:
+        """Converts the IEEE 754 binary32 floating point to a 64-bit unsigned integer.
 
-    def __eq__(self, other: object) -> bool: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __ne__(self, other: object) -> bool: ...
+        Returns:
+            The 64-bit unsigned integer.
 
-    def __iadd__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __isub__(self, other: Self) -> Self: ...
+    def to_i32(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> Int32:
+        """Converts the IEEE 754 binary32 floating point to a 32-bit signed integer.
 
-    def __imul__(self, other: Self) -> Self: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __itruediv__(self, other: Self) -> Self: ...
+        Returns:
+            The 32-bit signed integer.
 
-    def __ifloordiv__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __imod__(self, other: Self) -> Self: ...
+    def to_i64(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> Int64:
+        """Converts the IEEE 754 binary32 floating point to a 64-bit signed integer.
+
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            The 64-bit signed integer.
+
+        """
+        ...
+
+    def to_f16(self) -> Float16:
+        """Converts the IEEE 754 binary32 floating point to a binary16 floating point.
+
+        Returns:
+            The IEEE 754 binary16 floating point.
+
+        """
+        ...
+
+    def to_f64(self) -> Float64:
+        """Converts the IEEE 754 binary32 floating point to a binary64 floating point.
+
+        Returns:
+            The IEEE 754 binary64 floating point.
+
+        """
+        ...
+
+    def to_f128(self) -> Float128:
+        """Converts the IEEE 754 binary32 floating point to a binary128 floating point.
+
+        Returns:
+            The IEEE 754 binary128 floating point.
+
+        """
+        ...
+
+    def round_to_int(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> Self:
+        """Rounds the number.
+
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact rounding is unable.
+
+        Returns:
+            The resulted integer.
+
+        """
+        ...
+
+    @classmethod
+    def add(cls, x: Self, y: Self) -> Self:
+        """Adds the IEEE 754 binary32 floating points.
+
+        Args:
+            x: The floating point to be added.
+            y: The floating point to add.
+
+        Returns:
+            The resulted number (``x + y``).
+
+        """
+        ...
+
+    @classmethod
+    def sub(cls, x: Self, y: Self) -> Self:
+        """Subtracts the IEEE 754 binary32 floating points.
+
+        Args:
+            x: The floating point to be subtracted.
+            y: The floating point to subtract.
+
+        Returns:
+            The resulted number (``x - y``).
+
+        """
+        ...
+
+    @classmethod
+    def mul(cls, x: Self, y: Self) -> Self:
+        """Multiplies the IEEE 754 binary32 floating points.
+
+        Args:
+            x: The floating point to be multiplied.
+            y: The floating point to multiply.
+
+        Returns:
+            The resulted number (``x * y``).
+
+        """
+        ...
+
+    @classmethod
+    def mul_add(cls, x: Self, y: Self, z: Self) -> Self:
+        """Multiplies and Adds the IEEE 754 binary32 floating points.
+
+        Args:
+            x: The floating point to be multiplied.
+            y: The floating point to multiply.
+            z: The floating point to add.
+
+        Returns:
+            The resulted number (``x * y + z``).
+
+        """
+        ...
+
+    @classmethod
+    def div(cls, x: Self, y: Self) -> Self:
+        """Divides the IEEE 754 binary32 floating points.
+
+        Args:
+            x: The floating point to be divided.
+            y: The floating point to divide.
+
+        Returns:
+            The resulted number (``x / y``).
+
+        """
+        ...
+
+    @classmethod
+    def rem(cls, x: Self, y: Self) -> Self:
+        """Calculates a remainder by dividing the IEEE 754 binary32 floating points.
+
+        Args:
+            x: The floating point to be divided.
+            y: The floating point to divide.
+
+        Returns:
+            The resulted number (``x % y``).
+
+        """
+        ...
+
+    @classmethod
+    def sqrt(cls, x: Self) -> Self:
+        """Calculates a square root of the IEEE 754 binary32 floating point.
+
+        Args:
+            x: The floating point whose square root is to be calculated.
+
+        Returns:
+            The resulted number (``sqrt(x)``).
+
+        """
+        ...
+
+    @classmethod
+    def eq(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is equal to the second one expressed as IEEE 754 binary32 floating points.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+        """
+        ...
+
+    @classmethod
+    def le(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary32 floating points.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+        """
+        ...
+
+    @classmethod
+    def lt(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than the second one expressed as IEEE 754 binary32 floating points.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+        """
+        ...
+
+    @classmethod
+    def eq_signaling(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is equal to the second one expressed as IEEE 754 binary32 floating points.
+
+        The invalid exception is raised for any NaN input, not just for signaling NaNs.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+        """
+        ...
+
+    @classmethod
+    def le_quiet(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary32 floating points.
+
+        The invalid exception is not raised for quiet NaNs.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+        """
+        ...
+
+    @classmethod
+    def lt_quiet(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than the second one expressed as IEEE 754 binary32 floating points.
+
+        The invalid exception is not raised for quiet NaNs.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+        """
+        ...
+
+    def is_signaling_nan(self) -> bool:
+        """Tests if the IEEE 754 binary32 floating point is a signaling NaN.
+
+        Returns:
+            ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def __str__(self) -> str:
+        ...
+
+    def __pos__(self) -> Self:
+        ...
+
+    def __neg__(self) -> Self:
+        ...
+
+    def __add__(self, other: Self) -> Self:
+        ...
+
+    def __sub__(self, other: Self) -> Self:
+        ...
+
+    def __mul__(self, other: Self) -> Self:
+        ...
+
+    def __truediv__(self, other: Self) -> Self:
+        ...
+
+    def __floordiv__(self, other: Self) -> Self:
+        ...
+
+    def __mod__(self, other: Self) -> Self:
+        ...
+
+    def __lt__(self, other: Self) -> bool:
+        ...
+
+    def __le__(self, other: Self) -> bool:
+        ...
+
+    def __gt__(self, other: Self) -> bool:
+        ...
+
+    def __ge__(self, other: Self) -> bool:
+        ...
+
+    def __eq__(self, other: object) -> bool:
+        ...
+
+    def __ne__(self, other: object) -> bool:
+        ...
+
+    def __iadd__(self, other: Self) -> Self:
+        ...
+
+    def __isub__(self, other: Self) -> Self:
+        ...
+
+    def __imul__(self, other: Self) -> Self:
+        ...
+
+    def __itruediv__(self, other: Self) -> Self:
+        ...
+
+    def __ifloordiv__(self, other: Self) -> Self:
+        ...
+
+    def __imod__(self, other: Self) -> Self:
+        ...
 
 
 class Float64:
+    """An IEEE 754 binary64 floating point.
+
+    The object is immutable.
+
+    The following operators are supported:
+
+    - unary operators: ``+``, ``-``.
+    - binary operators: ``+``, ``-``, ``*``, ``/``, ``//``, ``%``,
+      ``<``, ``<=``, ``>``, ``>=``, ``==``, ``!=``,
+      ``+=``, ``-=``, ``*=``, ``/=``, ``//=``, ``%=``.
+
+    The following operators are unsupported:
+
+    - unary operator: ``~``.
+    - binary operators: ``<<``, ``>>``, ``&``, ``|``, ``^``, ``**``,
+      ``<<=``, ``>>=``, ``&=``, ``|=``, ``^=``, ``**=``.
+
+    """
 
     @classmethod
-    def from_bytes(cls, src: bytes) -> Float64: ...
+    def from_bytes(cls, src: bytes) -> Self:
+        """Creates a new instance from the specified byte sequence.
 
-    def to_bytes(self) -> bytes: ...
+        Args:
+            src: The byte sequence representing the native data with big endian.
+                 The length must be at least 8.
+
+        Returns:
+            A new instance created from the specified byte sequence.
+
+        """
+        ...
+
+    def to_bytes(self) -> bytes:
+        """Returns the native data as a byte sequence.
+
+        Returns:
+            A byte sequence representing the native data with big endian.
+            The length is 8.
+
+        """
+        ...
 
     @classmethod
-    def from_float(cls, src: float) -> Float64: ...
+    def from_float(cls, src: float) -> Self:
+        """Creates a new instance from the specified floating point.
 
-    def to_float(self) -> float: ...
+        Args:
+            src: The floating point from which a new instance is created.
 
-    def __str__(self) -> str: ...
+        Returns:
+            A new instance created from the specified floating point.
 
-    def __pos__(self) -> Self: ...
+        """
+        ...
 
-    def __neg__(self) -> Self: ...
+    def to_float(self) -> float:
+        """Returns the native data as a floating point.
 
-    def __add__(self, other: Self) -> Self: ...
+        Returns:
+            A floating point that represents the native data.
 
-    def __sub__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __mul__(self, other: Self) -> Self: ...
+    def to_ui32(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> UInt32:
+        """Converts the IEEE 754 binary64 floating point to a 32-bit unsigned integer.
 
-    def __truediv__(self, other: Self) -> Self: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __floordiv__(self, other: Self) -> Self: ...
+        Returns:
+            The 32-bit unsigned integer.
 
-    def __mod__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __lt__(self, other: Self) -> bool: ...
+    def to_ui64(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> UInt64:
+        """Converts the IEEE 754 binary64 floating point to a 64-bit unsigned integer.
 
-    def __le__(self, other: Self) -> bool: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __gt__(self, other: Self) -> bool: ...
+        Returns:
+            The 64-bit unsigned integer.
 
-    def __ge__(self, other: Self) -> bool: ...
+        """
+        ...
 
-    def __eq__(self, other: object) -> bool: ...
+    def to_i32(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> Int32:
+        """Converts the IEEE 754 binary64 floating point to a 32-bit signed integer.
 
-    def __ne__(self, other: object) -> bool: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __iadd__(self, other: Self) -> Self: ...
+        Returns:
+            The 32-bit signed integer.
 
-    def __isub__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __imul__(self, other: Self) -> Self: ...
+    def to_i64(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> Int64:
+        """Converts the IEEE 754 binary64 floating point to a 64-bit signed integer.
 
-    def __itruediv__(self, other: Self) -> Self: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __ifloordiv__(self, other: Self) -> Self: ...
+        Returns:
+            The 64-bit signed integer.
 
-    def __imod__(self, other: Self) -> Self: ...
+        """
+        ...
+
+    def to_f16(self) -> Float16:
+        """Converts the IEEE 754 binary64 floating point to a binary16 floating point.
+
+        Returns:
+            The IEEE 754 binary16 floating point.
+
+        """
+        ...
+
+    def to_f32(self) -> Float32:
+        """Converts the IEEE 754 binary64 floating point to a binary32 floating point.
+
+        Returns:
+            The IEEE 754 binary32 floating point.
+
+        """
+        ...
+
+    def to_f128(self) -> Float128:
+        """Converts the IEEE 754 binary64 floating point to a binary128 floating point.
+
+        Returns:
+            The IEEE 754 binary128 floating point.
+
+        """
+        ...
+
+    def round_to_int(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> Self:
+        """Rounds the number.
+
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact rounding is unable.
+
+        Returns:
+            The resulted integer.
+
+        """
+        ...
+
+    @classmethod
+    def add(cls, x: Self, y: Self) -> Self:
+        """Adds the IEEE 754 binary64 floating points.
+
+        Args:
+            x: The floating point to be added.
+            y: The floating point to add.
+
+        Returns:
+            The resulted number (``x + y``).
+
+        """
+        ...
+
+    @classmethod
+    def sub(cls, x: Self, y: Self) -> Self:
+        """Subtracts the IEEE 754 binary64 floating points.
+
+        Args:
+            x: The floating point to be subtracted.
+            y: The floating point to subtract.
+
+        Returns:
+            The resulted number (``x - y``).
+
+        """
+        ...
+
+    @classmethod
+    def mul(cls, x: Self, y: Self) -> Self:
+        """Multiplies the IEEE 754 binary64 floating points.
+
+        Args:
+            x: The floating point to be multiplied.
+            y: The floating point to multiply.
+
+        Returns:
+            The resulted number (``x * y``).
+
+        """
+        ...
+
+    @classmethod
+    def mul_add(cls, x: Self, y: Self, z: Self) -> Self:
+        """Multiplies and Adds the IEEE 754 binary64 floating points.
+
+        Args:
+            x: The floating point to be multiplied.
+            y: The floating point to multiply.
+            z: The floating point to add.
+
+        Returns:
+            The resulted number (``x * y + z``).
+
+        """
+        ...
+
+    @classmethod
+    def div(cls, x: Self, y: Self) -> Self:
+        """Divides the IEEE 754 binary64 floating points.
+
+        Args:
+            x: The floating point to be divided.
+            y: The floating point to divide.
+
+        Returns:
+            The resulted number (``x / y``).
+
+        """
+        ...
+
+    @classmethod
+    def rem(cls, x: Self, y: Self) -> Self:
+        """Calculates a remainder by dividing the IEEE 754 binary64 floating points.
+
+        Args:
+            x: The floating point to be divided.
+            y: The floating point to divide.
+
+        Returns:
+            The resulted number (``x % y``).
+
+        """
+        ...
+
+    @classmethod
+    def sqrt(cls, x: Self) -> Self:
+        """Calculates a square root of the IEEE 754 binary64 floating point.
+
+        Args:
+            x: The floating point whose square root is to be calculated.
+
+        Returns:
+            The resulted number (``sqrt(x)``).
+
+        """
+        ...
+
+    @classmethod
+    def eq(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is equal to the second one expressed as IEEE 754 binary64 floating points.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+        """
+        ...
+
+    @classmethod
+    def le(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary64 floating points.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+        """
+        ...
+
+    @classmethod
+    def lt(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than the second one expressed as IEEE 754 binary64 floating points.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+        """
+        ...
+
+    @classmethod
+    def eq_signaling(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is equal to the second one expressed as IEEE 754 binary64 floating points.
+
+        The invalid exception is raised for any NaN input, not just for signaling NaNs.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+        """
+        ...
+
+    @classmethod
+    def le_quiet(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary64 floating points.
+
+        The invalid exception is not raised for quiet NaNs.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+        """
+        ...
+
+    @classmethod
+    def lt_quiet(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than the second one expressed as IEEE 754 binary64 floating points.
+
+        The invalid exception is not raised for quiet NaNs.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+        """
+        ...
+
+    def is_signaling_nan(self) -> bool:
+        """Tests if the IEEE 754 binary64 floating point is a signaling NaN.
+
+        Returns:
+            ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def __str__(self) -> str:
+        ...
+
+    def __pos__(self) -> Self:
+        ...
+
+    def __neg__(self) -> Self:
+        ...
+
+    def __add__(self, other: Self) -> Self:
+        ...
+
+    def __sub__(self, other: Self) -> Self:
+        ...
+
+    def __mul__(self, other: Self) -> Self:
+        ...
+
+    def __truediv__(self, other: Self) -> Self:
+        ...
+
+    def __floordiv__(self, other: Self) -> Self:
+        ...
+
+    def __mod__(self, other: Self) -> Self:
+        ...
+
+    def __lt__(self, other: Self) -> bool:
+        ...
+
+    def __le__(self, other: Self) -> bool:
+        ...
+
+    def __gt__(self, other: Self) -> bool:
+        ...
+
+    def __ge__(self, other: Self) -> bool:
+        ...
+
+    def __eq__(self, other: object) -> bool:
+        ...
+
+    def __ne__(self, other: object) -> bool:
+        ...
+
+    def __iadd__(self, other: Self) -> Self:
+        ...
+
+    def __isub__(self, other: Self) -> Self:
+        ...
+
+    def __imul__(self, other: Self) -> Self:
+        ...
+
+    def __itruediv__(self, other: Self) -> Self:
+        ...
+
+    def __ifloordiv__(self, other: Self) -> Self:
+        ...
+
+    def __imod__(self, other: Self) -> Self:
+        ...
 
 
 class Float128:
+    """An IEEE 754 binary128 floating point.
+
+    The object is immutable.
+
+    The following operators are supported:
+
+    - unary operators: ``+``, ``-``.
+    - binary operators: ``+``, ``-``, ``*``, ``/``, ``//``, ``%``,
+      ``<``, ``<=``, ``>``, ``>=``, ``==``, ``!=``,
+      ``+=``, ``-=``, ``*=``, ``/=``, ``//=``, ``%=``.
+
+    The following operators are unsupported:
+
+    - unary operator: ``~``.
+    - binary operators: ``<<``, ``>>``, ``&``, ``|``, ``^``, ``**``,
+      ``<<=``, ``>>=``, ``&=``, ``|=``, ``^=``, ``**=``.
+
+    Note:
+        Currently, cannot represent the exact number as a string
+        if the number is unable to be expressed as an IEEE 754 binary64 floating point.
+
+    """
 
     @classmethod
-    def from_bytes(cls, src: bytes) -> Float128: ...
+    def from_bytes(cls, src: bytes) -> Self:
+        """Creates a new instance from the specified byte sequence.
 
-    def to_bytes(self) -> bytes: ...
+        Args:
+            src: The byte sequence representing the native data with big endian.
+                 The length must be at least 16.
+
+        Returns:
+            A new instance created from the specified byte sequence.
+
+        """
+        ...
+
+    def to_bytes(self) -> bytes:
+        """Returns the native data as a byte sequence.
+
+        Returns:
+            A byte sequence representing the native data with big endian.
+            The length is 16.
+
+        """
+        ...
 
     @classmethod
-    def from_float(cls, src: float) -> Float128: ...
+    def from_float(cls, src: float) -> Self:
+        """Creates a new instance from the specified floating point.
 
-    def to_float(self) -> float: ...
+        Args:
+            src: The floating point from which a new instance is created.
 
-    def __str__(self) -> str: ...
+        Returns:
+            A new instance created from the specified floating point.
 
-    def __pos__(self) -> Self: ...
+        Note:
+            Cannot create an instance with a number that an IEEE 754 binary64
+            floating point is unable to express.
 
-    def __neg__(self) -> Self: ...
+        """
+        ...
 
-    def __add__(self, other: Self) -> Self: ...
+    def to_float(self) -> float:
+        """Returns the native data as a floating point.
 
-    def __sub__(self, other: Self) -> Self: ...
+        Returns:
+            A floating point that represents the native data.
 
-    def __mul__(self, other: Self) -> Self: ...
+        Note:
+            Cannot return the exact number if it is unable to be expressed
+            as an IEEE 754 binary64 floating point.
 
-    def __truediv__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __floordiv__(self, other: Self) -> Self: ...
+    def to_ui32(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> UInt32:
+        """Converts the IEEE 754 binary128 floating point to a 32-bit unsigned integer.
 
-    def __mod__(self, other: Self) -> Self: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __lt__(self, other: Self) -> bool: ...
+        Returns:
+            The 32-bit unsigned integer.
 
-    def __le__(self, other: Self) -> bool: ...
+        """
+        ...
 
-    def __gt__(self, other: Self) -> bool: ...
+    def to_ui64(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> UInt64:
+        """Converts the IEEE 754 binary128 floating point to a 64-bit unsigned integer.
 
-    def __ge__(self, other: Self) -> bool: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __eq__(self, other: object) -> bool: ...
+        Returns:
+            The 64-bit unsigned integer.
 
-    def __ne__(self, other: object) -> bool: ...
+        """
+        ...
 
-    def __iadd__(self, other: Self) -> Self: ...
+    def to_i32(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> Int32:
+        """Converts the IEEE 754 binary128 floating point to a 32-bit signed integer.
 
-    def __isub__(self, other: Self) -> Self: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
 
-    def __imul__(self, other: Self) -> Self: ...
+        Returns:
+            The 32-bit signed integer.
 
-    def __itruediv__(self, other: Self) -> Self: ...
+        """
+        ...
 
-    def __ifloordiv__(self, other: Self) -> Self: ...
+    def to_i64(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> Int64:
+        """Converts the IEEE 754 binary128 floating point to a 64-bit signed integer.
 
-    def __imod__(self, other: Self) -> Self: ...
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            The 64-bit signed integer.
+
+        """
+        ...
+
+    def to_f16(self) -> Float16:
+        """Converts the IEEE 754 binary128 floating point to a binary16 floating point.
+
+        Returns:
+            The IEEE 754 binary16 floating point.
+
+        """
+        ...
+
+    def to_f32(self) -> Float32:
+        """Converts the IEEE 754 binary128 floating point to a binary32 floating point.
+
+        Returns:
+            The IEEE 754 binary32 floating point.
+
+        """
+        ...
+
+    def to_f64(self) -> Float64:
+        """Converts the IEEE 754 binary128 floating point to a binary64 floating point.
+
+        Returns:
+            The IEEE 754 binary64 floating point.
+
+        """
+        ...
+
+    def round_to_int(
+        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    ) -> Self:
+        """Rounds the number.
+
+        Args:
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact rounding is unable.
+
+        Returns:
+            The resulted integer.
+
+        """
+        ...
+
+    @classmethod
+    def add(cls, x: Self, y: Self) -> Self:
+        """Adds the IEEE 754 binary128 floating points.
+
+        Args:
+            x: The floating point to be added.
+            y: The floating point to add.
+
+        Returns:
+            The resulted number (``x + y``).
+
+        """
+        ...
+
+    @classmethod
+    def sub(cls, x: Self, y: Self) -> Self:
+        """Subtracts the IEEE 754 binary128 floating points.
+
+        Args:
+            x: The floating point to be subtracted.
+            y: The floating point to subtract.
+
+        Returns:
+            The resulted number (``x - y``).
+
+        """
+        ...
+
+    @classmethod
+    def mul(cls, x: Self, y: Self) -> Self:
+        """Multiplies the IEEE 754 binary128 floating points.
+
+        Args:
+            x: The floating point to be multiplied.
+            y: The floating point to multiply.
+
+        Returns:
+            The resulted number (``x * y``).
+
+        """
+        ...
+
+    @classmethod
+    def mul_add(cls, x: Self, y: Self, z: Self) -> Self:
+        """Multiplies and Adds the IEEE 754 binary128 floating points.
+
+        Args:
+            x: The floating point to be multiplied.
+            y: The floating point to multiply.
+            z: The floating point to add.
+
+        Returns:
+            The resulted number (``x * y + z``).
+
+        """
+        ...
+
+    @classmethod
+    def div(cls, x: Self, y: Self) -> Self:
+        """Divides the IEEE 754 binary128 floating points.
+
+        Args:
+            x: The floating point to be divided.
+            y: The floating point to divide.
+
+        Returns:
+            The resulted number (``x / y``).
+
+        """
+        ...
+
+    @classmethod
+    def rem(cls, x: Self, y: Self) -> Self:
+        """Calculates a remainder by dividing the IEEE 754 binary128 floating points.
+
+        Args:
+            x: The floating point to be divided.
+            y: The floating point to divide.
+
+        Returns:
+            The resulted number (``x % y``).
+
+        """
+        ...
+
+    @classmethod
+    def sqrt(cls, x: Self) -> Self:
+        """Calculates a square root of the IEEE 754 binary128 floating point.
+
+        Args:
+            x: The floating point whose square root is to be calculated.
+
+        Returns:
+            The resulted number (``sqrt(x)``).
+
+        """
+        ...
+
+    @classmethod
+    def eq(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is equal to the second one expressed as IEEE 754 binary128 floating points.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+        """
+        ...
+
+    @classmethod
+    def le(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary128 floating points.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+        """
+        ...
+
+    @classmethod
+    def lt(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than the second one expressed as IEEE 754 binary128 floating points.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+        """
+        ...
+
+    @classmethod
+    def eq_signaling(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is equal to the second one expressed as IEEE 754 binary128 floating points.
+
+        The invalid exception is raised for any NaN input, not just for signaling NaNs.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+        """
+        ...
+
+    @classmethod
+    def le_quiet(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary128 floating points.
+
+        The invalid exception is not raised for quiet NaNs.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+        """
+        ...
+
+    @classmethod
+    def lt_quiet(cls, x: Self, y: Self) -> bool:
+        """Tests if the first one is less than the second one expressed as IEEE 754 binary128 floating points.
+
+        The invalid exception is not raised for quiet NaNs.
+
+        Args:
+            x: The first floating point to be compared.
+            y: The second floating point to be compared.
+
+        Returns:
+            ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+        """
+        ...
+
+    def is_signaling_nan(self) -> bool:
+        """Tests if the IEEE 754 binary128 floating point is a signaling NaN.
+
+        Returns:
+            ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def __str__(self) -> str:
+        ...
+
+    def __pos__(self) -> Self:
+        ...
+
+    def __neg__(self) -> Self:
+        ...
+
+    def __add__(self, other: Self) -> Self:
+        ...
+
+    def __sub__(self, other: Self) -> Self:
+        ...
+
+    def __mul__(self, other: Self) -> Self:
+        ...
+
+    def __truediv__(self, other: Self) -> Self:
+        ...
+
+    def __floordiv__(self, other: Self) -> Self:
+        ...
+
+    def __mod__(self, other: Self) -> Self:
+        ...
+
+    def __lt__(self, other: Self) -> bool:
+        ...
+
+    def __le__(self, other: Self) -> bool:
+        ...
+
+    def __gt__(self, other: Self) -> bool:
+        ...
+
+    def __ge__(self, other: Self) -> bool:
+        ...
+
+    def __eq__(self, other: object) -> bool:
+        ...
+
+    def __ne__(self, other: object) -> bool:
+        ...
+
+    def __iadd__(self, other: Self) -> Self:
+        ...
+
+    def __isub__(self, other: Self) -> Self:
+        ...
+
+    def __imul__(self, other: Self) -> Self:
+        ...
+
+    def __itruediv__(self, other: Self) -> Self:
+        ...
+
+    def __ifloordiv__(self, other: Self) -> Self:
+        ...
+
+    def __imod__(self, other: Self) -> Self:
+        ...
 
 
-def set_tininess_mode(mode: TininessMode) -> None: ...
+def set_tininess_mode(mode: TininessMode) -> None:
+    """Sets the tininess detection mode.
 
-def get_tininess_mode() -> TininessMode: ...
+    Args:
+        mode: The tininess detection mode to be set.
 
-def set_rounding_mode(mode: RoundingMode) -> None: ...
+    """
+    ...
 
-def get_rounding_mode() -> RoundingMode: ...
 
-def set_exception_flags(flags: int) -> None: ...
+def get_tininess_mode() -> TininessMode:
+    """Returns the current tininess detection mode.
 
-def get_exception_flags() -> int: ...
+    Returns:
+        The current tininess detection mode.
 
-def test_exception_flags(flags: int) -> bool: ...
+    """
+    ...
 
-def ui32_to_f16(x: UInt32) -> Float16: ...
 
-def ui32_to_f32(x: UInt32) -> Float32: ...
+def set_rounding_mode(mode: RoundingMode) -> None:
+    """Sets the rounding mode.
 
-def ui32_to_f64(x: UInt32) -> Float64: ...
+    Args:
+        mode: The rounding mode to be set.
 
-def ui32_to_f128(x: UInt32) -> Float128: ...
+    """
+    ...
 
-def ui64_to_f16(x: UInt64) -> Float16: ...
 
-def ui64_to_f32(x: UInt64) -> Float32: ...
+def get_rounding_mode() -> RoundingMode:
+    """Returns the current rounding mode.
 
-def ui64_to_f64(x: UInt64) -> Float64: ...
+    Returns:
+        The current rounding mode.
 
-def ui64_to_f128(x: UInt64) -> Float128: ...
+    """
+    ...
 
-def i32_to_f16(x: Int32) -> Float16: ...
 
-def i32_to_f32(x: Int32) -> Float32: ...
+def set_exception_flags(flags: int) -> None:
+    """Sets the floating-point exception flags.
 
-def i32_to_f64(x: Int32) -> Float64: ...
+    Args:
+        flags: The floating-point exception flags to be set.
 
-def i32_to_f128(x: Int32) -> Float128: ...
+    """
+    ...
 
-def i64_to_f16(x: Int64) -> Float16: ...
 
-def i64_to_f32(x: Int64) -> Float32: ...
+def get_exception_flags() -> int:
+    """Returns the current floating-point exception flags.
 
-def i64_to_f64(x: Int64) -> Float64: ...
+    Returns:
+        The current floating-point exception flags.
 
-def i64_to_f128(x: Int64) -> Float128: ...
+    """
+    ...
+
+
+def test_exception_flags(flags: int) -> bool:
+    """Tests the floating-point exception flags.
+
+    Args:
+        flags: The floating-point exception flags to be tested.
+
+    Returns:
+        ``True`` if any of the specified exception flags is nonzero, ``False`` otherwise.
+
+    """
+    ...
+
+
+def ui32_to_f16(x: UInt32) -> Float16:
+    """Converts the 32-bit unsigned integer to an IEEE 754 binary16 floating point.
+
+    Args:
+        x: The 32-bit unsigned integer to be converted.
+
+    Returns:
+        The IEEE 754 binary16 floating point.
+
+    """
+    ...
+
+
+def ui32_to_f32(x: UInt32) -> Float32:
+    """Converts the 32-bit unsigned integer to an IEEE 754 binary32 floating point.
+
+    Args:
+        x: The 32-bit unsigned integer to be converted.
+
+    Returns:
+        The IEEE 754 binary32 floating point.
+
+    """
+    ...
+
+
+def ui32_to_f64(x: UInt32) -> Float64:
+    """Converts the 32-bit unsigned integer to an IEEE 754 binary64 floating point.
+
+    Args:
+        x: The 32-bit unsigned integer to be converted.
+
+    Returns:
+        The IEEE 754 binary64 floating point.
+
+    """
+    ...
+
+
+def ui32_to_f128(x: UInt32) -> Float128:
+    """Converts the 32-bit unsigned integer to an IEEE 754 binary128 floating point.
+
+    Args:
+        x: The 32-bit unsigned integer to be converted.
+
+    Returns:
+        The IEEE 754 binary128 floating point.
+
+    """
+    ...
+
+
+def ui64_to_f16(x: UInt64) -> Float16:
+    """Converts the 64-bit unsigned integer to an IEEE 754 binary16 floating point.
+
+    Args:
+        x: The 64-bit unsigned integer to be converted.
+
+    Returns:
+        The IEEE 754 binary16 floating point.
+
+    """
+    ...
+
+
+def ui64_to_f32(x: UInt64) -> Float32:
+    """Converts the 64-bit unsigned integer to an IEEE 754 binary32 floating point.
+
+    Args:
+        x: The 64-bit unsigned integer to be converted.
+
+    Returns:
+        The IEEE 754 binary32 floating point.
+
+    """
+    ...
+
+
+def ui64_to_f64(x: UInt64) -> Float64:
+    """Converts the 64-bit unsigned integer to an IEEE 754 binary64 floating point.
+
+    Args:
+        x: The 64-bit unsigned integer to be converted.
+
+    Returns:
+        The IEEE 754 binary64 floating point.
+
+    """
+    ...
+
+
+def ui64_to_f128(x: UInt64) -> Float128:
+    """Converts the 64-bit unsigned integer to an IEEE 754 binary128 floating point.
+
+    Args:
+        x: The 64-bit unsigned integer to be converted.
+
+    Returns:
+        The IEEE 754 binary128 floating point.
+
+    """
+    ...
+
+
+def i32_to_f16(x: Int32) -> Float16:
+    """Converts the 32-bit signed integer to an IEEE 754 binary16 floating point.
+
+    Args:
+        x: The 32-bit signed integer to be converted.
+
+    Returns:
+        The IEEE 754 binary16 floating point.
+
+    """
+    ...
+
+
+def i32_to_f32(x: Int32) -> Float32:
+    """Converts the 32-bit signed integer to an IEEE 754 binary32 floating point.
+
+    Args:
+        x: The 32-bit signed integer to be converted.
+
+    Returns:
+        The IEEE 754 binary32 floating point.
+
+    """
+    ...
+
+
+def i32_to_f64(x: Int32) -> Float64:
+    """Converts the 32-bit signed integer to an IEEE 754 binary64 floating point.
+
+    Args:
+        x: The 32-bit signed integer to be converted.
+
+    Returns:
+        The IEEE 754 binary64 floating point.
+
+    """
+    ...
+
+
+def i32_to_f128(x: Int32) -> Float128:
+    """Converts the 32-bit signed integer to an IEEE 754 binary128 floating point.
+
+    Args:
+        x: The 32-bit signed integer to be converted.
+
+    Returns:
+        The IEEE 754 binary128 floating point.
+
+    """
+    ...
+
+
+def i64_to_f16(x: Int64) -> Float16:
+    """Converts the 64-bit signed integer to an IEEE 754 binary16 floating point.
+
+    Args:
+        x: The 64-bit signed integer to be converted.
+
+    Returns:
+        The IEEE 754 binary16 floating point.
+
+    """
+    ...
+
+
+def i64_to_f32(x: Int64) -> Float32:
+    """Converts the 64-bit signed integer to an IEEE 754 binary32 floating point.
+
+    Args:
+        x: The 64-bit signed integer to be converted.
+
+    Returns:
+        The IEEE 754 binary32 floating point.
+
+    """
+    ...
+
+
+def i64_to_f64(x: Int64) -> Float64:
+    """Converts the 64-bit signed integer to an IEEE 754 binary64 floating point.
+
+    Args:
+        x: The 64-bit signed integer to be converted.
+
+    Returns:
+        The IEEE 754 binary64 floating point.
+
+    """
+    ...
+
+
+def i64_to_f128(x: Int64) -> Float128:
+    """Converts the 64-bit signed integer to an IEEE 754 binary128 floating point.
+
+    Args:
+        x: The 64-bit signed integer to be converted.
+
+    Returns:
+        The IEEE 754 binary128 floating point.
+
+    """
+    ...
+
 
 def f16_to_ui32(
     x: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> UInt32: ...
+) -> UInt32:
+    """Converts the IEEE 754 binary16 floating point to a 32-bit unsigned integer.
+
+    Args:
+        x: The IEEE 754 binary16 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
+
+    Returns:
+        The 32-bit unsigned integer.
+
+    """
+    ...
+
 
 def f16_to_ui64(
     x: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> UInt64: ...
+) -> UInt64:
+    """Converts the IEEE 754 binary16 floating point to a 64-bit unsigned integer.
+
+    Args:
+        x: The IEEE 754 binary16 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
+
+    Returns:
+        The 64-bit unsigned integer.
+
+    """
+    ...
+
 
 def f16_to_i32(
     x: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> Int32: ...
+) -> Int32:
+    """Converts the IEEE 754 binary16 floating point to a 32-bit signed integer.
+
+    Args:
+        x: The IEEE 754 binary16 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
+
+    Returns:
+        The 32-bit signed integer.
+
+    """
+    ...
+
 
 def f16_to_i64(
     x: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> Int64: ...
+) -> Int64:
+    """Converts the IEEE 754 binary16 floating point to a 64-bit signed integer.
 
-def f16_to_f32(x: Float16) -> Float32: ...
+    Args:
+        x: The IEEE 754 binary16 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
 
-def f16_to_f64(x: Float16) -> Float64: ...
+    Returns:
+        The 64-bit signed integer.
 
-def f16_to_f128(x: Float16) -> Float128: ...
+    """
+    ...
+
+
+def f16_to_f32(x: Float16) -> Float32:
+    """Converts the IEEE 754 binary16 floating point to a binary32 floating point.
+
+    Args:
+        x: The IEEE 754 binary16 floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary32 floating point.
+
+    """
+    ...
+
+
+def f16_to_f64(x: Float16) -> Float64:
+    """Converts the IEEE 754 binary16 floating point to a binary64 floating point.
+
+    Args:
+        x: The IEEE 754 binary16 floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary64 floating point.
+
+    """
+    ...
+
+
+def f16_to_f128(x: Float16) -> Float128:
+    """Converts the IEEE 754 binary16 floating point to a binary128 floating point.
+
+    Args:
+        x: The IEEE 754 binary16 floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary128 floating point.
+
+    """
+    ...
+
 
 def f16_round_to_int(
     x: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> Float16: ...
+) -> Float16:
+    """Rounds the number expressed as an IEEE 754 binary16 floating point.
 
-def f16_add(x: Float16, y: Float16) -> Float16: ...
+    Args:
+        x: The IEEE 754 binary16 floating point to be rounded.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact rounding is unable.
 
-def f16_sub(x: Float16, y: Float16) -> Float16: ...
+    Returns:
+        The resulted integer expressed as an IEEE 754 binary16 floating point.
 
-def f16_mul(x: Float16, y: Float16) -> Float16: ...
+    """
+    ...
 
-def f16_mul_add(x: Float16, y: Float16, z: Float16) -> Float16: ...
 
-def f16_div(x: Float16, y: Float16) -> Float16: ...
+def f16_add(x: Float16, y: Float16) -> Float16:
+    """Adds the IEEE 754 binary16 floating points.
 
-def f16_rem(x: Float16, y: Float16) -> Float16: ...
+    Args:
+        x: The floating point to be added.
+        y: The floating point to add.
 
-def f16_sqrt(x: Float16) -> Float16: ...
+    Returns:
+        The resulted number expressed as an IEEE 754 binary16 floating point (``x + y``).
 
-def f16_eq(x: Float16, y: Float16) -> bool: ...
+    """
+    ...
 
-def f16_le(x: Float16, y: Float16) -> bool: ...
 
-def f16_lt(x: Float16, y: Float16) -> bool: ...
+def f16_sub(x: Float16, y: Float16) -> Float16:
+    """Subtracts the IEEE 754 binary16 floating points.
 
-def f16_eq_signaling(x: Float16, y: Float16) -> bool: ...
+    Args:
+        x: The floating point to be subtracted.
+        y: The floating point to subtract.
 
-def f16_le_quiet(x: Float16, y: Float16) -> bool: ...
+    Returns:
+        The resulted number expressed as an IEEE 754 binary16 floating point (``x - y``).
 
-def f16_lt_quiet(x: Float16, y: Float16) -> bool: ...
+    """
+    ...
 
-def f16_is_signaling_nan(x: Float16) -> bool: ...
 
-def bf16_to_f32(x: BFloat16) -> Float32: ...
+def f16_mul(x: Float16, y: Float16) -> Float16:
+    """Multiplies the IEEE 754 binary16 floating points.
 
-def f32_to_bf16(x: Float32) -> BFloat16: ...
+    Args:
+        x: The floating point to be multiplied.
+        y: The floating point to multiply.
 
-def bf16_is_signaling_nan(x: BFloat16) -> bool: ...
+    Returns:
+        The resulted number expressed as an IEEE 754 binary16 floating point (``x * y``).
+
+    """
+    ...
+
+
+def f16_mul_add(x: Float16, y: Float16, z: Float16) -> Float16:
+    """Multiplies and Adds the IEEE 754 binary16 floating points.
+
+    Args:
+        x: The floating point to be multiplied.
+        y: The floating point to multiply.
+        z: The floating point to add.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary16 floating point (``x * y + z``).
+
+    """
+    ...
+
+
+def f16_div(x: Float16, y: Float16) -> Float16:
+    """Divides the IEEE 754 binary16 floating points.
+
+    Args:
+        x: The floating point to be divided.
+        y: The floating point to divide.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary16 floating point (``x / y``).
+
+    """
+    ...
+
+
+def f16_rem(x: Float16, y: Float16) -> Float16:
+    """Calculates a remainder by dividing the IEEE 754 binary16 floating points.
+
+    Args:
+        x: The floating point to be divided.
+        y: The floating point to divide.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary16 floating point (``x % y``).
+
+    """
+    ...
+
+
+def f16_sqrt(x: Float16) -> Float16:
+    """Calculates a square root of the IEEE 754 binary16 floating point.
+
+    Args:
+        x: The floating point whose square root is to be calculated.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary16 floating point (``sqrt(x)``).
+
+    """
+    ...
+
+
+def f16_eq(x: Float16, y: Float16) -> bool:
+    """Tests if the first one is equal to the second one expressed as IEEE 754 binary16 floating points.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+    """
+    ...
+
+
+def f16_le(x: Float16, y: Float16) -> bool:
+    """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary16 floating points.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+    """
+    ...
+
+
+def f16_lt(x: Float16, y: Float16) -> bool:
+    """Tests if the first one is less than the second one expressed as IEEE 754 binary16 floating points.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+    """
+    ...
+
+
+def f16_eq_signaling(x: Float16, y: Float16) -> bool:
+    """Tests if the first one is equal to the second one expressed as IEEE 754 binary16 floating points.
+
+    The invalid exception is raised for any NaN input, not just for signaling NaNs.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+    """
+    ...
+
+
+def f16_le_quiet(x: Float16, y: Float16) -> bool:
+    """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary16 floating points.
+
+    The invalid exception is not raised for quiet NaNs.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+    """
+    ...
+
+
+def f16_lt_quiet(x: Float16, y: Float16) -> bool:
+    """Tests if the first one is less than the second one expressed as IEEE 754 binary16 floating points.
+
+    The invalid exception is not raised for quiet NaNs.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+    """
+    ...
+
+
+def f16_is_signaling_nan(x: Float16) -> bool:
+    """Tests if the IEEE 754 binary16 floating point is a signaling NaN.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+    """
+    ...
+
+
+def bf16_to_f32(x: BFloat16) -> Float32:
+    """Converts the 16-bit brain floating point to an IEEE 754 binary32 floating point.
+
+    Args:
+        x: The 16-bit brain floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary32 floating point.
+
+    """
+    ...
+
+
+def f32_to_bf16(x: Float32) -> BFloat16:
+    """Converts the IEEE 754 binary32 floating point to a 16-bit brain floating point.
+
+    Args:
+        x: The IEEE 754 binary32 floating point to be converted.
+
+    Returns:
+        The 16-bit brain floating point.
+
+    """
+    ...
+
+
+def bf16_is_signaling_nan(x: BFloat16) -> bool:
+    """Tests if the 16-bit brain floating point is a signaling NaN.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+    """
+    ...
+
 
 def f32_to_ui32(
     x: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> UInt32: ...
+) -> UInt32:
+    """Converts the IEEE 754 binary32 floating point to a 32-bit unsigned integer.
+
+    Args:
+        x: The IEEE 754 binary32 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
+
+    Returns:
+        The 32-bit unsigned integer.
+
+    """
+    ...
+
 
 def f32_to_ui64(
     x: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> UInt64: ...
+) -> UInt64:
+    """Converts the IEEE 754 binary32 floating point to a 64-bit unsigned integer.
+
+    Args:
+        x: The IEEE 754 binary32 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
+
+    Returns:
+        The 64-bit unsigned integer.
+
+    """
+    ...
+
 
 def f32_to_i32(
     x: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> Int32: ...
+) -> Int32:
+    """Converts the IEEE 754 binary32 floating point to a 32-bit signed integer.
+
+    Args:
+        x: The IEEE 754 binary32 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
+
+    Returns:
+        The 32-bit signed integer.
+
+    """
+    ...
+
 
 def f32_to_i64(
     x: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> Int64: ...
+) -> Int64:
+    """Converts the IEEE 754 binary32 floating point to a 64-bit signed integer.
 
-def f32_to_f16(x: Float32) -> Float16: ...
+    Args:
+        x: The IEEE 754 binary32 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
 
-def f32_to_f64(x: Float32) -> Float64: ...
+    Returns:
+        The 64-bit signed integer.
 
-def f32_to_f128(x: Float32) -> Float128: ...
+    """
+    ...
+
+
+def f32_to_f16(x: Float32) -> Float16:
+    """Converts the IEEE 754 binary32 floating point to a binary16 floating point.
+
+    Args:
+        x: The IEEE 754 binary32 floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary16 floating point.
+
+    """
+    ...
+
+
+def f32_to_f64(x: Float32) -> Float64:
+    """Converts the IEEE 754 binary32 floating point to a binary64 floating point.
+
+    Args:
+        x: The IEEE 754 binary32 floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary64 floating point.
+
+    """
+    ...
+
+
+def f32_to_f128(x: Float32) -> Float128:
+    """Converts the IEEE 754 binary32 floating point to a binary128 floating point.
+
+    Args:
+        x: The IEEE 754 binary32 floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary128 floating point.
+
+    """
+    ...
+
 
 def f32_round_to_int(
     x: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> Float32: ...
+) -> Float32:
+    """Rounds the number expressed as an IEEE 754 binary32 floating point.
 
-def f32_add(x: Float32, y: Float32) -> Float32: ...
+    Args:
+        x: The IEEE 754 binary32 floating point to be rounded.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact rounding is unable.
 
-def f32_sub(x: Float32, y: Float32) -> Float32: ...
+    Returns:
+        The resulted integer expressed as an IEEE 754 binary32 floating point.
 
-def f32_mul(x: Float32, y: Float32) -> Float32: ...
+    """
+    ...
 
-def f32_mul_add(x: Float32, y: Float32, z: Float32) -> Float32: ...
 
-def f32_div(x: Float32, y: Float32) -> Float32: ...
+def f32_add(x: Float32, y: Float32) -> Float32:
+    """Adds the IEEE 754 binary32 floating points.
 
-def f32_rem(x: Float32, y: Float32) -> Float32: ...
+    Args:
+        x: The floating point to be added.
+        y: The floating point to add.
 
-def f32_sqrt(x: Float32) -> Float32: ...
+    Returns:
+        The resulted number expressed as an IEEE 754 binary32 floating point (``x + y``).
 
-def f32_eq(x: Float32, y: Float32) -> bool: ...
+    """
+    ...
 
-def f32_le(x: Float32, y: Float32) -> bool: ...
 
-def f32_lt(x: Float32, y: Float32) -> bool: ...
+def f32_sub(x: Float32, y: Float32) -> Float32:
+    """Subtracts the IEEE 754 binary32 floating points.
 
-def f32_eq_signaling(x: Float32, y: Float32) -> bool: ...
+    Args:
+        x: The floating point to be subtracted.
+        y: The floating point to subtract.
 
-def f32_le_quiet(x: Float32, y: Float32) -> bool: ...
+    Returns:
+        The resulted number expressed as an IEEE 754 binary32 floating point (``x - y``).
 
-def f32_lt_quiet(x: Float32, y: Float32) -> bool: ...
+    """
+    ...
 
-def f32_is_signaling_nan(x: Float32) -> bool: ...
+
+def f32_mul(x: Float32, y: Float32) -> Float32:
+    """Multiplies the IEEE 754 binary32 floating points.
+
+    Args:
+        x: The floating point to be multiplied.
+        y: The floating point to multiply.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary32 floating point (``x * y``).
+
+    """
+    ...
+
+
+def f32_mul_add(x: Float32, y: Float32, z: Float32) -> Float32:
+    """Multiplies and Adds the IEEE 754 binary32 floating points.
+
+    Args:
+        x: The floating point to be multiplied.
+        y: The floating point to multiply.
+        z: The floating point to add.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary32 floating point (``x * y + z``).
+
+    """
+    ...
+
+
+def f32_div(x: Float32, y: Float32) -> Float32:
+    """Divides the IEEE 754 binary32 floating points.
+
+    Args:
+        x: The floating point to be divided.
+        y: The floating point to divide.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary32 floating point (``x / y``).
+
+    """
+    ...
+
+
+def f32_rem(x: Float32, y: Float32) -> Float32:
+    """Calculates a remainder by dividing the IEEE 754 binary32 floating points.
+
+    Args:
+        x: The floating point to be divided.
+        y: The floating point to divide.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary32 floating point (``x % y``).
+
+    """
+    ...
+
+
+def f32_sqrt(x: Float32) -> Float32:
+    """Calculates a square root of the IEEE 754 binary32 floating point.
+
+    Args:
+        x: The floating point whose square root is to be calculated.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary32 floating point (``sqrt(x)``).
+
+    """
+    ...
+
+
+def f32_eq(x: Float32, y: Float32) -> bool:
+    """Tests if the first one is equal to the second one expressed as IEEE 754 binary32 floating points.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+    """
+    ...
+
+
+def f32_le(x: Float32, y: Float32) -> bool:
+    """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary32 floating points.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+    """
+    ...
+
+
+def f32_lt(x: Float32, y: Float32) -> bool:
+    """Tests if the first one is less than the second one expressed as IEEE 754 binary32 floating points.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+    """
+    ...
+
+
+def f32_eq_signaling(x: Float32, y: Float32) -> bool:
+    """Tests if the first one is equal to the second one expressed as IEEE 754 binary32 floating points.
+
+    The invalid exception is raised for any NaN input, not just for signaling NaNs.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+    """
+    ...
+
+
+def f32_le_quiet(x: Float32, y: Float32) -> bool:
+    """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary32 floating points.
+
+    The invalid exception is not raised for quiet NaNs.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+    """
+    ...
+
+
+def f32_lt_quiet(x: Float32, y: Float32) -> bool:
+    """Tests if the first one is less than the second one expressed as IEEE 754 binary32 floating points.
+
+    The invalid exception is not raised for quiet NaNs.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+    """
+    ...
+
+
+def f32_is_signaling_nan(x: Float32) -> bool:
+    """Tests if the IEEE 754 binary32 floating point is a signaling NaN.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+    """
+    ...
+
 
 def f64_to_ui32(
     x: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> UInt32: ...
+) -> UInt32:
+    """Converts the IEEE 754 binary64 floating point to a 32-bit unsigned integer.
+
+    Args:
+        x: The IEEE 754 binary64 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
+
+    Returns:
+        The 32-bit unsigned integer.
+
+    """
+    ...
+
 
 def f64_to_ui64(
     x: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> UInt64: ...
+) -> UInt64:
+    """Converts the IEEE 754 binary64 floating point to a 64-bit unsigned integer.
+
+    Args:
+        x: The IEEE 754 binary64 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
+
+    Returns:
+        The 64-bit unsigned integer.
+
+    """
+    ...
+
 
 def f64_to_i32(
     x: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> Int32: ...
+) -> Int32:
+    """Converts the IEEE 754 binary64 floating point to a 32-bit signed integer.
+
+    Args:
+        x: The IEEE 754 binary64 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
+
+    Returns:
+        The 32-bit signed integer.
+
+    """
+    ...
+
 
 def f64_to_i64(
     x: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> Int64: ...
+) -> Int64:
+    """Converts the IEEE 754 binary64 floating point to a 64-bit signed integer.
 
-def f64_to_f16(x: Float64) -> Float16: ...
+    Args:
+        x: The IEEE 754 binary64 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
 
-def f64_to_f32(x: Float64) -> Float32: ...
+    Returns:
+        The 64-bit signed integer.
 
-def f64_to_f128(x: Float64) -> Float128: ...
+    """
+    ...
+
+
+def f64_to_f16(x: Float64) -> Float16:
+    """Converts the IEEE 754 binary64 floating point to a binary16 floating point.
+
+    Args:
+        x: The IEEE 754 binary64 floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary16 floating point.
+
+    """
+    ...
+
+
+def f64_to_f32(x: Float64) -> Float32:
+    """Converts the IEEE 754 binary64 floating point to a binary32 floating point.
+
+    Args:
+        x: The IEEE 754 binary64 floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary32 floating point.
+
+    """
+    ...
+
+
+def f64_to_f128(x: Float64) -> Float128:
+    """Converts the IEEE 754 binary64 floating point to a binary128 floating point.
+
+    Args:
+        x: The IEEE 754 binary64 floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary128 floating point.
+
+    """
+    ...
+
 
 def f64_round_to_int(
     x: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> Float64: ...
+) -> Float64:
+    """Rounds the number expressed as an IEEE 754 binary64 floating point.
 
-def f64_add(x: Float64, y: Float64) -> Float64: ...
+    Args:
+        x: The IEEE 754 binary64 floating point to be rounded.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact rounding is unable.
 
-def f64_sub(x: Float64, y: Float64) -> Float64: ...
+    Returns:
+        The resulted integer expressed as an IEEE 754 binary64 floating point.
 
-def f64_mul(x: Float64, y: Float64) -> Float64: ...
+    """
+    ...
 
-def f64_mul_add(x: Float64, y: Float64, z: Float64) -> Float64: ...
 
-def f64_div(x: Float64, y: Float64) -> Float64: ...
+def f64_add(x: Float64, y: Float64) -> Float64:
+    """Adds the IEEE 754 binary64 floating points.
 
-def f64_rem(x: Float64, y: Float64) -> Float64: ...
+    Args:
+        x: The floating point to be added.
+        y: The floating point to add.
 
-def f64_sqrt(x: Float64) -> Float64: ...
+    Returns:
+        The resulted number expressed as an IEEE 754 binary64 floating point (``x + y``).
 
-def f64_eq(x: Float64, y: Float64) -> bool: ...
+    """
+    ...
 
-def f64_le(x: Float64, y: Float64) -> bool: ...
 
-def f64_lt(x: Float64, y: Float64) -> bool: ...
+def f64_sub(x: Float64, y: Float64) -> Float64:
+    """Subtracts the IEEE 754 binary64 floating points.
 
-def f64_eq_signaling(x: Float64, y: Float64) -> bool: ...
+    Args:
+        x: The floating point to be subtracted.
+        y: The floating point to subtract.
 
-def f64_le_quiet(x: Float64, y: Float64) -> bool: ...
+    Returns:
+        The resulted number expressed as an IEEE 754 binary64 floating point (``x - y``).
 
-def f64_lt_quiet(x: Float64, y: Float64) -> bool: ...
+    """
+    ...
 
-def f64_is_signaling_nan(x: Float64) -> bool: ...
+
+def f64_mul(x: Float64, y: Float64) -> Float64:
+    """Multiplies the IEEE 754 binary64 floating points.
+
+    Args:
+        x: The floating point to be multiplied.
+        y: The floating point to multiply.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary64 floating point (``x * y``).
+
+    """
+    ...
+
+
+def f64_mul_add(x: Float64, y: Float64, z: Float64) -> Float64:
+    """Multiplies and Adds the IEEE 754 binary64 floating points.
+
+    Args:
+        x: The floating point to be multiplied.
+        y: The floating point to multiply.
+        z: The floating point to add.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary64 floating point (``x * y + z``).
+
+    """
+    ...
+
+
+def f64_div(x: Float64, y: Float64) -> Float64:
+    """Divides the IEEE 754 binary64 floating points.
+
+    Args:
+        x: The floating point to be divided.
+        y: The floating point to divide.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary64 floating point (``x / y``).
+
+    """
+    ...
+
+
+def f64_rem(x: Float64, y: Float64) -> Float64:
+    """Calculates a remainder by dividing the IEEE 754 binary64 floating points.
+
+    Args:
+        x: The floating point to be divided.
+        y: The floating point to divide.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary64 floating point (``x % y``).
+
+    """
+    ...
+
+
+def f64_sqrt(x: Float64) -> Float64:
+    """Calculates a square root of the IEEE 754 binary64 floating point.
+
+    Args:
+        x: The floating point whose square root is to be calculated.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary64 floating point (``sqrt(x)``).
+
+    """
+    ...
+
+
+def f64_eq(x: Float64, y: Float64) -> bool:
+    """Tests if the first one is equal to the second one expressed as IEEE 754 binary64 floating points.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+    """
+    ...
+
+
+def f64_le(x: Float64, y: Float64) -> bool:
+    """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary64 floating points.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+    """
+    ...
+
+
+def f64_lt(x: Float64, y: Float64) -> bool:
+    """Tests if the first one is less than the second one expressed as IEEE 754 binary64 floating points.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+    """
+    ...
+
+
+def f64_eq_signaling(x: Float64, y: Float64) -> bool:
+    """Tests if the first one is equal to the second one expressed as IEEE 754 binary64 floating points.
+
+    The invalid exception is raised for any NaN input, not just for signaling NaNs.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+    """
+    ...
+
+
+def f64_le_quiet(x: Float64, y: Float64) -> bool:
+    """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary64 floating points.
+
+    The invalid exception is not raised for quiet NaNs.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+    """
+    ...
+
+
+def f64_lt_quiet(x: Float64, y: Float64) -> bool:
+    """Tests if the first one is less than the second one expressed as IEEE 754 binary64 floating points.
+
+    The invalid exception is not raised for quiet NaNs.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+    """
+    ...
+
+
+def f64_is_signaling_nan(x: Float64) -> bool:
+    """Tests if the IEEE 754 binary64 floating point is a signaling NaN.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+    """
+    ...
+
 
 def f128_to_ui32(
     x: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> UInt32: ...
+) -> UInt32:
+    """Converts the IEEE 754 binary128 floating point to a 32-bit unsigned integer.
+
+    Args:
+        x: The IEEE 754 binary128 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
+
+    Returns:
+        The 32-bit unsigned integer.
+
+    """
+    ...
+
 
 def f128_to_ui64(
     x: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> UInt64: ...
+) -> UInt64:
+    """Converts the IEEE 754 binary128 floating point to a 64-bit unsigned integer.
+
+    Args:
+        x: The IEEE 754 binary128 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
+
+    Returns:
+        The 64-bit unsigned integer.
+
+    """
+    ...
+
 
 def f128_to_i32(
     x: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> Int32: ...
+) -> Int32:
+    """Converts the IEEE 754 binary128 floating point to a 32-bit signed integer.
+
+    Args:
+        x: The IEEE 754 binary128 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
+
+    Returns:
+        The 32-bit signed integer.
+
+    """
+    ...
+
 
 def f128_to_i64(
     x: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> Int64: ...
+) -> Int64:
+    """Converts the IEEE 754 binary128 floating point to a 64-bit signed integer.
 
-def f128_to_f16(x: Float128) -> Float16: ...
+    Args:
+        x: The IEEE 754 binary128 floating point to be converted.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact conversion is unable.
 
-def f128_to_f32(x: Float128) -> Float32: ...
+    Returns:
+        The 64-bit signed integer.
 
-def f128_to_f64(x: Float128) -> Float64: ...
+    """
+    ...
+
+
+def f128_to_f16(x: Float128) -> Float16:
+    """Converts the IEEE 754 binary128 floating point to a binary16 floating point.
+
+    Args:
+        x: The IEEE 754 binary128 floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary16 floating point.
+
+    """
+    ...
+
+
+def f128_to_f32(x: Float128) -> Float32:
+    """Converts the IEEE 754 binary128 floating point to a binary32 floating point.
+
+    Args:
+        x: The IEEE 754 binary128 floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary32 floating point.
+
+    """
+    ...
+
+
+def f128_to_f64(x: Float128) -> Float64:
+    """Converts the IEEE 754 binary128 floating point to a binary64 floating point.
+
+    Args:
+        x: The IEEE 754 binary128 floating point to be converted.
+
+    Returns:
+        The IEEE 754 binary64 floating point.
+
+    """
+    ...
+
 
 def f128_round_to_int(
     x: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
-) -> Float128: ...
+) -> Float128:
+    """Rounds the number expressed as an IEEE 754 binary128 floating point.
 
-def f128_add(x: Float128, y: Float128) -> Float128: ...
+    Args:
+        x: The IEEE 754 binary128 floating point to be rounded.
+        rounding_mode: The rounding mode.
+        exact: If ``True`` is specified, the floating-point exception flags are to be set
+               when exact rounding is unable.
 
-def f128_sub(x: Float128, y: Float128) -> Float128: ...
+    Returns:
+        The resulted integer expressed as an IEEE 754 binary128 floating point.
 
-def f128_mul(x: Float128, y: Float128) -> Float128: ...
+    """
+    ...
 
-def f128_mul_add(x: Float128, y: Float128, z: Float128) -> Float128: ...
 
-def f128_div(x: Float128, y: Float128) -> Float128: ...
+def f128_add(x: Float128, y: Float128) -> Float128:
+    """Adds the IEEE 754 binary128 floating points.
 
-def f128_rem(x: Float128, y: Float128) -> Float128: ...
+    Args:
+        x: The floating point to be added.
+        y: The floating point to add.
 
-def f128_sqrt(x: Float128) -> Float128: ...
+    Returns:
+        The resulted number expressed as an IEEE 754 binary128 floating point (``x + y``).
 
-def f128_eq(x: Float128, y: Float128) -> bool: ...
+    """
+    ...
 
-def f128_le(x: Float128, y: Float128) -> bool: ...
 
-def f128_lt(x: Float128, y: Float128) -> bool: ...
+def f128_sub(x: Float128, y: Float128) -> Float128:
+    """Subtracts the IEEE 754 binary128 floating points.
 
-def f128_eq_signaling(x: Float128, y: Float128) -> bool: ...
+    Args:
+        x: The floating point to be subtracted.
+        y: The floating point to subtract.
 
-def f128_le_quiet(x: Float128, y: Float128) -> bool: ...
+    Returns:
+        The resulted number expressed as an IEEE 754 binary128 floating point (``x - y``).
 
-def f128_lt_quiet(x: Float128, y: Float128) -> bool: ...
+    """
+    ...
 
-def f128_is_signaling_nan(x: Float128) -> bool: ...
+
+def f128_mul(x: Float128, y: Float128) -> Float128:
+    """Multiplies the IEEE 754 binary128 floating points.
+
+    Args:
+        x: The floating point to be multiplied.
+        y: The floating point to multiply.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary128 floating point (``x * y``).
+
+    """
+    ...
+
+
+def f128_mul_add(x: Float128, y: Float128, z: Float128) -> Float128:
+    """Multiplies and Adds the IEEE 754 binary128 floating points.
+
+    Args:
+        x: The floating point to be multiplied.
+        y: The floating point to multiply.
+        z: The floating point to add.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary128 floating point (``x * y + z``).
+
+    """
+    ...
+
+
+def f128_div(x: Float128, y: Float128) -> Float128:
+    """Divides the IEEE 754 binary128 floating points.
+
+    Args:
+        x: The floating point to be divided.
+        y: The floating point to divide.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary128 floating point (``x / y``).
+
+    """
+    ...
+
+
+def f128_rem(x: Float128, y: Float128) -> Float128:
+    """Calculates a remainder by dividing the IEEE 754 binary128 floating points.
+
+    Args:
+        x: The floating point to be divided.
+        y: The floating point to divide.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary128 floating point (``x % y``).
+
+    """
+    ...
+
+
+def f128_sqrt(x: Float128) -> Float128:
+    """Calculates a square root of the IEEE 754 binary128 floating point.
+
+    Args:
+        x: The floating point whose square root is to be calculated.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary128 floating point (``sqrt(x)``).
+
+    """
+    ...
+
+
+def f128_eq(x: Float128, y: Float128) -> bool:
+    """Tests if the first one is equal to the second one expressed as IEEE 754 binary128 floating points.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+    """
+    ...
+
+
+def f128_le(x: Float128, y: Float128) -> bool:
+    """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary128 floating points.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+    """
+    ...
+
+
+def f128_lt(x: Float128, y: Float128) -> bool:
+    """Tests if the first one is less than the second one expressed as IEEE 754 binary128 floating points.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+    """
+    ...
+
+
+def f128_eq_signaling(x: Float128, y: Float128) -> bool:
+    """Tests if the first one is equal to the second one expressed as IEEE 754 binary128 floating points.
+
+    The invalid exception is raised for any NaN input, not just for signaling NaNs.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is equal to the second one, ``False`` otherwise (``x == y``).
+
+    """
+    ...
+
+
+def f128_le_quiet(x: Float128, y: Float128) -> bool:
+    """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary128 floating points.
+
+    The invalid exception is not raised for quiet NaNs.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than or equal to the second one, ``False`` otherwise (``x <= y``).
+
+    """
+    ...
+
+
+def f128_lt_quiet(x: Float128, y: Float128) -> bool:
+    """Tests if the first one is less than the second one expressed as IEEE 754 binary128 floating points.
+
+    The invalid exception is not raised for quiet NaNs.
+
+    Args:
+        x: The first floating point to be compared.
+        y: The second floating point to be compared.
+
+    Returns:
+        ``True`` if the first one is less than the second one, ``False`` otherwise (``x < y``).
+
+    """
+    ...
+
+
+def f128_is_signaling_nan(x: Float128) -> bool:
+    """Tests if the IEEE 754 binary128 floating point is a signaling NaN.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+    """
+    ...
