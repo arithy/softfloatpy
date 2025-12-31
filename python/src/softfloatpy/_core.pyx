@@ -1441,6 +1441,8 @@ cdef class Float16:
     cpdef Float16 neg(self):
         """Negates the IEEE 754 binary16 floating point.
 
+        The result is the same as that of :func:`f16_neg()`.
+
         Returns:
             The resulted number (``-x``).
 
@@ -1985,6 +1987,8 @@ cdef class Float32:
     cpdef Float32 neg(self):
         """Negates the IEEE 754 binary32 floating point.
 
+        The result is the same as that of :func:`f32_neg()`.
+
         Returns:
             The resulted number (``-x``).
 
@@ -2523,6 +2527,8 @@ cdef class Float64:
 
     cpdef Float64 neg(self):
         """Negates the IEEE 754 binary64 floating point.
+
+        The result is the same as that of :func:`f64_neg()`.
 
         Returns:
             The resulted number (``-x``).
@@ -3098,6 +3104,8 @@ cdef class Float128:
 
     cpdef Float128 neg(self):
         """Negates the IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`f128_neg()`.
 
         Returns:
             The resulted number (``-x``).

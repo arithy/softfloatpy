@@ -1218,6 +1218,8 @@ class Float16:
     def neg(self) -> Self:
         """Negates the IEEE 754 binary16 floating point.
 
+        The result is the same as that of :func:`f16_neg()`.
+
         Returns:
             The resulted number (``-x``).
 
@@ -1729,6 +1731,8 @@ class Float32:
     def neg(self) -> Self:
         """Negates the IEEE 754 binary32 floating point.
 
+        The result is the same as that of :func:`f32_neg()`.
+
         Returns:
             The resulted number (``-x``).
 
@@ -2228,6 +2232,8 @@ class Float64:
 
     def neg(self) -> Self:
         """Negates the IEEE 754 binary64 floating point.
+
+        The result is the same as that of :func:`f64_neg()`.
 
         Returns:
             The resulted number (``-x``).
@@ -2740,6 +2746,8 @@ class Float128:
 
     def neg(self) -> Self:
         """Negates the IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`f128_neg()`.
 
         Returns:
             The resulted number (``-x``).
