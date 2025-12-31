@@ -17,6 +17,7 @@ words:
   - ctypedef
   - cython
   - cythonize
+  - docstrings
   - doctest
   - doctests
   - DSOFTFLOAT

@@ -27,6 +27,10 @@ import softfloatpy as sf
 _SIGNALING_NAN: bytes = b'\xfc\x01'
 
 
+def test_f16_size() -> None:
+    assert sf.Float16.size() == 16
+
+
 def test_f16_bytes() -> None:
     b: bytes = b'\xed\xcb'
     assert sf.Float16.from_bytes(b).to_bytes() == b

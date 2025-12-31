@@ -89,15 +89,28 @@ class UInt32:
     """
 
     @classmethod
+    def size(cls) -> int:
+        """Returns the native data size in bits.
+
+        Returns:
+            The native data size in bits, i.e. 32.
+
+        """
+        ...
+
+    @classmethod
     def from_bytes(cls, src: bytes) -> Self:
         """Creates a new instance from the specified byte sequence.
 
         Args:
             src: The byte sequence representing the native data with big endian.
-                 The length must be at least 4.
+                 The length must be 4.
 
         Returns:
             A new instance created from the specified byte sequence.
+
+        Raises:
+            ValueError: If the length of bytes is not 4.
 
         """
         ...
@@ -137,6 +150,8 @@ class UInt32:
     def to_f16(self) -> Float16:
         """Converts the 32-bit unsigned integer to an IEEE 754 binary16 floating point.
 
+        The result is the same as that of :func:`ui32_to_f16()`.
+
         Returns:
             The IEEE 754 binary16 floating point.
 
@@ -145,6 +160,8 @@ class UInt32:
 
     def to_f32(self) -> Float32:
         """Converts the 32-bit unsigned integer to an IEEE 754 binary32 floating point.
+
+        The result is the same as that of :func:`ui32_to_f32()`.
 
         Returns:
             The IEEE 754 binary32 floating point.
@@ -155,6 +172,8 @@ class UInt32:
     def to_f64(self) -> Float64:
         """Converts the 32-bit unsigned integer to an IEEE 754 binary64 floating point.
 
+        The result is the same as that of :func:`ui32_to_f64()`.
+
         Returns:
             The IEEE 754 binary64 floating point.
 
@@ -163,6 +182,8 @@ class UInt32:
 
     def to_f128(self) -> Float128:
         """Converts the 32-bit unsigned integer to an IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`ui32_to_f128()`.
 
         Returns:
             The IEEE 754 binary128 floating point.
@@ -281,15 +302,28 @@ class UInt64:
     """
 
     @classmethod
+    def size(cls) -> int:
+        """Returns the native data size in bits.
+
+        Returns:
+            The native data size in bits, i.e. 64.
+
+        """
+        ...
+
+    @classmethod
     def from_bytes(cls, src: bytes) -> Self:
         """Creates a new instance from the specified byte sequence.
 
         Args:
             src: The byte sequence representing the native data with big endian.
-                 The length must be at least 8.
+                 The length must be 8.
 
         Returns:
             A new instance created from the specified byte sequence.
+
+        Raises:
+            ValueError: If the length of bytes is not 8.
 
         """
         ...
@@ -329,6 +363,8 @@ class UInt64:
     def to_f16(self) -> Float16:
         """Converts the 64-bit unsigned integer to an IEEE 754 binary16 floating point.
 
+        The result is the same as that of :func:`ui64_to_f16()`.
+
         Returns:
             The IEEE 754 binary16 floating point.
 
@@ -337,6 +373,8 @@ class UInt64:
 
     def to_f32(self) -> Float32:
         """Converts the 64-bit unsigned integer to an IEEE 754 binary32 floating point.
+
+        The result is the same as that of :func:`ui64_to_f32()`.
 
         Returns:
             The IEEE 754 binary32 floating point.
@@ -347,6 +385,8 @@ class UInt64:
     def to_f64(self) -> Float64:
         """Converts the 64-bit unsigned integer to an IEEE 754 binary64 floating point.
 
+        The result is the same as that of :func:`ui64_to_f64()`.
+
         Returns:
             The IEEE 754 binary64 floating point.
 
@@ -355,6 +395,8 @@ class UInt64:
 
     def to_f128(self) -> Float128:
         """Converts the 64-bit unsigned integer to an IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`ui64_to_f128()`.
 
         Returns:
             The IEEE 754 binary128 floating point.
@@ -472,15 +514,28 @@ class Int32:
     """
 
     @classmethod
+    def size(cls) -> int:
+        """Returns the native data size in bits.
+
+        Returns:
+            The native data size in bits, i.e. 32.
+
+        """
+        ...
+
+    @classmethod
     def from_bytes(cls, src: bytes) -> Self:
         """Creates a new instance from the specified byte sequence.
 
         Args:
             src: The byte sequence representing the native data with big endian.
-                 The length must be at least 4.
+                 The length must be 4.
 
         Returns:
             A new instance created from the specified byte sequence.
+
+        Raises:
+            ValueError: If the length of bytes is not 4.
 
         """
         ...
@@ -520,6 +575,8 @@ class Int32:
     def to_f16(self) -> Float16:
         """Converts the 32-bit signed integer to an IEEE 754 binary16 floating point.
 
+        The result is the same as that of :func:`i32_to_f16()`.
+
         Returns:
             The IEEE 754 binary16 floating point.
 
@@ -528,6 +585,8 @@ class Int32:
 
     def to_f32(self) -> Float32:
         """Converts the 32-bit signed integer to an IEEE 754 binary32 floating point.
+
+        The result is the same as that of :func:`i32_to_f32()`.
 
         Returns:
             The IEEE 754 binary32 floating point.
@@ -538,6 +597,8 @@ class Int32:
     def to_f64(self) -> Float64:
         """Converts the 32-bit signed integer to an IEEE 754 binary64 floating point.
 
+        The result is the same as that of :func:`i32_to_f64()`.
+
         Returns:
             The IEEE 754 binary64 floating point.
 
@@ -546,6 +607,8 @@ class Int32:
 
     def to_f128(self) -> Float128:
         """Converts the 32-bit signed integer to an IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`i32_to_f128()`.
 
         Returns:
             The IEEE 754 binary128 floating point.
@@ -663,15 +726,28 @@ class Int64:
     """
 
     @classmethod
+    def size(cls) -> int:
+        """Returns the native data size in bits.
+
+        Returns:
+            The native data size in bits, i.e. 64.
+
+        """
+        ...
+
+    @classmethod
     def from_bytes(cls, src: bytes) -> Self:
         """Creates a new instance from the specified byte sequence.
 
         Args:
             src: The byte sequence representing the native data with big endian.
-                 The length must be at least 8.
+                 The length must be 8.
 
         Returns:
             A new instance created from the specified byte sequence.
+
+        Raises:
+            ValueError: If the length of bytes is not 8.
 
         """
         ...
@@ -711,6 +787,8 @@ class Int64:
     def to_f16(self) -> Float16:
         """Converts the 64-bit signed integer to an IEEE 754 binary16 floating point.
 
+        The result is the same as that of :func:`i64_to_f16()`.
+
         Returns:
             The IEEE 754 binary16 floating point.
 
@@ -719,6 +797,8 @@ class Int64:
 
     def to_f32(self) -> Float32:
         """Converts the 64-bit signed integer to an IEEE 754 binary32 floating point.
+
+        The result is the same as that of :func:`i64_to_f32()`.
 
         Returns:
             The IEEE 754 binary32 floating point.
@@ -729,6 +809,8 @@ class Int64:
     def to_f64(self) -> Float64:
         """Converts the 64-bit signed integer to an IEEE 754 binary64 floating point.
 
+        The result is the same as that of :func:`i64_to_f64()`.
+
         Returns:
             The IEEE 754 binary64 floating point.
 
@@ -737,6 +819,8 @@ class Int64:
 
     def to_f128(self) -> Float128:
         """Converts the 64-bit signed integer to an IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`i64_to_f128()`.
 
         Returns:
             The IEEE 754 binary128 floating point.
@@ -845,15 +929,28 @@ class BFloat16:
     """
 
     @classmethod
+    def size(cls) -> int:
+        """Returns the native data size in bits.
+
+        Returns:
+            The native data size in bits, i.e. 16.
+
+        """
+        ...
+
+    @classmethod
     def from_bytes(cls, src: bytes) -> Self:
         """Creates a new instance from the specified byte sequence.
 
         Args:
             src: The byte sequence representing the native data with big endian.
-                 The length must be at least 2.
+                 The length must be 2.
 
         Returns:
             A new instance created from the specified byte sequence.
+
+        Raises:
+            ValueError: If the length of bytes is not 2.
 
         """
         ...
@@ -893,6 +990,8 @@ class BFloat16:
     def to_f32(self) -> Float32:
         """Converts the 16-bit brain floating point to an IEEE 754 binary32 floating point.
 
+        The result is the same as that of :func:`bf16_to_f32()`.
+
         Returns:
             The IEEE 754 binary32 floating point.
 
@@ -901,6 +1000,8 @@ class BFloat16:
 
     def is_signaling_nan(self) -> bool:
         """Tests if the 16-bit brain floating point is a signaling NaN.
+
+        The result is the same as that of :func:`bf16_is_signaling_nan()`.
 
         Returns:
             ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
@@ -933,15 +1034,28 @@ class Float16:
     """
 
     @classmethod
+    def size(cls) -> int:
+        """Returns the native data size in bits.
+
+        Returns:
+            The native data size in bits, i.e. 16.
+
+        """
+        ...
+
+    @classmethod
     def from_bytes(cls, src: bytes) -> Self:
         """Creates a new instance from the specified byte sequence.
 
         Args:
             src: The byte sequence representing the native data with big endian.
-                 The length must be at least 2.
+                 The length must be 2.
 
         Returns:
             A new instance created from the specified byte sequence.
+
+        Raises:
+            ValueError: If the length of bytes is not 2.
 
         """
         ...
@@ -983,6 +1097,8 @@ class Float16:
     ) -> UInt32:
         """Converts the IEEE 754 binary16 floating point to a 32-bit unsigned integer.
 
+        The result is the same as that of :func:`f16_to_ui32()`.
+
         Args:
             rounding_mode: The rounding mode.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
@@ -998,6 +1114,8 @@ class Float16:
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> UInt64:
         """Converts the IEEE 754 binary16 floating point to a 64-bit unsigned integer.
+
+        The result is the same as that of :func:`f16_to_ui64()`.
 
         Args:
             rounding_mode: The rounding mode.
@@ -1015,6 +1133,8 @@ class Float16:
     ) -> Int32:
         """Converts the IEEE 754 binary16 floating point to a 32-bit signed integer.
 
+        The result is the same as that of :func:`f16_to_i32()`.
+
         Args:
             rounding_mode: The rounding mode.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
@@ -1031,6 +1151,8 @@ class Float16:
     ) -> Int64:
         """Converts the IEEE 754 binary16 floating point to a 64-bit signed integer.
 
+        The result is the same as that of :func:`f16_to_i64()`.
+
         Args:
             rounding_mode: The rounding mode.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
@@ -1045,6 +1167,8 @@ class Float16:
     def to_f32(self) -> Float32:
         """Converts the IEEE 754 binary16 floating point to a binary32 floating point.
 
+        The result is the same as that of :func:`f16_to_f32()`.
+
         Returns:
             The IEEE 754 binary32 floating point.
 
@@ -1054,6 +1178,8 @@ class Float16:
     def to_f64(self) -> Float64:
         """Converts the IEEE 754 binary16 floating point to a binary64 floating point.
 
+        The result is the same as that of :func:`f16_to_f64()`.
+
         Returns:
             The IEEE 754 binary64 floating point.
 
@@ -1062,6 +1188,8 @@ class Float16:
 
     def to_f128(self) -> Float128:
         """Converts the IEEE 754 binary16 floating point to a binary128 floating point.
+
+        The result is the same as that of :func:`f16_to_f128()`.
 
         Returns:
             The IEEE 754 binary128 floating point.
@@ -1073,6 +1201,8 @@ class Float16:
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> Self:
         """Rounds the number.
+
+        The result is the same as that of :func:`f16_round_to_int()`.
 
         Args:
             rounding_mode: The rounding mode.
@@ -1089,6 +1219,8 @@ class Float16:
     def add(cls, x: Self, y: Self) -> Self:
         """Adds the IEEE 754 binary16 floating points.
 
+        The result is the same as that of :func:`f16_add()`.
+
         Args:
             x: The floating point to be added.
             y: The floating point to add.
@@ -1102,6 +1234,8 @@ class Float16:
     @classmethod
     def sub(cls, x: Self, y: Self) -> Self:
         """Subtracts the IEEE 754 binary16 floating points.
+
+        The result is the same as that of :func:`f16_sub()`.
 
         Args:
             x: The floating point to be subtracted.
@@ -1117,6 +1251,8 @@ class Float16:
     def mul(cls, x: Self, y: Self) -> Self:
         """Multiplies the IEEE 754 binary16 floating points.
 
+        The result is the same as that of :func:`f16_mul()`.
+
         Args:
             x: The floating point to be multiplied.
             y: The floating point to multiply.
@@ -1130,6 +1266,8 @@ class Float16:
     @classmethod
     def mul_add(cls, x: Self, y: Self, z: Self) -> Self:
         """Multiplies and Adds the IEEE 754 binary16 floating points.
+
+        The result is the same as that of :func:`f16_mul_add()`.
 
         Args:
             x: The floating point to be multiplied.
@@ -1146,6 +1284,8 @@ class Float16:
     def div(cls, x: Self, y: Self) -> Self:
         """Divides the IEEE 754 binary16 floating points.
 
+        The result is the same as that of :func:`f16_div()`.
+
         Args:
             x: The floating point to be divided.
             y: The floating point to divide.
@@ -1159,6 +1299,8 @@ class Float16:
     @classmethod
     def rem(cls, x: Self, y: Self) -> Self:
         """Calculates a remainder by dividing the IEEE 754 binary16 floating points.
+
+        The result is the same as that of :func:`f16_rem()`.
 
         Args:
             x: The floating point to be divided.
@@ -1174,6 +1316,8 @@ class Float16:
     def sqrt(cls, x: Self) -> Self:
         """Calculates a square root of the IEEE 754 binary16 floating point.
 
+        The result is the same as that of :func:`f16_sqrt()`.
+
         Args:
             x: The floating point whose square root is to be calculated.
 
@@ -1186,6 +1330,8 @@ class Float16:
     @classmethod
     def eq(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is equal to the second one expressed as IEEE 754 binary16 floating points.
+
+        The result is the same as that of :func:`f16_eq()`.
 
         Args:
             x: The first floating point to be compared.
@@ -1201,6 +1347,8 @@ class Float16:
     def le(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary16 floating points.
 
+        The result is the same as that of :func:`f16_le()`.
+
         Args:
             x: The first floating point to be compared.
             y: The second floating point to be compared.
@@ -1214,6 +1362,8 @@ class Float16:
     @classmethod
     def lt(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than the second one expressed as IEEE 754 binary16 floating points.
+
+        The result is the same as that of :func:`f16_lt()`.
 
         Args:
             x: The first floating point to be compared.
@@ -1229,7 +1379,9 @@ class Float16:
     def eq_signaling(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is equal to the second one expressed as IEEE 754 binary16 floating points.
 
-        The invalid exception is raised for any NaN input, not just for signaling NaNs.
+        The invalid exception flag is set for any NaN input, not just for signaling NaNs.
+
+        The result is the same as that of :func:`f16_eq_signaling()`.
 
         Args:
             x: The first floating point to be compared.
@@ -1245,7 +1397,9 @@ class Float16:
     def le_quiet(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary16 floating points.
 
-        The invalid exception is not raised for quiet NaNs.
+        The invalid exception flag is not set for quiet NaNs.
+
+        The result is the same as that of :func:`f16_le_quiet()`.
 
         Args:
             x: The first floating point to be compared.
@@ -1261,7 +1415,9 @@ class Float16:
     def lt_quiet(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than the second one expressed as IEEE 754 binary16 floating points.
 
-        The invalid exception is not raised for quiet NaNs.
+        The invalid exception flag is not set for quiet NaNs.
+
+        The result is the same as that of :func:`f16_lt_quiet()`.
 
         Args:
             x: The first floating point to be compared.
@@ -1275,6 +1431,8 @@ class Float16:
 
     def is_signaling_nan(self) -> bool:
         """Tests if the IEEE 754 binary16 floating point is a signaling NaN.
+
+        The result is the same as that of :func:`f16_is_signaling_nan()`.
 
         Returns:
             ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
@@ -1367,15 +1525,28 @@ class Float32:
     """
 
     @classmethod
+    def size(cls) -> int:
+        """Returns the native data size in bits.
+
+        Returns:
+            The native data size in bits, i.e. 32.
+
+        """
+        ...
+
+    @classmethod
     def from_bytes(cls, src: bytes) -> Self:
         """Creates a new instance from the specified byte sequence.
 
         Args:
             src: The byte sequence representing the native data with big endian.
-                 The length must be at least 4.
+                 The length must be 4.
 
         Returns:
             A new instance created from the specified byte sequence.
+
+        Raises:
+            ValueError: If the length of bytes is not 4.
 
         """
         ...
@@ -1415,6 +1586,8 @@ class Float32:
     def to_bf16(self) -> BFloat16:
         """Converts the IEEE 754 binary32 floating point to a 16-bit brain floating point.
 
+        The result is the same as that of :func:`f32_to_bf16()`.
+
         Returns:
             The 16-bit brain floating point.
 
@@ -1425,6 +1598,8 @@ class Float32:
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> UInt32:
         """Converts the IEEE 754 binary32 floating point to a 32-bit unsigned integer.
+
+        The result is the same as that of :func:`f32_to_ui32()`.
 
         Args:
             rounding_mode: The rounding mode.
@@ -1442,6 +1617,8 @@ class Float32:
     ) -> UInt64:
         """Converts the IEEE 754 binary32 floating point to a 64-bit unsigned integer.
 
+        The result is the same as that of :func:`f32_to_ui64()`.
+
         Args:
             rounding_mode: The rounding mode.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
@@ -1457,6 +1634,8 @@ class Float32:
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> Int32:
         """Converts the IEEE 754 binary32 floating point to a 32-bit signed integer.
+
+        The result is the same as that of :func:`f32_to_i32()`.
 
         Args:
             rounding_mode: The rounding mode.
@@ -1474,6 +1653,8 @@ class Float32:
     ) -> Int64:
         """Converts the IEEE 754 binary32 floating point to a 64-bit signed integer.
 
+        The result is the same as that of :func:`f32_to_i64()`.
+
         Args:
             rounding_mode: The rounding mode.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
@@ -1488,6 +1669,8 @@ class Float32:
     def to_f16(self) -> Float16:
         """Converts the IEEE 754 binary32 floating point to a binary16 floating point.
 
+        The result is the same as that of :func:`f32_to_f16()`.
+
         Returns:
             The IEEE 754 binary16 floating point.
 
@@ -1497,6 +1680,8 @@ class Float32:
     def to_f64(self) -> Float64:
         """Converts the IEEE 754 binary32 floating point to a binary64 floating point.
 
+        The result is the same as that of :func:`f32_to_f64()`.
+
         Returns:
             The IEEE 754 binary64 floating point.
 
@@ -1505,6 +1690,8 @@ class Float32:
 
     def to_f128(self) -> Float128:
         """Converts the IEEE 754 binary32 floating point to a binary128 floating point.
+
+        The result is the same as that of :func:`f32_to_f128()`.
 
         Returns:
             The IEEE 754 binary128 floating point.
@@ -1516,6 +1703,8 @@ class Float32:
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> Self:
         """Rounds the number.
+
+        The result is the same as that of :func:`f32_round_to_int()`.
 
         Args:
             rounding_mode: The rounding mode.
@@ -1532,6 +1721,8 @@ class Float32:
     def add(cls, x: Self, y: Self) -> Self:
         """Adds the IEEE 754 binary32 floating points.
 
+        The result is the same as that of :func:`f32_add()`.
+
         Args:
             x: The floating point to be added.
             y: The floating point to add.
@@ -1545,6 +1736,8 @@ class Float32:
     @classmethod
     def sub(cls, x: Self, y: Self) -> Self:
         """Subtracts the IEEE 754 binary32 floating points.
+
+        The result is the same as that of :func:`f32_sub()`.
 
         Args:
             x: The floating point to be subtracted.
@@ -1560,6 +1753,8 @@ class Float32:
     def mul(cls, x: Self, y: Self) -> Self:
         """Multiplies the IEEE 754 binary32 floating points.
 
+        The result is the same as that of :func:`f32_mul()`.
+
         Args:
             x: The floating point to be multiplied.
             y: The floating point to multiply.
@@ -1573,6 +1768,8 @@ class Float32:
     @classmethod
     def mul_add(cls, x: Self, y: Self, z: Self) -> Self:
         """Multiplies and Adds the IEEE 754 binary32 floating points.
+
+        The result is the same as that of :func:`f32_mul_add()`.
 
         Args:
             x: The floating point to be multiplied.
@@ -1589,6 +1786,8 @@ class Float32:
     def div(cls, x: Self, y: Self) -> Self:
         """Divides the IEEE 754 binary32 floating points.
 
+        The result is the same as that of :func:`f32_div()`.
+
         Args:
             x: The floating point to be divided.
             y: The floating point to divide.
@@ -1602,6 +1801,8 @@ class Float32:
     @classmethod
     def rem(cls, x: Self, y: Self) -> Self:
         """Calculates a remainder by dividing the IEEE 754 binary32 floating points.
+
+        The result is the same as that of :func:`f32_rem()`.
 
         Args:
             x: The floating point to be divided.
@@ -1617,6 +1818,8 @@ class Float32:
     def sqrt(cls, x: Self) -> Self:
         """Calculates a square root of the IEEE 754 binary32 floating point.
 
+        The result is the same as that of :func:`f32_sqrt()`.
+
         Args:
             x: The floating point whose square root is to be calculated.
 
@@ -1629,6 +1832,8 @@ class Float32:
     @classmethod
     def eq(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is equal to the second one expressed as IEEE 754 binary32 floating points.
+
+        The result is the same as that of :func:`f32_eq()`.
 
         Args:
             x: The first floating point to be compared.
@@ -1644,6 +1849,8 @@ class Float32:
     def le(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary32 floating points.
 
+        The result is the same as that of :func:`f32_le()`.
+
         Args:
             x: The first floating point to be compared.
             y: The second floating point to be compared.
@@ -1657,6 +1864,8 @@ class Float32:
     @classmethod
     def lt(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than the second one expressed as IEEE 754 binary32 floating points.
+
+        The result is the same as that of :func:`f32_lt()`.
 
         Args:
             x: The first floating point to be compared.
@@ -1672,7 +1881,9 @@ class Float32:
     def eq_signaling(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is equal to the second one expressed as IEEE 754 binary32 floating points.
 
-        The invalid exception is raised for any NaN input, not just for signaling NaNs.
+        The invalid exception flag is set for any NaN input, not just for signaling NaNs.
+
+        The result is the same as that of :func:`f32_eq_signaling()`.
 
         Args:
             x: The first floating point to be compared.
@@ -1688,7 +1899,9 @@ class Float32:
     def le_quiet(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary32 floating points.
 
-        The invalid exception is not raised for quiet NaNs.
+        The invalid exception flag is not set for quiet NaNs.
+
+        The result is the same as that of :func:`f32_le_quiet()`.
 
         Args:
             x: The first floating point to be compared.
@@ -1704,7 +1917,9 @@ class Float32:
     def lt_quiet(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than the second one expressed as IEEE 754 binary32 floating points.
 
-        The invalid exception is not raised for quiet NaNs.
+        The invalid exception flag is not set for quiet NaNs.
+
+        The result is the same as that of :func:`f32_lt_quiet()`.
 
         Args:
             x: The first floating point to be compared.
@@ -1718,6 +1933,8 @@ class Float32:
 
     def is_signaling_nan(self) -> bool:
         """Tests if the IEEE 754 binary32 floating point is a signaling NaN.
+
+        The result is the same as that of :func:`f32_is_signaling_nan()`.
 
         Returns:
             ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
@@ -1810,15 +2027,28 @@ class Float64:
     """
 
     @classmethod
+    def size(cls) -> int:
+        """Returns the native data size in bits.
+
+        Returns:
+            The native data size in bits, i.e. 64.
+
+        """
+        ...
+
+    @classmethod
     def from_bytes(cls, src: bytes) -> Self:
         """Creates a new instance from the specified byte sequence.
 
         Args:
             src: The byte sequence representing the native data with big endian.
-                 The length must be at least 8.
+                 The length must be 8.
 
         Returns:
             A new instance created from the specified byte sequence.
+
+        Raises:
+            ValueError: If the length of bytes is not 8.
 
         """
         ...
@@ -1860,6 +2090,8 @@ class Float64:
     ) -> UInt32:
         """Converts the IEEE 754 binary64 floating point to a 32-bit unsigned integer.
 
+        The result is the same as that of :func:`f64_to_ui32()`.
+
         Args:
             rounding_mode: The rounding mode.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
@@ -1875,6 +2107,8 @@ class Float64:
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> UInt64:
         """Converts the IEEE 754 binary64 floating point to a 64-bit unsigned integer.
+
+        The result is the same as that of :func:`f64_to_ui64()`.
 
         Args:
             rounding_mode: The rounding mode.
@@ -1892,6 +2126,8 @@ class Float64:
     ) -> Int32:
         """Converts the IEEE 754 binary64 floating point to a 32-bit signed integer.
 
+        The result is the same as that of :func:`f64_to_i32()`.
+
         Args:
             rounding_mode: The rounding mode.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
@@ -1908,6 +2144,8 @@ class Float64:
     ) -> Int64:
         """Converts the IEEE 754 binary64 floating point to a 64-bit signed integer.
 
+        The result is the same as that of :func:`f64_to_i64()`.
+
         Args:
             rounding_mode: The rounding mode.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
@@ -1922,6 +2160,8 @@ class Float64:
     def to_f16(self) -> Float16:
         """Converts the IEEE 754 binary64 floating point to a binary16 floating point.
 
+        The result is the same as that of :func:`f64_to_f16()`.
+
         Returns:
             The IEEE 754 binary16 floating point.
 
@@ -1931,6 +2171,8 @@ class Float64:
     def to_f32(self) -> Float32:
         """Converts the IEEE 754 binary64 floating point to a binary32 floating point.
 
+        The result is the same as that of :func:`f64_to_f32()`.
+
         Returns:
             The IEEE 754 binary32 floating point.
 
@@ -1939,6 +2181,8 @@ class Float64:
 
     def to_f128(self) -> Float128:
         """Converts the IEEE 754 binary64 floating point to a binary128 floating point.
+
+        The result is the same as that of :func:`f64_to_f128()`.
 
         Returns:
             The IEEE 754 binary128 floating point.
@@ -1950,6 +2194,8 @@ class Float64:
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> Self:
         """Rounds the number.
+
+        The result is the same as that of :func:`f64_round_to_int()`.
 
         Args:
             rounding_mode: The rounding mode.
@@ -1966,6 +2212,8 @@ class Float64:
     def add(cls, x: Self, y: Self) -> Self:
         """Adds the IEEE 754 binary64 floating points.
 
+        The result is the same as that of :func:`f64_add()`.
+
         Args:
             x: The floating point to be added.
             y: The floating point to add.
@@ -1979,6 +2227,8 @@ class Float64:
     @classmethod
     def sub(cls, x: Self, y: Self) -> Self:
         """Subtracts the IEEE 754 binary64 floating points.
+
+        The result is the same as that of :func:`f64_sub()`.
 
         Args:
             x: The floating point to be subtracted.
@@ -1994,6 +2244,8 @@ class Float64:
     def mul(cls, x: Self, y: Self) -> Self:
         """Multiplies the IEEE 754 binary64 floating points.
 
+        The result is the same as that of :func:`f64_mul()`.
+
         Args:
             x: The floating point to be multiplied.
             y: The floating point to multiply.
@@ -2007,6 +2259,8 @@ class Float64:
     @classmethod
     def mul_add(cls, x: Self, y: Self, z: Self) -> Self:
         """Multiplies and Adds the IEEE 754 binary64 floating points.
+
+        The result is the same as that of :func:`f64_mul_add()`.
 
         Args:
             x: The floating point to be multiplied.
@@ -2023,6 +2277,8 @@ class Float64:
     def div(cls, x: Self, y: Self) -> Self:
         """Divides the IEEE 754 binary64 floating points.
 
+        The result is the same as that of :func:`f64_div()`.
+
         Args:
             x: The floating point to be divided.
             y: The floating point to divide.
@@ -2036,6 +2292,8 @@ class Float64:
     @classmethod
     def rem(cls, x: Self, y: Self) -> Self:
         """Calculates a remainder by dividing the IEEE 754 binary64 floating points.
+
+        The result is the same as that of :func:`f64_rem()`.
 
         Args:
             x: The floating point to be divided.
@@ -2051,6 +2309,8 @@ class Float64:
     def sqrt(cls, x: Self) -> Self:
         """Calculates a square root of the IEEE 754 binary64 floating point.
 
+        The result is the same as that of :func:`f64_sqrt()`.
+
         Args:
             x: The floating point whose square root is to be calculated.
 
@@ -2063,6 +2323,8 @@ class Float64:
     @classmethod
     def eq(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is equal to the second one expressed as IEEE 754 binary64 floating points.
+
+        The result is the same as that of :func:`f64_eq()`.
 
         Args:
             x: The first floating point to be compared.
@@ -2078,6 +2340,8 @@ class Float64:
     def le(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary64 floating points.
 
+        The result is the same as that of :func:`f64_le()`.
+
         Args:
             x: The first floating point to be compared.
             y: The second floating point to be compared.
@@ -2091,6 +2355,8 @@ class Float64:
     @classmethod
     def lt(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than the second one expressed as IEEE 754 binary64 floating points.
+
+        The result is the same as that of :func:`f64_lt()`.
 
         Args:
             x: The first floating point to be compared.
@@ -2106,7 +2372,9 @@ class Float64:
     def eq_signaling(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is equal to the second one expressed as IEEE 754 binary64 floating points.
 
-        The invalid exception is raised for any NaN input, not just for signaling NaNs.
+        The invalid exception flag is set for any NaN input, not just for signaling NaNs.
+
+        The result is the same as that of :func:`f64_eq_signaling()`.
 
         Args:
             x: The first floating point to be compared.
@@ -2122,7 +2390,9 @@ class Float64:
     def le_quiet(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary64 floating points.
 
-        The invalid exception is not raised for quiet NaNs.
+        The invalid exception flag is not set for quiet NaNs.
+
+        The result is the same as that of :func:`f64_le_quiet()`.
 
         Args:
             x: The first floating point to be compared.
@@ -2138,7 +2408,9 @@ class Float64:
     def lt_quiet(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than the second one expressed as IEEE 754 binary64 floating points.
 
-        The invalid exception is not raised for quiet NaNs.
+        The invalid exception flag is not set for quiet NaNs.
+
+        The result is the same as that of :func:`f64_lt_quiet()`.
 
         Args:
             x: The first floating point to be compared.
@@ -2152,6 +2424,8 @@ class Float64:
 
     def is_signaling_nan(self) -> bool:
         """Tests if the IEEE 754 binary64 floating point is a signaling NaN.
+
+        The result is the same as that of :func:`f64_is_signaling_nan()`.
 
         Returns:
             ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
@@ -2248,15 +2522,28 @@ class Float128:
     """
 
     @classmethod
+    def size(cls) -> int:
+        """Returns the native data size in bits.
+
+        Returns:
+            The native data size in bits, i.e. 128.
+
+        """
+        ...
+
+    @classmethod
     def from_bytes(cls, src: bytes) -> Self:
         """Creates a new instance from the specified byte sequence.
 
         Args:
             src: The byte sequence representing the native data with big endian.
-                 The length must be at least 16.
+                 The length must be 16.
 
         Returns:
             A new instance created from the specified byte sequence.
+
+        Raises:
+            ValueError: If the length of bytes is not 16.
 
         """
         ...
@@ -2306,6 +2593,8 @@ class Float128:
     ) -> UInt32:
         """Converts the IEEE 754 binary128 floating point to a 32-bit unsigned integer.
 
+        The result is the same as that of :func:`f128_to_ui32()`.
+
         Args:
             rounding_mode: The rounding mode.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
@@ -2321,6 +2610,8 @@ class Float128:
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> UInt64:
         """Converts the IEEE 754 binary128 floating point to a 64-bit unsigned integer.
+
+        The result is the same as that of :func:`f128_to_ui64()`.
 
         Args:
             rounding_mode: The rounding mode.
@@ -2338,6 +2629,8 @@ class Float128:
     ) -> Int32:
         """Converts the IEEE 754 binary128 floating point to a 32-bit signed integer.
 
+        The result is the same as that of :func:`f128_to_i32()`.
+
         Args:
             rounding_mode: The rounding mode.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
@@ -2354,6 +2647,8 @@ class Float128:
     ) -> Int64:
         """Converts the IEEE 754 binary128 floating point to a 64-bit signed integer.
 
+        The result is the same as that of :func:`f128_to_i64()`.
+
         Args:
             rounding_mode: The rounding mode.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
@@ -2368,6 +2663,8 @@ class Float128:
     def to_f16(self) -> Float16:
         """Converts the IEEE 754 binary128 floating point to a binary16 floating point.
 
+        The result is the same as that of :func:`f128_to_f16()`.
+
         Returns:
             The IEEE 754 binary16 floating point.
 
@@ -2377,6 +2674,8 @@ class Float128:
     def to_f32(self) -> Float32:
         """Converts the IEEE 754 binary128 floating point to a binary32 floating point.
 
+        The result is the same as that of :func:`f128_to_f32()`.
+
         Returns:
             The IEEE 754 binary32 floating point.
 
@@ -2385,6 +2684,8 @@ class Float128:
 
     def to_f64(self) -> Float64:
         """Converts the IEEE 754 binary128 floating point to a binary64 floating point.
+
+        The result is the same as that of :func:`f128_to_f64()`.
 
         Returns:
             The IEEE 754 binary64 floating point.
@@ -2396,6 +2697,8 @@ class Float128:
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> Self:
         """Rounds the number.
+
+        The result is the same as that of :func:`f128_round_to_int()`.
 
         Args:
             rounding_mode: The rounding mode.
@@ -2412,6 +2715,8 @@ class Float128:
     def add(cls, x: Self, y: Self) -> Self:
         """Adds the IEEE 754 binary128 floating points.
 
+        The result is the same as that of :func:`f128_add()`.
+
         Args:
             x: The floating point to be added.
             y: The floating point to add.
@@ -2425,6 +2730,8 @@ class Float128:
     @classmethod
     def sub(cls, x: Self, y: Self) -> Self:
         """Subtracts the IEEE 754 binary128 floating points.
+
+        The result is the same as that of :func:`f128_sub()`.
 
         Args:
             x: The floating point to be subtracted.
@@ -2440,6 +2747,8 @@ class Float128:
     def mul(cls, x: Self, y: Self) -> Self:
         """Multiplies the IEEE 754 binary128 floating points.
 
+        The result is the same as that of :func:`f128_mul()`.
+
         Args:
             x: The floating point to be multiplied.
             y: The floating point to multiply.
@@ -2453,6 +2762,8 @@ class Float128:
     @classmethod
     def mul_add(cls, x: Self, y: Self, z: Self) -> Self:
         """Multiplies and Adds the IEEE 754 binary128 floating points.
+
+        The result is the same as that of :func:`f128_mul_add()`.
 
         Args:
             x: The floating point to be multiplied.
@@ -2469,6 +2780,8 @@ class Float128:
     def div(cls, x: Self, y: Self) -> Self:
         """Divides the IEEE 754 binary128 floating points.
 
+        The result is the same as that of :func:`f128_div()`.
+
         Args:
             x: The floating point to be divided.
             y: The floating point to divide.
@@ -2482,6 +2795,8 @@ class Float128:
     @classmethod
     def rem(cls, x: Self, y: Self) -> Self:
         """Calculates a remainder by dividing the IEEE 754 binary128 floating points.
+
+        The result is the same as that of :func:`f128_rem()`.
 
         Args:
             x: The floating point to be divided.
@@ -2497,6 +2812,8 @@ class Float128:
     def sqrt(cls, x: Self) -> Self:
         """Calculates a square root of the IEEE 754 binary128 floating point.
 
+        The result is the same as that of :func:`f128_sqrt()`.
+
         Args:
             x: The floating point whose square root is to be calculated.
 
@@ -2509,6 +2826,8 @@ class Float128:
     @classmethod
     def eq(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is equal to the second one expressed as IEEE 754 binary128 floating points.
+
+        The result is the same as that of :func:`f128_eq()`.
 
         Args:
             x: The first floating point to be compared.
@@ -2524,6 +2843,8 @@ class Float128:
     def le(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary128 floating points.
 
+        The result is the same as that of :func:`f128_le()`.
+
         Args:
             x: The first floating point to be compared.
             y: The second floating point to be compared.
@@ -2537,6 +2858,8 @@ class Float128:
     @classmethod
     def lt(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than the second one expressed as IEEE 754 binary128 floating points.
+
+        The result is the same as that of :func:`f128_lt()`.
 
         Args:
             x: The first floating point to be compared.
@@ -2552,7 +2875,9 @@ class Float128:
     def eq_signaling(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is equal to the second one expressed as IEEE 754 binary128 floating points.
 
-        The invalid exception is raised for any NaN input, not just for signaling NaNs.
+        The invalid exception flag is set for any NaN input, not just for signaling NaNs.
+
+        The result is the same as that of :func:`f128_eq_signaling()`.
 
         Args:
             x: The first floating point to be compared.
@@ -2568,7 +2893,9 @@ class Float128:
     def le_quiet(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary128 floating points.
 
-        The invalid exception is not raised for quiet NaNs.
+        The invalid exception flag is not set for quiet NaNs.
+
+        The result is the same as that of :func:`f128_le_quiet()`.
 
         Args:
             x: The first floating point to be compared.
@@ -2584,7 +2911,9 @@ class Float128:
     def lt_quiet(cls, x: Self, y: Self) -> bool:
         """Tests if the first one is less than the second one expressed as IEEE 754 binary128 floating points.
 
-        The invalid exception is not raised for quiet NaNs.
+        The invalid exception flag is not set for quiet NaNs.
+
+        The result is the same as that of :func:`f128_lt_quiet()`.
 
         Args:
             x: The first floating point to be compared.
@@ -2598,6 +2927,8 @@ class Float128:
 
     def is_signaling_nan(self) -> bool:
         """Tests if the IEEE 754 binary128 floating point is a signaling NaN.
+
+        The result is the same as that of :func:`f128_is_signaling_nan()`.
 
         Returns:
             ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
@@ -3222,7 +3553,7 @@ def f16_lt(x: Float16, y: Float16) -> bool:
 def f16_eq_signaling(x: Float16, y: Float16) -> bool:
     """Tests if the first one is equal to the second one expressed as IEEE 754 binary16 floating points.
 
-    The invalid exception is raised for any NaN input, not just for signaling NaNs.
+    The invalid exception flag is set for any NaN input, not just for signaling NaNs.
 
     Args:
         x: The first floating point to be compared.
@@ -3238,7 +3569,7 @@ def f16_eq_signaling(x: Float16, y: Float16) -> bool:
 def f16_le_quiet(x: Float16, y: Float16) -> bool:
     """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary16 floating points.
 
-    The invalid exception is not raised for quiet NaNs.
+    The invalid exception flag is not set for quiet NaNs.
 
     Args:
         x: The first floating point to be compared.
@@ -3254,7 +3585,7 @@ def f16_le_quiet(x: Float16, y: Float16) -> bool:
 def f16_lt_quiet(x: Float16, y: Float16) -> bool:
     """Tests if the first one is less than the second one expressed as IEEE 754 binary16 floating points.
 
-    The invalid exception is not raised for quiet NaNs.
+    The invalid exception flag is not set for quiet NaNs.
 
     Args:
         x: The first floating point to be compared.
@@ -3591,7 +3922,7 @@ def f32_lt(x: Float32, y: Float32) -> bool:
 def f32_eq_signaling(x: Float32, y: Float32) -> bool:
     """Tests if the first one is equal to the second one expressed as IEEE 754 binary32 floating points.
 
-    The invalid exception is raised for any NaN input, not just for signaling NaNs.
+    The invalid exception flag is set for any NaN input, not just for signaling NaNs.
 
     Args:
         x: The first floating point to be compared.
@@ -3607,7 +3938,7 @@ def f32_eq_signaling(x: Float32, y: Float32) -> bool:
 def f32_le_quiet(x: Float32, y: Float32) -> bool:
     """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary32 floating points.
 
-    The invalid exception is not raised for quiet NaNs.
+    The invalid exception flag is not set for quiet NaNs.
 
     Args:
         x: The first floating point to be compared.
@@ -3623,7 +3954,7 @@ def f32_le_quiet(x: Float32, y: Float32) -> bool:
 def f32_lt_quiet(x: Float32, y: Float32) -> bool:
     """Tests if the first one is less than the second one expressed as IEEE 754 binary32 floating points.
 
-    The invalid exception is not raised for quiet NaNs.
+    The invalid exception flag is not set for quiet NaNs.
 
     Args:
         x: The first floating point to be compared.
@@ -3921,7 +4252,7 @@ def f64_lt(x: Float64, y: Float64) -> bool:
 def f64_eq_signaling(x: Float64, y: Float64) -> bool:
     """Tests if the first one is equal to the second one expressed as IEEE 754 binary64 floating points.
 
-    The invalid exception is raised for any NaN input, not just for signaling NaNs.
+    The invalid exception flag is set for any NaN input, not just for signaling NaNs.
 
     Args:
         x: The first floating point to be compared.
@@ -3937,7 +4268,7 @@ def f64_eq_signaling(x: Float64, y: Float64) -> bool:
 def f64_le_quiet(x: Float64, y: Float64) -> bool:
     """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary64 floating points.
 
-    The invalid exception is not raised for quiet NaNs.
+    The invalid exception flag is not set for quiet NaNs.
 
     Args:
         x: The first floating point to be compared.
@@ -3953,7 +4284,7 @@ def f64_le_quiet(x: Float64, y: Float64) -> bool:
 def f64_lt_quiet(x: Float64, y: Float64) -> bool:
     """Tests if the first one is less than the second one expressed as IEEE 754 binary64 floating points.
 
-    The invalid exception is not raised for quiet NaNs.
+    The invalid exception flag is not set for quiet NaNs.
 
     Args:
         x: The first floating point to be compared.
@@ -4251,7 +4582,7 @@ def f128_lt(x: Float128, y: Float128) -> bool:
 def f128_eq_signaling(x: Float128, y: Float128) -> bool:
     """Tests if the first one is equal to the second one expressed as IEEE 754 binary128 floating points.
 
-    The invalid exception is raised for any NaN input, not just for signaling NaNs.
+    The invalid exception flag is set for any NaN input, not just for signaling NaNs.
 
     Args:
         x: The first floating point to be compared.
@@ -4267,7 +4598,7 @@ def f128_eq_signaling(x: Float128, y: Float128) -> bool:
 def f128_le_quiet(x: Float128, y: Float128) -> bool:
     """Tests if the first one is less than or equal to the second one expressed as IEEE 754 binary128 floating points.
 
-    The invalid exception is not raised for quiet NaNs.
+    The invalid exception flag is not set for quiet NaNs.
 
     Args:
         x: The first floating point to be compared.
@@ -4283,7 +4614,7 @@ def f128_le_quiet(x: Float128, y: Float128) -> bool:
 def f128_lt_quiet(x: Float128, y: Float128) -> bool:
     """Tests if the first one is less than the second one expressed as IEEE 754 binary128 floating points.
 
-    The invalid exception is not raised for quiet NaNs.
+    The invalid exception flag is not set for quiet NaNs.
 
     Args:
         x: The first floating point to be compared.

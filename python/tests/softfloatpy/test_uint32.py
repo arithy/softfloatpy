@@ -23,6 +23,10 @@
 import softfloatpy as sf
 
 
+def test_ui32_size() -> None:
+    assert sf.UInt32.size() == 32
+
+
 def test_ui32_bytes() -> None:
     b: bytes = b'\xed\xcb\x43\x21'
     assert sf.UInt32.from_bytes(b).to_bytes() == b

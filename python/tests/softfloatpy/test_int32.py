@@ -23,6 +23,10 @@
 import softfloatpy as sf
 
 
+def test_i32_size() -> None:
+    assert sf.Int32.size() == 32
+
+
 def test_i32_bytes() -> None:
     b: bytes = b'\xed\xcb\x43\x21'
     assert sf.Int32.from_bytes(b).to_bytes() == b

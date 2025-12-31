@@ -23,6 +23,10 @@
 import softfloatpy as sf
 
 
+def test_i64_size() -> None:
+    assert sf.Int64.size() == 64
+
+
 def test_i64_bytes() -> None:
     b: bytes = b'\xed\xcb\xaf\x09\x87\x65\x43\x21'
     assert sf.Int64.from_bytes(b).to_bytes() == b

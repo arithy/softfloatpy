@@ -27,6 +27,10 @@ import softfloatpy as sf
 _SIGNALING_NAN: bytes = b'\xff\xf0\x00\x00\x00\x00\x00\x01'
 
 
+def test_f64_size() -> None:
+    assert sf.Float64.size() == 64
+
+
 def test_f64_bytes() -> None:
     b: bytes = b'\xed\xcb\xaf\x09\x87\x65\x43\x21'
     assert sf.Float64.from_bytes(b).to_bytes() == b
