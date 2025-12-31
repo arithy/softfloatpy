@@ -1215,6 +1215,15 @@ class Float16:
         """
         ...
 
+    def neg(self) -> Self:
+        """Negates the IEEE 754 binary16 floating point.
+
+        Returns:
+            The resulted number (``-x``).
+
+        """
+        ...
+
     @classmethod
     def add(cls, x: Self, y: Self) -> Self:
         """Adds the IEEE 754 binary16 floating points.
@@ -1717,6 +1726,15 @@ class Float32:
         """
         ...
 
+    def neg(self) -> Self:
+        """Negates the IEEE 754 binary32 floating point.
+
+        Returns:
+            The resulted number (``-x``).
+
+        """
+        ...
+
     @classmethod
     def add(cls, x: Self, y: Self) -> Self:
         """Adds the IEEE 754 binary32 floating points.
@@ -2204,6 +2222,15 @@ class Float64:
 
         Returns:
             The resulted integer.
+
+        """
+        ...
+
+    def neg(self) -> Self:
+        """Negates the IEEE 754 binary64 floating point.
+
+        Returns:
+            The resulted number (``-x``).
 
         """
         ...
@@ -2707,6 +2734,15 @@ class Float128:
 
         Returns:
             The resulted integer.
+
+        """
+        ...
+
+    def neg(self) -> Self:
+        """Negates the IEEE 754 binary128 floating point.
+
+        Returns:
+            The resulted number (``-x``).
 
         """
         ...
@@ -3410,6 +3446,19 @@ def f16_round_to_int(
     ...
 
 
+def f16_neg(x: Float16) -> Float16:
+    """Negates the IEEE 754 binary16 floating point.
+
+    Args:
+        x: The floating point to be negated.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary16 floating point (``-x``).
+
+    """
+    ...
+
+
 def f16_add(x: Float16, y: Float16) -> Float16:
     """Adds the IEEE 754 binary16 floating points.
 
@@ -3779,6 +3828,19 @@ def f32_round_to_int(
     ...
 
 
+def f32_neg(x: Float32) -> Float32:
+    """Negates the IEEE 754 binary32 floating point.
+
+    Args:
+        x: The floating point to be negated.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary32 floating point (``-x``).
+
+    """
+    ...
+
+
 def f32_add(x: Float32, y: Float32) -> Float32:
     """Adds the IEEE 754 binary32 floating points.
 
@@ -4109,6 +4171,19 @@ def f64_round_to_int(
     ...
 
 
+def f64_neg(x: Float64) -> Float64:
+    """Negates the IEEE 754 binary64 floating point.
+
+    Args:
+        x: The floating point to be negated.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary64 floating point (``-x``).
+
+    """
+    ...
+
+
 def f64_add(x: Float64, y: Float64) -> Float64:
     """Adds the IEEE 754 binary64 floating points.
 
@@ -4434,6 +4509,19 @@ def f128_round_to_int(
 
     Returns:
         The resulted integer expressed as an IEEE 754 binary128 floating point.
+
+    """
+    ...
+
+
+def f128_neg(x: Float128) -> Float128:
+    """Negates the IEEE 754 binary128 floating point.
+
+    Args:
+        x: The floating point to be negated.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary128 floating point (``-x``).
 
     """
     ...

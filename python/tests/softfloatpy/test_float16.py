@@ -99,6 +99,13 @@ def test_f16_round_to_int() -> None:
     assert sf.f16_round_to_int(o, sf.RoundingMode.MIN).to_bytes() == o.round_to_int(sf.RoundingMode.MIN).to_bytes()
 
 
+def test_f16_neg() -> None:
+    x: float = -12.5
+    o: sf.Float16 = sf.Float16.from_float(x)
+    assert sf.f16_neg(o).to_float() == -x
+    assert sf.f16_neg(o).to_bytes() == sf.Float16.neg(o).to_bytes()
+
+
 def test_f16_add() -> None:
     x: float = -12.5
     y: float = 3.25

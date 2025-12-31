@@ -256,7 +256,9 @@ cdef class UInt32:
         return _make_uint32(self._data)
 
     def __neg__(self) -> Self:
-        raise ValueError("cannot be negated")
+        if self._data != 0:
+            raise ValueError("cannot be negated")
+        return _make_uint32(self._data)
 
     def __invert__(self) -> Self:
         return _make_uint32(~self._data)
@@ -508,7 +510,9 @@ cdef class UInt64:
         return _make_uint64(self._data)
 
     def __neg__(self) -> Self:
-        raise ValueError("cannot be negated")
+        if self._data != 0:
+            raise ValueError("cannot be negated")
+        return _make_uint32(self._data)
 
     def __invert__(self) -> Self:
         return _make_uint64(~self._data)
@@ -1434,6 +1438,15 @@ cdef class Float16:
         """
         return f16_round_to_int(self, rounding_mode, exact)
 
+    cpdef Float16 neg(self):
+        """Negates the IEEE 754 binary16 floating point.
+
+        Returns:
+            The resulted number (``-x``).
+
+        """
+        return f16_neg(self)
+
     @classmethod
     def add(cls, Float16 x, Float16 y) -> Float16:
         """Adds the IEEE 754 binary16 floating points.
@@ -1666,7 +1679,7 @@ cdef class Float16:
         return _make_float16(self._data)
 
     def __neg__(self) -> Self:
-        return f16_sub(Float16.from_float(0.0), self)
+        return f16_neg(self)
 
     def __add__(self, other: Self) -> Self:
         return f16_add(self, other)
@@ -1969,6 +1982,15 @@ cdef class Float32:
         """
         return f32_round_to_int(self, rounding_mode, exact)
 
+    cpdef Float32 neg(self):
+        """Negates the IEEE 754 binary32 floating point.
+
+        Returns:
+            The resulted number (``-x``).
+
+        """
+        return f32_neg(self)
+
     @classmethod
     def add(cls, Float32 x, Float32 y) -> Float32:
         """Adds the IEEE 754 binary32 floating points.
@@ -2201,7 +2223,7 @@ cdef class Float32:
         return _make_float32(self._data)
 
     def __neg__(self) -> Self:
-        return f32_sub(Float32.from_float(0.0), self)
+        return f32_neg(self)
 
     def __add__(self, other: Self) -> Self:
         return f32_add(self, other)
@@ -2499,6 +2521,15 @@ cdef class Float64:
         """
         return f64_round_to_int(self, rounding_mode, exact)
 
+    cpdef Float64 neg(self):
+        """Negates the IEEE 754 binary64 floating point.
+
+        Returns:
+            The resulted number (``-x``).
+
+        """
+        return f64_neg(self)
+
     @classmethod
     def add(cls, Float64 x, Float64 y) -> Float64:
         """Adds the IEEE 754 binary64 floating points.
@@ -2731,7 +2762,7 @@ cdef class Float64:
         return _make_float64(self._data)
 
     def __neg__(self) -> Self:
-        return f64_sub(Float64.from_float(0.0), self)
+        return f64_neg(self)
 
     def __add__(self, other: Self) -> Self:
         return f64_add(self, other)
@@ -3065,6 +3096,15 @@ cdef class Float128:
         """
         return f128_round_to_int(self, rounding_mode, exact)
 
+    cpdef Float128 neg(self):
+        """Negates the IEEE 754 binary128 floating point.
+
+        Returns:
+            The resulted number (``-x``).
+
+        """
+        return f128_neg(self)
+
     @classmethod
     def add(cls, Float128 x, Float128 y) -> Float128:
         """Adds the IEEE 754 binary128 floating points.
@@ -3297,7 +3337,7 @@ cdef class Float128:
         return _make_float128(self._data)
 
     def __neg__(self) -> Self:
-        return f128_sub(Float128.from_float(0.0), self)
+        return f128_neg(self)
 
     def __add__(self, other: Self) -> Self:
         return f128_add(self, other)
@@ -3822,6 +3862,21 @@ cpdef Float16 f16_round_to_int(
     return _make_float16(sf.f16_roundToInt(x._data, rounding_mode, exact))
 
 
+cpdef Float16 f16_neg(Float16 x):
+    """Negates the IEEE 754 binary16 floating point.
+
+    Args:
+        x: The floating point to be negated.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary16 floating point (``-x``).
+
+    """
+    cdef Float16 f = Float16()
+    f._data.v = x._data.v ^ <uint16_t>0x8000
+    return f
+
+
 cpdef Float16 f16_add(Float16 x, Float16 y):
     """Adds the IEEE 754 binary16 floating points.
 
@@ -4191,6 +4246,21 @@ cpdef Float32 f32_round_to_int(
     return _make_float32(sf.f32_roundToInt(x._data, rounding_mode, exact))
 
 
+cpdef Float32 f32_neg(Float32 x):
+    """Negates the IEEE 754 binary32 floating point.
+
+    Args:
+        x: The floating point to be negated.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary32 floating point (``-x``).
+
+    """
+    cdef Float32 f = Float32()
+    f._data.v = x._data.v ^ <uint32_t>0x80000000
+    return f
+
+
 cpdef Float32 f32_add(Float32 x, Float32 y):
     """Adds the IEEE 754 binary32 floating points.
 
@@ -4521,6 +4591,21 @@ cpdef Float64 f64_round_to_int(
     return _make_float64(sf.f64_roundToInt(x._data, rounding_mode, exact))
 
 
+cpdef Float64 f64_neg(Float64 x):
+    """Negates the IEEE 754 binary64 floating point.
+
+    Args:
+        x: The floating point to be negated.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary64 floating point (``-x``).
+
+    """
+    cdef Float64 f = Float64()
+    f._data.v = x._data.v ^ <uint64_t>0x80000000_00000000
+    return f
+
+
 cpdef Float64 f64_add(Float64 x, Float64 y):
     """Adds the IEEE 754 binary64 floating points.
 
@@ -4849,6 +4934,24 @@ cpdef Float128 f128_round_to_int(
 
     """
     return _make_float128(sf.f128_roundToInt(x._data, rounding_mode, exact))
+
+
+cpdef Float128 f128_neg(Float128 x):
+    """Negates the IEEE 754 binary128 floating point.
+
+    Args:
+        x: The floating point to be negated.
+
+    Returns:
+        The resulted number expressed as an IEEE 754 binary128 floating point (``-x``).
+
+    """
+    cdef ui128_f128 t
+    t.f = x._data
+    t.ui.v0 ^= <uint64_t>0x80000000_00000000
+    cdef Float128 o = Float128()
+    o._data = t.f
+    return o
 
 
 cpdef Float128 f128_add(Float128 x, Float128 y):

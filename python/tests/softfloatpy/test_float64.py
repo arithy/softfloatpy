@@ -99,6 +99,13 @@ def test_f64_round_to_int() -> None:
     assert sf.f64_round_to_int(o, sf.RoundingMode.MIN).to_bytes() == o.round_to_int(sf.RoundingMode.MIN).to_bytes()
 
 
+def test_f64_neg() -> None:
+    x: float = -12.5
+    o: sf.Float64 = sf.Float64.from_float(x)
+    assert sf.f64_neg(o).to_float() == -x
+    assert sf.f64_neg(o).to_bytes() == sf.Float64.neg(o).to_bytes()
+
+
 def test_f64_add() -> None:
     x: float = -12.5
     y: float = 3.25
