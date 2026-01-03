@@ -1,6 +1,6 @@
 # SoftFloatPy: A Python binding of Berkeley SoftFloat.
 #
-# Copyright (c) 2024-2025 Arihiro Yoshida. All rights reserved.
+# Copyright (c) 2024-2026 Arihiro Yoshida. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -1009,6 +1009,28 @@ class BFloat16:
         """
         ...
 
+    def is_nan(self) -> bool:
+        """Tests if the 16-bit brain floating point is a NaN.
+
+        The result is the same as that of :func:`bf16_is_nan()`.
+
+        Returns:
+            ``True`` if the floating point is a NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def is_inf(self) -> bool:
+        """Tests if the 16-bit brain floating point is an infinity.
+
+        The result is the same as that of :func:`bf16_is_inf()`.
+
+        Returns:
+            ``True`` if the floating point is an infinity, ``False`` otherwise.
+
+        """
+        ...
+
     def __str__(self) -> str:
         ...
 
@@ -1443,6 +1465,28 @@ class Float16:
 
         Returns:
             ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def is_nan(self) -> bool:
+        """Tests if the IEEE 754 binary16 floating point is a NaN.
+
+        The result is the same as that of :func:`f16_is_nan()`.
+
+        Returns:
+            ``True`` if the floating point is a NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def is_inf(self) -> bool:
+        """Tests if the IEEE 754 binary16 floating point is an infinity.
+
+        The result is the same as that of :func:`f16_is_inf()`.
+
+        Returns:
+            ``True`` if the floating point is an infinity, ``False`` otherwise.
 
         """
         ...
@@ -1956,6 +2000,28 @@ class Float32:
         """
         ...
 
+    def is_nan(self) -> bool:
+        """Tests if the IEEE 754 binary32 floating point is a NaN.
+
+        The result is the same as that of :func:`f32_is_nan()`.
+
+        Returns:
+            ``True`` if the floating point is a NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def is_inf(self) -> bool:
+        """Tests if the IEEE 754 binary32 floating point is an infinity.
+
+        The result is the same as that of :func:`f32_is_inf()`.
+
+        Returns:
+            ``True`` if the floating point is an infinity, ``False`` otherwise.
+
+        """
+        ...
+
     def __str__(self) -> str:
         ...
 
@@ -2450,6 +2516,28 @@ class Float64:
 
         Returns:
             ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def is_nan(self) -> bool:
+        """Tests if the IEEE 754 binary64 floating point is a NaN.
+
+        The result is the same as that of :func:`f64_is_nan()`.
+
+        Returns:
+            ``True`` if the floating point is a NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def is_inf(self) -> bool:
+        """Tests if the IEEE 754 binary64 floating point is an infinity.
+
+        The result is the same as that of :func:`f64_is_inf()`.
+
+        Returns:
+            ``True`` if the floating point is an infinity, ``False`` otherwise.
 
         """
         ...
@@ -2960,6 +3048,28 @@ class Float128:
 
         Returns:
             ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def is_nan(self) -> bool:
+        """Tests if the IEEE 754 binary128 floating point is a NaN.
+
+        The result is the same as that of :func:`f128_is_nan()`.
+
+        Returns:
+            ``True`` if the floating point is a NaN, ``False`` otherwise.
+
+        """
+        ...
+
+    def is_inf(self) -> bool:
+        """Tests if the IEEE 754 binary128 floating point is an infinity.
+
+        The result is the same as that of :func:`f128_is_inf()`.
+
+        Returns:
+            ``True`` if the floating point is an infinity, ``False`` otherwise.
 
         """
         ...
@@ -3652,6 +3762,32 @@ def f16_is_signaling_nan(x: Float16) -> bool:
     ...
 
 
+def f16_is_nan(x: Float16) -> bool:
+    """Tests if the IEEE 754 binary16 floating point is a NaN.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is a NaN, ``False`` otherwise.
+
+    """
+    ...
+
+
+def f16_is_inf(x: Float16) -> bool:
+    """Tests if the IEEE 754 binary16 floating point is an infinity.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is an infinity, ``False`` otherwise.
+
+    """
+    ...
+
+
 def bf16_to_f32(x: BFloat16) -> Float32:
     """Converts the 16-bit brain floating point to an IEEE 754 binary32 floating point.
 
@@ -3686,6 +3822,32 @@ def bf16_is_signaling_nan(x: BFloat16) -> bool:
 
     Returns:
         ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+    """
+    ...
+
+
+def bf16_is_nan(x: BFloat16) -> bool:
+    """Tests if the 16-bit brain floating point is a NaN.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is a NaN, ``False`` otherwise.
+
+    """
+    ...
+
+
+def bf16_is_inf(x: BFloat16) -> bool:
+    """Tests if the 16-bit brain floating point is an infinity.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is an infinity, ``False`` otherwise.
 
     """
     ...
@@ -4034,6 +4196,32 @@ def f32_is_signaling_nan(x: Float32) -> bool:
     ...
 
 
+def f32_is_nan(x: Float32) -> bool:
+    """Tests if the IEEE 754 binary32 floating point is a NaN.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is a NaN, ``False`` otherwise.
+
+    """
+    ...
+
+
+def f32_is_inf(x: Float32) -> bool:
+    """Tests if the IEEE 754 binary32 floating point is an infinity.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is an infinity, ``False`` otherwise.
+
+    """
+    ...
+
+
 def f64_to_ui32(
     x: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
 ) -> UInt32:
@@ -4377,6 +4565,32 @@ def f64_is_signaling_nan(x: Float64) -> bool:
     ...
 
 
+def f64_is_nan(x: Float64) -> bool:
+    """Tests if the IEEE 754 binary64 floating point is a NaN.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is a NaN, ``False`` otherwise.
+
+    """
+    ...
+
+
+def f64_is_inf(x: Float64) -> bool:
+    """Tests if the IEEE 754 binary64 floating point is an infinity.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is an infinity, ``False`` otherwise.
+
+    """
+    ...
+
+
 def f128_to_ui32(
     x: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
 ) -> UInt32:
@@ -4715,6 +4929,32 @@ def f128_is_signaling_nan(x: Float128) -> bool:
 
     Returns:
         ``True`` if the floating point is a signaling NaN, ``False`` otherwise.
+
+    """
+    ...
+
+
+def f128_is_nan(x: Float128) -> bool:
+    """Tests if the IEEE 754 binary128 floating point is a NaN.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is a NaN, ``False`` otherwise.
+
+    """
+    ...
+
+
+def f128_is_inf(x: Float128) -> bool:
+    """Tests if the IEEE 754 binary128 floating point is an infinity.
+
+    Args:
+        x: The floating point to be tested.
+
+    Returns:
+        ``True`` if the floating point is an infinity, ``False`` otherwise.
 
     """
     ...

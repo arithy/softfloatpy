@@ -1,6 +1,6 @@
 # SoftFloatPy: A Python binding of Berkeley SoftFloat.
 #
-# Copyright (c) 2024-2025 Arihiro Yoshida. All rights reserved.
+# Copyright (c) 2024-2026 Arihiro Yoshida. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -79,9 +79,13 @@ __all__ = [
     "f16_le_quiet",
     "f16_lt_quiet",
     "f16_is_signaling_nan",
+    "f16_is_nan",
+    "f16_is_inf",
     "bf16_to_f32",
     "f32_to_bf16",
     "bf16_is_signaling_nan",
+    "bf16_is_nan",
+    "bf16_is_inf",
     "f32_to_ui32",
     "f32_to_ui64",
     "f32_to_i32",
@@ -105,6 +109,8 @@ __all__ = [
     "f32_le_quiet",
     "f32_lt_quiet",
     "f32_is_signaling_nan",
+    "f32_is_nan",
+    "f32_is_inf",
     "f64_to_ui32",
     "f64_to_ui64",
     "f64_to_i32",
@@ -128,6 +134,8 @@ __all__ = [
     "f64_le_quiet",
     "f64_lt_quiet",
     "f64_is_signaling_nan",
+    "f64_is_nan",
+    "f64_is_inf",
     "f128_to_ui32",
     "f128_to_ui64",
     "f128_to_i32",
@@ -150,7 +158,9 @@ __all__ = [
     "f128_eq_signaling",
     "f128_le_quiet",
     "f128_lt_quiet",
-    "f128_is_signaling_nan"
+    "f128_is_signaling_nan",
+    "f128_is_nan",
+    "f128_is_inf"
 ]
 
 from ._version import __version__  # noqa:F401
@@ -214,9 +224,13 @@ from ._core import (
     f16_le_quiet,
     f16_lt_quiet,
     f16_is_signaling_nan,
+    f16_is_nan,
+    f16_is_inf,
     bf16_to_f32,
     f32_to_bf16,
     bf16_is_signaling_nan,
+    bf16_is_nan,
+    bf16_is_inf,
     f32_to_ui32,
     f32_to_ui64,
     f32_to_i32,
@@ -240,6 +254,8 @@ from ._core import (
     f32_le_quiet,
     f32_lt_quiet,
     f32_is_signaling_nan,
+    f32_is_nan,
+    f32_is_inf,
     f64_to_ui32,
     f64_to_ui64,
     f64_to_i32,
@@ -263,6 +279,8 @@ from ._core import (
     f64_le_quiet,
     f64_lt_quiet,
     f64_is_signaling_nan,
+    f64_is_nan,
+    f64_is_inf,
     f128_to_ui32,
     f128_to_ui64,
     f128_to_i32,
@@ -285,5 +303,7 @@ from ._core import (
     f128_eq_signaling,
     f128_le_quiet,
     f128_lt_quiet,
-    f128_is_signaling_nan
+    f128_is_signaling_nan,
+    f128_is_nan,
+    f128_is_inf
 )

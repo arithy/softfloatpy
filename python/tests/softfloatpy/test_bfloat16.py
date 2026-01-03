@@ -1,6 +1,6 @@
 # SoftFloatPy: A Python binding of Berkeley SoftFloat.
 #
-# Copyright (c) 2024-2025 Arihiro Yoshida. All rights reserved.
+# Copyright (c) 2024-2026 Arihiro Yoshida. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,9 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import math
+
 import softfloatpy as sf
 
 _SIGNALING_NAN: bytes = b'\xff\x81'
+_QUIET_NAN: bytes = b'\xff\xc0'
 
 
 def test_bf16_size() -> None:
@@ -48,6 +51,45 @@ def test_bf16_to_f32() -> None:
 
 
 def test_bf16_is_signaling_nan() -> None:
-    o: sf.BFloat16 = sf.BFloat16.from_bytes(_SIGNALING_NAN)
-    assert sf.bf16_is_signaling_nan(o)
-    assert o.is_signaling_nan()
+    for o in [
+        sf.BFloat16.from_bytes(_SIGNALING_NAN)
+    ]:
+        assert sf.bf16_is_signaling_nan(o)
+        assert o.is_signaling_nan()
+    for o in [
+        sf.BFloat16.from_bytes(_QUIET_NAN),
+        sf.BFloat16.from_float(-math.inf),
+        sf.BFloat16.from_float(-12.5)
+    ]:
+        assert not sf.bf16_is_signaling_nan(o)
+        assert not o.is_signaling_nan()
+
+
+def test_bf16_is_nan() -> None:
+    for o in [
+        sf.BFloat16.from_bytes(_SIGNALING_NAN),
+        sf.BFloat16.from_bytes(_QUIET_NAN)
+    ]:
+        assert sf.bf16_is_nan(o)
+        assert o.is_nan()
+    for o in [
+        sf.BFloat16.from_float(-math.inf),
+        sf.BFloat16.from_float(-12.5)
+    ]:
+        assert not sf.bf16_is_nan(o)
+        assert not o.is_nan()
+
+
+def test_bf16_is_inf() -> None:
+    for o in [
+        sf.BFloat16.from_float(-math.inf)
+    ]:
+        assert sf.bf16_is_inf(o)
+        assert o.is_inf()
+    for o in [
+        sf.BFloat16.from_bytes(_SIGNALING_NAN),
+        sf.BFloat16.from_bytes(_QUIET_NAN),
+        sf.BFloat16.from_float(-12.5)
+    ]:
+        assert not sf.bf16_is_inf(o)
+        assert not o.is_inf()

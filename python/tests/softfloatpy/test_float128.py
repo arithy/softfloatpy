@@ -1,6 +1,6 @@
 # SoftFloatPy: A Python binding of Berkeley SoftFloat.
 #
-# Copyright (c) 2024-2025 Arihiro Yoshida. All rights reserved.
+# Copyright (c) 2024-2026 Arihiro Yoshida. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,7 @@ import math
 import softfloatpy as sf
 
 _SIGNALING_NAN: bytes = b'\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01'
+_QUIET_NAN: bytes = b'\xff\xff\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 
 
 def test_f128_size() -> None:
@@ -260,9 +261,48 @@ def test_f128_lt_quiet() -> None:
 
 
 def test_f128_is_signaling_nan() -> None:
-    o: sf.Float128 = sf.Float128.from_bytes(_SIGNALING_NAN)
-    assert sf.f128_is_signaling_nan(o)
-    assert o.is_signaling_nan()
+    for o in [
+        sf.Float128.from_bytes(_SIGNALING_NAN)
+    ]:
+        assert sf.f128_is_signaling_nan(o)
+        assert o.is_signaling_nan()
+    for o in [
+        sf.Float128.from_bytes(_QUIET_NAN),
+        sf.Float128.from_float(-math.inf),
+        sf.Float128.from_float(-12.5)
+    ]:
+        assert not sf.f128_is_signaling_nan(o)
+        assert not o.is_signaling_nan()
+
+
+def test_f128_is_nan() -> None:
+    for o in [
+        sf.Float128.from_bytes(_SIGNALING_NAN),
+        sf.Float128.from_bytes(_QUIET_NAN)
+    ]:
+        assert sf.f128_is_nan(o)
+        assert o.is_nan()
+    for o in [
+        sf.Float128.from_float(-math.inf),
+        sf.Float128.from_float(-12.5)
+    ]:
+        assert not sf.f128_is_nan(o)
+        assert not o.is_nan()
+
+
+def test_f128_is_inf() -> None:
+    for o in [
+        sf.Float128.from_float(-math.inf)
+    ]:
+        assert sf.f128_is_inf(o)
+        assert o.is_inf()
+    for o in [
+        sf.Float128.from_bytes(_SIGNALING_NAN),
+        sf.Float128.from_bytes(_QUIET_NAN),
+        sf.Float128.from_float(-12.5)
+    ]:
+        assert not sf.f128_is_inf(o)
+        assert not o.is_inf()
 
 
 def test_operators() -> None:
