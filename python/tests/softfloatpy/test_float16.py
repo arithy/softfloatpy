@@ -165,7 +165,7 @@ def test_f16_sqrt() -> None:
     x: float = 2.25
     o: sf.Float16 = sf.Float16.from_float(x)
     assert sf.f16_sqrt(o).to_float() == math.sqrt(x)
-    assert sf.f16_sqrt(o).to_bytes() == sf.Float16.sqrt(o).to_bytes()
+    assert sf.f16_sqrt(o).to_bytes() == o.sqrt().to_bytes()
 
 
 def test_f16_eq() -> None:

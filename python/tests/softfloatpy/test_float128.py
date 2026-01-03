@@ -165,7 +165,7 @@ def test_f128_sqrt() -> None:
     x: float = 2.25
     o: sf.Float128 = sf.Float128.from_float(x)
     assert sf.f128_sqrt(o).to_float() == math.sqrt(x)
-    assert sf.f128_sqrt(o).to_bytes() == sf.Float128.sqrt(o).to_bytes()
+    assert sf.f128_sqrt(o).to_bytes() == o.sqrt().to_bytes()
 
 
 def test_f128_eq() -> None:

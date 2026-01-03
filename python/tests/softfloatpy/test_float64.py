@@ -165,7 +165,7 @@ def test_f64_sqrt() -> None:
     x: float = 2.25
     o: sf.Float64 = sf.Float64.from_float(x)
     assert sf.f64_sqrt(o).to_float() == math.sqrt(x)
-    assert sf.f64_sqrt(o).to_bytes() == sf.Float64.sqrt(o).to_bytes()
+    assert sf.f64_sqrt(o).to_bytes() == o.sqrt().to_bytes()
 
 
 def test_f64_eq() -> None:

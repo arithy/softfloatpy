@@ -1323,14 +1323,10 @@ class Float16:
         """
         ...
 
-    @classmethod
-    def sqrt(cls, x: Self) -> Self:
+    def sqrt(self) -> Self:
         """Calculates a square root of the IEEE 754 binary16 floating point.
 
         The result is the same as that of :func:`f16_sqrt()`.
-
-        Args:
-            x: The floating point whose square root is to be calculated.
 
         Returns:
             The resulted number (``sqrt(x)``).
@@ -1836,14 +1832,10 @@ class Float32:
         """
         ...
 
-    @classmethod
-    def sqrt(cls, x: Self) -> Self:
+    def sqrt(self) -> Self:
         """Calculates a square root of the IEEE 754 binary32 floating point.
 
         The result is the same as that of :func:`f32_sqrt()`.
-
-        Args:
-            x: The floating point whose square root is to be calculated.
 
         Returns:
             The resulted number (``sqrt(x)``).
@@ -2338,14 +2330,10 @@ class Float64:
         """
         ...
 
-    @classmethod
-    def sqrt(cls, x: Self) -> Self:
+    def sqrt(self) -> Self:
         """Calculates a square root of the IEEE 754 binary64 floating point.
 
         The result is the same as that of :func:`f64_sqrt()`.
-
-        Args:
-            x: The floating point whose square root is to be calculated.
 
         Returns:
             The resulted number (``sqrt(x)``).
@@ -2852,14 +2840,10 @@ class Float128:
         """
         ...
 
-    @classmethod
-    def sqrt(cls, x: Self) -> Self:
+    def sqrt(self) -> Self:
         """Calculates a square root of the IEEE 754 binary128 floating point.
 
         The result is the same as that of :func:`f128_sqrt()`.
-
-        Args:
-            x: The floating point whose square root is to be calculated.
 
         Returns:
             The resulted number (``sqrt(x)``).

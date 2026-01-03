@@ -171,7 +171,7 @@ def test_f32_sqrt() -> None:
     x: float = 2.25
     o: sf.Float32 = sf.Float32.from_float(x)
     assert sf.f32_sqrt(o).to_float() == math.sqrt(x)
-    assert sf.f32_sqrt(o).to_bytes() == sf.Float32.sqrt(o).to_bytes()
+    assert sf.f32_sqrt(o).to_bytes() == o.sqrt().to_bytes()
 
 
 def test_f32_eq() -> None:

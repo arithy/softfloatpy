@@ -1546,20 +1546,16 @@ cdef class Float16:
         """
         return f16_rem(x, y)
 
-    @classmethod
-    def sqrt(cls, Float16 x) -> Float16:
+    cpdef Float16 sqrt(self):
         """Calculates a square root of the IEEE 754 binary16 floating point.
 
         The result is the same as that of :func:`f16_sqrt()`.
-
-        Args:
-            x: The floating point whose square root is to be calculated.
 
         Returns:
             The resulted number (``sqrt(x)``).
 
         """
-        return f16_sqrt(x)
+        return f16_sqrt(self)
 
     @classmethod
     def eq(cls, Float16 x, Float16 y) -> bool:
@@ -2092,20 +2088,16 @@ cdef class Float32:
         """
         return f32_rem(x, y)
 
-    @classmethod
-    def sqrt(cls, Float32 x) -> Float32:
+    cpdef Float32 sqrt(self):
         """Calculates a square root of the IEEE 754 binary32 floating point.
 
         The result is the same as that of :func:`f32_sqrt()`.
-
-        Args:
-            x: The floating point whose square root is to be calculated.
 
         Returns:
             The resulted number (``sqrt(x)``).
 
         """
-        return f32_sqrt(x)
+        return f32_sqrt(self)
 
     @classmethod
     def eq(cls, Float32 x, Float32 y) -> bool:
@@ -2633,20 +2625,16 @@ cdef class Float64:
         """
         return f64_rem(x, y)
 
-    @classmethod
-    def sqrt(cls, Float64 x) -> Float64:
+    cpdef Float64 sqrt(self):
         """Calculates a square root of the IEEE 754 binary64 floating point.
 
         The result is the same as that of :func:`f64_sqrt()`.
-
-        Args:
-            x: The floating point whose square root is to be calculated.
 
         Returns:
             The resulted number (``sqrt(x)``).
 
         """
-        return f64_sqrt(x)
+        return f64_sqrt(self)
 
     @classmethod
     def eq(cls, Float64 x, Float64 y) -> bool:
@@ -3210,20 +3198,16 @@ cdef class Float128:
         """
         return f128_rem(x, y)
 
-    @classmethod
-    def sqrt(cls, Float128 x) -> Float128:
+    cpdef Float128 sqrt(self):
         """Calculates a square root of the IEEE 754 binary128 floating point.
 
         The result is the same as that of :func:`f128_sqrt()`.
-
-        Args:
-            x: The floating point whose square root is to be calculated.
 
         Returns:
             The resulted number (``sqrt(x)``).
 
         """
-        return f128_sqrt(x)
+        return f128_sqrt(self)
 
     @classmethod
     def eq(cls, Float128 x, Float128 y) -> bool:
