@@ -1,6 +1,6 @@
 # SoftFloatPy: A Python binding of Berkeley SoftFloat.
 #
-# Copyright (c) 2024-2025 Arihiro Yoshida. All rights reserved.
+# Copyright (c) 2024-2026 Arihiro Yoshida. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,4 +20,4 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-__version__ = '1.2.1'
+__version__ = '1.2.2'
