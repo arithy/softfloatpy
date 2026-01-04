@@ -48,6 +48,8 @@ def test_f32_to_bf16() -> None:
     f: float = -12.5
     o: sf.Float32 = sf.Float32.from_float(f)
     assert sf.f32_to_bf16(o).to_float() == f
+    assert sf.f32_to_bf16(o).to_bytes() == o.to_bf16().to_bytes()
+    assert sf.Float32.from_bf16(o.to_bf16()).to_bytes() == o.to_bytes()
 
 
 def test_f32_to_ui32() -> None:
@@ -55,6 +57,7 @@ def test_f32_to_ui32() -> None:
     o: sf.Float32 = sf.Float32.from_float(f)
     assert sf.f32_to_ui32(o, sf.RoundingMode.MIN).to_int() == math.floor(f)
     assert sf.f32_to_ui32(o, sf.RoundingMode.MIN).to_bytes() == o.to_ui32(sf.RoundingMode.MIN).to_bytes()
+    assert sf.Float32.from_ui32(o.to_ui32(sf.RoundingMode.MIN)).to_bytes() == o.round_to_int(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f32_to_ui64() -> None:
@@ -62,6 +65,7 @@ def test_f32_to_ui64() -> None:
     o: sf.Float32 = sf.Float32.from_float(f)
     assert sf.f32_to_ui64(o, sf.RoundingMode.MIN).to_int() == math.floor(f)
     assert sf.f32_to_ui64(o, sf.RoundingMode.MIN).to_bytes() == o.to_ui64(sf.RoundingMode.MIN).to_bytes()
+    assert sf.Float32.from_ui64(o.to_ui64(sf.RoundingMode.MIN)).to_bytes() == o.round_to_int(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f32_to_i32() -> None:
@@ -69,6 +73,7 @@ def test_f32_to_i32() -> None:
     o: sf.Float32 = sf.Float32.from_float(f)
     assert sf.f32_to_i32(o, sf.RoundingMode.MIN).to_int() == math.floor(f)
     assert sf.f32_to_i32(o, sf.RoundingMode.MIN).to_bytes() == o.to_i32(sf.RoundingMode.MIN).to_bytes()
+    assert sf.Float32.from_i32(o.to_i32(sf.RoundingMode.MIN)).to_bytes() == o.round_to_int(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f32_to_i64() -> None:
@@ -76,6 +81,7 @@ def test_f32_to_i64() -> None:
     o: sf.Float32 = sf.Float32.from_float(f)
     assert sf.f32_to_i64(o, sf.RoundingMode.MIN).to_int() == math.floor(f)
     assert sf.f32_to_i64(o, sf.RoundingMode.MIN).to_bytes() == o.to_i64(sf.RoundingMode.MIN).to_bytes()
+    assert sf.Float32.from_i64(o.to_i64(sf.RoundingMode.MIN)).to_bytes() == o.round_to_int(sf.RoundingMode.MIN).to_bytes()
 
 
 def test_f32_to_f16() -> None:
@@ -83,6 +89,13 @@ def test_f32_to_f16() -> None:
     o: sf.Float32 = sf.Float32.from_float(f)
     assert sf.f32_to_f16(o).to_float() == f
     assert sf.f32_to_f16(o).to_bytes() == o.to_f16().to_bytes()
+    assert sf.Float32.from_f16(o.to_f16()).to_bytes() == o.to_bytes()
+
+
+def test_f32_to_f32() -> None:
+    f: float = -12.5
+    o: sf.Float32 = sf.Float32.from_float(f)
+    assert sf.Float32.from_f32(o.to_f32()).to_bytes() == o.to_bytes()
 
 
 def test_f32_to_f64() -> None:
@@ -90,6 +103,7 @@ def test_f32_to_f64() -> None:
     o: sf.Float32 = sf.Float32.from_float(f)
     assert sf.f32_to_f64(o).to_float() == f
     assert sf.f32_to_f64(o).to_bytes() == o.to_f64().to_bytes()
+    assert sf.Float32.from_f64(o.to_f64()).to_bytes() == o.to_bytes()
 
 
 def test_f32_to_f128() -> None:
@@ -97,6 +111,7 @@ def test_f32_to_f128() -> None:
     o: sf.Float32 = sf.Float32.from_float(f)
     assert sf.f32_to_f128(o).to_float() == f
     assert sf.f32_to_f128(o).to_bytes() == o.to_f128().to_bytes()
+    assert sf.Float32.from_f128(o.to_f128()).to_bytes() == o.to_bytes()
 
 
 def test_f32_round_to_int() -> None:

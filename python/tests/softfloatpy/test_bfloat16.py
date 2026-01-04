@@ -48,6 +48,7 @@ def test_bf16_to_f32() -> None:
     o: sf.BFloat16 = sf.BFloat16.from_float(f)
     assert sf.bf16_to_f32(o).to_float() == f
     assert sf.bf16_to_f32(o).to_bytes() == o.to_f32().to_bytes()
+    assert sf.BFloat16.from_f32(o.to_f32()).to_bytes() == o.to_bytes()
 
 
 def test_bf16_is_signaling_nan() -> None:

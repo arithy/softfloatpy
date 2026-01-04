@@ -147,6 +147,24 @@ class UInt32:
         """
         ...
 
+    @classmethod
+    def from_f16(cls, src: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary16 floating point.
+
+        The result is the same as that of :func:`f16_to_ui32()`.
+
+        Args:
+            src: The IEEE 754 binary16 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary16 floating point.
+
+        """
+        ...
+
     def to_f16(self) -> Float16:
         """Converts the 32-bit unsigned integer to an IEEE 754 binary16 floating point.
 
@@ -154,6 +172,24 @@ class UInt32:
 
         Returns:
             The IEEE 754 binary16 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f32(cls, src: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary32 floating point.
+
+        The result is the same as that of :func:`f32_to_ui32()`.
+
+        Args:
+            src: The IEEE 754 binary32 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary32 floating point.
 
         """
         ...
@@ -169,6 +205,24 @@ class UInt32:
         """
         ...
 
+    @classmethod
+    def from_f64(cls, src: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary64 floating point.
+
+        The result is the same as that of :func:`f64_to_ui32()`.
+
+        Args:
+            src: The IEEE 754 binary64 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary64 floating point.
+
+        """
+        ...
+
     def to_f64(self) -> Float64:
         """Converts the 32-bit unsigned integer to an IEEE 754 binary64 floating point.
 
@@ -176,6 +230,24 @@ class UInt32:
 
         Returns:
             The IEEE 754 binary64 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f128(cls, src: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`f128_to_ui32()`.
+
+        Args:
+            src: The IEEE 754 binary128 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary128 floating point.
 
         """
         ...
@@ -360,6 +432,24 @@ class UInt64:
         """
         ...
 
+    @classmethod
+    def from_f16(cls, src: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary16 floating point.
+
+        The result is the same as that of :func:`f16_to_ui64()`.
+
+        Args:
+            src: The IEEE 754 binary16 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary16 floating point.
+
+        """
+        ...
+
     def to_f16(self) -> Float16:
         """Converts the 64-bit unsigned integer to an IEEE 754 binary16 floating point.
 
@@ -367,6 +457,24 @@ class UInt64:
 
         Returns:
             The IEEE 754 binary16 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f32(cls, src: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary32 floating point.
+
+        The result is the same as that of :func:`f32_to_ui64()`.
+
+        Args:
+            src: The IEEE 754 binary32 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary32 floating point.
 
         """
         ...
@@ -382,6 +490,24 @@ class UInt64:
         """
         ...
 
+    @classmethod
+    def from_f64(cls, src: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary64 floating point.
+
+        The result is the same as that of :func:`f64_to_ui64()`.
+
+        Args:
+            src: The IEEE 754 binary64 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary64 floating point.
+
+        """
+        ...
+
     def to_f64(self) -> Float64:
         """Converts the 64-bit unsigned integer to an IEEE 754 binary64 floating point.
 
@@ -389,6 +515,24 @@ class UInt64:
 
         Returns:
             The IEEE 754 binary64 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f128(cls, src: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`f128_to_ui64()`.
+
+        Args:
+            src: The IEEE 754 binary128 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary128 floating point.
 
         """
         ...
@@ -572,6 +716,24 @@ class Int32:
         """
         ...
 
+    @classmethod
+    def from_f16(cls, src: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary16 floating point.
+
+        The result is the same as that of :func:`f16_to_i32()`.
+
+        Args:
+            src: The IEEE 754 binary16 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary16 floating point.
+
+        """
+        ...
+
     def to_f16(self) -> Float16:
         """Converts the 32-bit signed integer to an IEEE 754 binary16 floating point.
 
@@ -579,6 +741,24 @@ class Int32:
 
         Returns:
             The IEEE 754 binary16 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f32(cls, src: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary32 floating point.
+
+        The result is the same as that of :func:`f32_to_i32()`.
+
+        Args:
+            src: The IEEE 754 binary32 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary32 floating point.
 
         """
         ...
@@ -594,6 +774,24 @@ class Int32:
         """
         ...
 
+    @classmethod
+    def from_f64(cls, src: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary64 floating point.
+
+        The result is the same as that of :func:`f64_to_i32()`.
+
+        Args:
+            src: The IEEE 754 binary64 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary64 floating point.
+
+        """
+        ...
+
     def to_f64(self) -> Float64:
         """Converts the 32-bit signed integer to an IEEE 754 binary64 floating point.
 
@@ -601,6 +799,24 @@ class Int32:
 
         Returns:
             The IEEE 754 binary64 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f128(cls, src: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`f128_to_i32()`.
+
+        Args:
+            src: The IEEE 754 binary128 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary128 floating point.
 
         """
         ...
@@ -784,6 +1000,24 @@ class Int64:
         """
         ...
 
+    @classmethod
+    def from_f16(cls, src: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary16 floating point.
+
+        The result is the same as that of :func:`f16_to_i64()`.
+
+        Args:
+            src: The IEEE 754 binary16 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary16 floating point.
+
+        """
+        ...
+
     def to_f16(self) -> Float16:
         """Converts the 64-bit signed integer to an IEEE 754 binary16 floating point.
 
@@ -791,6 +1025,24 @@ class Int64:
 
         Returns:
             The IEEE 754 binary16 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f32(cls, src: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary32 floating point.
+
+        The result is the same as that of :func:`f32_to_i64()`.
+
+        Args:
+            src: The IEEE 754 binary32 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary32 floating point.
 
         """
         ...
@@ -806,6 +1058,24 @@ class Int64:
         """
         ...
 
+    @classmethod
+    def from_f64(cls, src: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary64 floating point.
+
+        The result is the same as that of :func:`f64_to_i64()`.
+
+        Args:
+            src: The IEEE 754 binary64 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary64 floating point.
+
+        """
+        ...
+
     def to_f64(self) -> Float64:
         """Converts the 64-bit signed integer to an IEEE 754 binary64 floating point.
 
@@ -813,6 +1083,24 @@ class Int64:
 
         Returns:
             The IEEE 754 binary64 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f128(cls, src: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`f128_to_i64()`.
+
+        Args:
+            src: The IEEE 754 binary128 floating point from which a new instance is created.
+            rounding_mode: The rounding mode.
+            exact: If ``True`` is specified, the floating-point exception flags are to be set
+                   when exact conversion is unable.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary128 floating point.
 
         """
         ...
@@ -987,6 +1275,21 @@ class BFloat16:
         """
         ...
 
+    @classmethod
+    def from_f32(cls, src: Float32) -> BFloat16:
+        """Creates a new instance from the specified IEEE 754 binary32 floating point.
+
+        The result is the same as that of :func:`f32_to_bf16()`.
+
+        Args:
+            src: The IEEE 754 binary32 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary32 floating point.
+
+        """
+        ...
+
     def to_f32(self) -> Float32:
         """Converts the 16-bit brain floating point to an IEEE 754 binary32 floating point.
 
@@ -1114,6 +1417,21 @@ class Float16:
         """
         ...
 
+    @classmethod
+    def from_ui32(cls, src: UInt32) -> Self:
+        """Creates a new instance from the specified 32-bit unsigned integer.
+
+        The result is the same as that of :func:`ui32_to_f16()`.
+
+        Args:
+            src: The 32-bit unsigned integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 32-bit unsigned integer.
+
+        """
+        ...
+
     def to_ui32(
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> UInt32:
@@ -1128,6 +1446,21 @@ class Float16:
 
         Returns:
             The 32-bit unsigned integer.
+
+        """
+        ...
+
+    @classmethod
+    def from_ui64(cls, src: UInt64) -> Self:
+        """Creates a new instance from the specified 64-bit unsigned integer.
+
+        The result is the same as that of :func:`ui64_to_f16()`.
+
+        Args:
+            src: The 64-bit unsigned integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 64-bit unsigned integer.
 
         """
         ...
@@ -1150,6 +1483,21 @@ class Float16:
         """
         ...
 
+    @classmethod
+    def from_i32(cls, src: Int32) -> Self:
+        """Creates a new instance from the specified 32-bit signed integer.
+
+        The result is the same as that of :func:`i32_to_f16()`.
+
+        Args:
+            src: The 32-bit signed integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 32-bit signed integer.
+
+        """
+        ...
+
     def to_i32(
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> Int32:
@@ -1164,6 +1512,21 @@ class Float16:
 
         Returns:
             The 32-bit signed integer.
+
+        """
+        ...
+
+    @classmethod
+    def from_i64(cls, src: Int64) -> Self:
+        """Creates a new instance from the specified 64-bit signed integer.
+
+        The result is the same as that of :func:`i64_to_f16()`.
+
+        Args:
+            src: The 64-bit signed integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 64-bit signed integer.
 
         """
         ...
@@ -1186,6 +1549,47 @@ class Float16:
         """
         ...
 
+    @classmethod
+    def from_f16(cls, src: Float16) -> Float16:
+        """Creates a new instance from the specified IEEE 754 binary16 floating point.
+
+        The result is a copy of the specified instance.
+
+        Args:
+            src: The IEEE 754 binary16 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary16 floating point.
+
+        """
+        ...
+
+    def to_f16(self) -> Float16:
+        """Converts the IEEE 754 binary16 floating point to a binary16 floating point.
+
+        The result is a copy.
+
+        Returns:
+            The IEEE 754 binary16 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f32(cls, src: Float32) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary32 floating point.
+
+        The result is the same as that of :func:`f32_to_f16()`.
+
+        Args:
+            src: The IEEE 754 binary32 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary32 floating point.
+
+        """
+        ...
+
     def to_f32(self) -> Float32:
         """Converts the IEEE 754 binary16 floating point to a binary32 floating point.
 
@@ -1197,6 +1601,21 @@ class Float16:
         """
         ...
 
+    @classmethod
+    def from_f64(cls, src: Float64) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary64 floating point.
+
+        The result is the same as that of :func:`f64_to_f16()`.
+
+        Args:
+            src: The IEEE 754 binary64 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary64 floating point.
+
+        """
+        ...
+
     def to_f64(self) -> Float64:
         """Converts the IEEE 754 binary16 floating point to a binary64 floating point.
 
@@ -1204,6 +1623,21 @@ class Float16:
 
         Returns:
             The IEEE 754 binary64 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f128(cls, src: Float128) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`f128_to_f16()`.
+
+        Args:
+            src: The IEEE 754 binary128 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary128 floating point.
 
         """
         ...
@@ -1634,6 +2068,21 @@ class Float32:
         """
         ...
 
+    @classmethod
+    def from_bf16(cls, src: BFloat16) -> Self:
+        """Creates a new instance from the 16-bit brain floating point.
+
+        The result is the same as that of :func:`bf16_to_f32()`.
+
+        Args:
+            src: The 16-bit brain floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 16-bit brain floating point.
+
+        """
+        ...
+
     def to_bf16(self) -> BFloat16:
         """Converts the IEEE 754 binary32 floating point to a 16-bit brain floating point.
 
@@ -1641,6 +2090,21 @@ class Float32:
 
         Returns:
             The 16-bit brain floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_ui32(cls, src: UInt32) -> Self:
+        """Creates a new instance from the specified 32-bit unsigned integer.
+
+        The result is the same as that of :func:`ui32_to_f32()`.
+
+        Args:
+            src: The 32-bit unsigned integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 32-bit unsigned integer.
 
         """
         ...
@@ -1663,6 +2127,21 @@ class Float32:
         """
         ...
 
+    @classmethod
+    def from_ui64(cls, src: UInt64) -> Self:
+        """Creates a new instance from the specified 64-bit unsigned integer.
+
+        The result is the same as that of :func:`ui64_to_f32()`.
+
+        Args:
+            src: The 64-bit unsigned integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 64-bit unsigned integer.
+
+        """
+        ...
+
     def to_ui64(
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> UInt64:
@@ -1677,6 +2156,21 @@ class Float32:
 
         Returns:
             The 64-bit unsigned integer.
+
+        """
+        ...
+
+    @classmethod
+    def from_i32(cls, src: Int32) -> Self:
+        """Creates a new instance from the specified 32-bit signed integer.
+
+        The result is the same as that of :func:`i32_to_f32()`.
+
+        Args:
+            src: The 32-bit signed integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 32-bit signed integer.
 
         """
         ...
@@ -1699,6 +2193,21 @@ class Float32:
         """
         ...
 
+    @classmethod
+    def from_i64(cls, src: Int64) -> Self:
+        """Creates a new instance from the specified 64-bit signed integer.
+
+        The result is the same as that of :func:`i64_to_f32()`.
+
+        Args:
+            src: The 64-bit signed integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 64-bit signed integer.
+
+        """
+        ...
+
     def to_i64(
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> Int64:
@@ -1717,6 +2226,21 @@ class Float32:
         """
         ...
 
+    @classmethod
+    def from_f16(cls, src: Float16) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary16 floating point.
+
+        The result is the same as that of :func:`f16_to_f32()`.
+
+        Args:
+            src: The IEEE 754 binary16 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary16 floating point.
+
+        """
+        ...
+
     def to_f16(self) -> Float16:
         """Converts the IEEE 754 binary32 floating point to a binary16 floating point.
 
@@ -1728,6 +2252,47 @@ class Float32:
         """
         ...
 
+    @classmethod
+    def from_f32(cls, src: Float32) -> Float32:
+        """Creates a new instance from the specified IEEE 754 binary32 floating point.
+
+        The result is a copy of the specified instance.
+
+        Args:
+            src: The IEEE 754 binary32 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary32 floating point.
+
+        """
+        ...
+
+    def to_f32(self) -> Float32:
+        """Converts the IEEE 754 binary32 floating point to a binary32 floating point.
+
+        The result is a copy.
+
+        Returns:
+            The IEEE 754 binary32 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f64(cls, src: Float64) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary64 floating point.
+
+        The result is the same as that of :func:`f64_to_f32()`.
+
+        Args:
+            src: The IEEE 754 binary64 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary64 floating point.
+
+        """
+        ...
+
     def to_f64(self) -> Float64:
         """Converts the IEEE 754 binary32 floating point to a binary64 floating point.
 
@@ -1735,6 +2300,21 @@ class Float32:
 
         Returns:
             The IEEE 754 binary64 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f128(cls, src: Float128) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`f128_to_f32()`.
+
+        Args:
+            src: The IEEE 754 binary128 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary128 floating point.
 
         """
         ...
@@ -2165,6 +2745,21 @@ class Float64:
         """
         ...
 
+    @classmethod
+    def from_ui32(cls, src: UInt32) -> Self:
+        """Creates a new instance from the specified 32-bit unsigned integer.
+
+        The result is the same as that of :func:`ui32_to_f64()`.
+
+        Args:
+            src: The 32-bit unsigned integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 32-bit unsigned integer.
+
+        """
+        ...
+
     def to_ui32(
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> UInt32:
@@ -2179,6 +2774,21 @@ class Float64:
 
         Returns:
             The 32-bit unsigned integer.
+
+        """
+        ...
+
+    @classmethod
+    def from_ui64(cls, src: UInt64) -> Self:
+        """Creates a new instance from the specified 64-bit unsigned integer.
+
+        The result is the same as that of :func:`ui64_to_f64()`.
+
+        Args:
+            src: The 64-bit unsigned integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 64-bit unsigned integer.
 
         """
         ...
@@ -2201,6 +2811,21 @@ class Float64:
         """
         ...
 
+    @classmethod
+    def from_i32(cls, src: Int32) -> Self:
+        """Creates a new instance from the specified 32-bit signed integer.
+
+        The result is the same as that of :func:`i32_to_f64()`.
+
+        Args:
+            src: The 32-bit signed integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 32-bit signed integer.
+
+        """
+        ...
+
     def to_i32(
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> Int32:
@@ -2215,6 +2840,21 @@ class Float64:
 
         Returns:
             The 32-bit signed integer.
+
+        """
+        ...
+
+    @classmethod
+    def from_i64(cls, src: Int64) -> Self:
+        """Creates a new instance from the specified 64-bit signed integer.
+
+        The result is the same as that of :func:`i64_to_f64()`.
+
+        Args:
+            src: The 64-bit signed integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 64-bit signed integer.
 
         """
         ...
@@ -2237,6 +2877,21 @@ class Float64:
         """
         ...
 
+    @classmethod
+    def from_f16(cls, src: Float16) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary16 floating point.
+
+        The result is the same as that of :func:`f16_to_f64()`.
+
+        Args:
+            src: The IEEE 754 binary16 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary16 floating point.
+
+        """
+        ...
+
     def to_f16(self) -> Float16:
         """Converts the IEEE 754 binary64 floating point to a binary16 floating point.
 
@@ -2248,6 +2903,21 @@ class Float64:
         """
         ...
 
+    @classmethod
+    def from_f32(cls, src: Float32) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary32 floating point.
+
+        The result is the same as that of :func:`f32_to_f64()`.
+
+        Args:
+            src: The IEEE 754 binary32 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary32 floating point.
+
+        """
+        ...
+
     def to_f32(self) -> Float32:
         """Converts the IEEE 754 binary64 floating point to a binary32 floating point.
 
@@ -2255,6 +2925,47 @@ class Float64:
 
         Returns:
             The IEEE 754 binary32 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f64(cls, src: Float64) -> Float64:
+        """Creates a new instance from the specified IEEE 754 binary64 floating point.
+
+        The result is a copy of the specified instance.
+
+        Args:
+            src: The IEEE 754 binary64 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary64 floating point.
+
+        """
+        ...
+
+    def to_f64(self) -> Float64:
+        """Converts the IEEE 754 binary64 floating point to a binary64 floating point.
+
+        The result is a copy.
+
+        Returns:
+            The IEEE 754 binary64 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f128(cls, src: Float128) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary128 floating point.
+
+        The result is the same as that of :func:`f128_to_f64()`.
+
+        Args:
+            src: The IEEE 754 binary128 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary128 floating point.
 
         """
         ...
@@ -2697,6 +3408,21 @@ class Float128:
         """
         ...
 
+    @classmethod
+    def from_ui32(cls, src: UInt32) -> Self:
+        """Creates a new instance from the specified 32-bit unsigned integer.
+
+        The result is the same as that of :func:`ui32_to_f128()`.
+
+        Args:
+            src: The 32-bit unsigned integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 32-bit unsigned integer.
+
+        """
+        ...
+
     def to_ui32(
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> UInt32:
@@ -2711,6 +3437,21 @@ class Float128:
 
         Returns:
             The 32-bit unsigned integer.
+
+        """
+        ...
+
+    @classmethod
+    def from_ui64(cls, src: UInt64) -> Self:
+        """Creates a new instance from the specified 64-bit unsigned integer.
+
+        The result is the same as that of :func:`ui64_to_f128()`.
+
+        Args:
+            src: The 64-bit unsigned integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 64-bit unsigned integer.
 
         """
         ...
@@ -2733,6 +3474,21 @@ class Float128:
         """
         ...
 
+    @classmethod
+    def from_i32(cls, src: Int32) -> Self:
+        """Creates a new instance from the specified 32-bit signed integer.
+
+        The result is the same as that of :func:`i32_to_f128()`.
+
+        Args:
+            src: The 32-bit signed integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 32-bit signed integer.
+
+        """
+        ...
+
     def to_i32(
         self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
     ) -> Int32:
@@ -2747,6 +3503,21 @@ class Float128:
 
         Returns:
             The 32-bit signed integer.
+
+        """
+        ...
+
+    @classmethod
+    def from_i64(cls, src: Int64) -> Self:
+        """Creates a new instance from the specified 64-bit signed integer.
+
+        The result is the same as that of :func:`i64_to_f128()`.
+
+        Args:
+            src: The 64-bit signed integer from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified 64-bit signed integer.
 
         """
         ...
@@ -2769,6 +3540,21 @@ class Float128:
         """
         ...
 
+    @classmethod
+    def from_f16(cls, src: Float16) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary16 floating point.
+
+        The result is the same as that of :func:`f16_to_f128()`.
+
+        Args:
+            src: The IEEE 754 binary16 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary16 floating point.
+
+        """
+        ...
+
     def to_f16(self) -> Float16:
         """Converts the IEEE 754 binary128 floating point to a binary16 floating point.
 
@@ -2776,6 +3562,21 @@ class Float128:
 
         Returns:
             The IEEE 754 binary16 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f32(cls, src: Float32) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary32 floating point.
+
+        The result is the same as that of :func:`f32_to_f128()`.
+
+        Args:
+            src: The IEEE 754 binary32 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary32 floating point.
 
         """
         ...
@@ -2791,6 +3592,21 @@ class Float128:
         """
         ...
 
+    @classmethod
+    def from_f64(cls, src: Float64) -> Self:
+        """Creates a new instance from the specified IEEE 754 binary64 floating point.
+
+        The result is the same as that of :func:`f64_to_f128()`.
+
+        Args:
+            src: The IEEE 754 binary64 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary64 floating point.
+
+        """
+        ...
+
     def to_f64(self) -> Float64:
         """Converts the IEEE 754 binary128 floating point to a binary64 floating point.
 
@@ -2798,6 +3614,32 @@ class Float128:
 
         Returns:
             The IEEE 754 binary64 floating point.
+
+        """
+        ...
+
+    @classmethod
+    def from_f128(cls, src: Float128) -> Float128:
+        """Creates a new instance from the specified IEEE 754 binary128 floating point.
+
+        The result is a copy of the specified instance.
+
+        Args:
+            src: The IEEE 754 binary128 floating point from which a new instance is created.
+
+        Returns:
+            A new instance created from the specified IEEE 754 binary128 floating point.
+
+        """
+        ...
+
+    def to_f128(self) -> Float128:
+        """Converts the IEEE 754 binary128 floating point to a binary128 floating point.
+
+        The result is a copy.
+
+        Returns:
+            The IEEE 754 binary128 floating point.
 
         """
         ...

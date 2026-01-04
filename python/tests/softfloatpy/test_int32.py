@@ -1,6 +1,6 @@
 # SoftFloatPy: A Python binding of Berkeley SoftFloat.
 #
-# Copyright (c) 2024-2025 Arihiro Yoshida. All rights reserved.
+# Copyright (c) 2024-2026 Arihiro Yoshida. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -44,6 +44,7 @@ def test_i32_to_f16() -> None:
     o: sf.Int32 = sf.Int32.from_int(i)
     assert sf.i32_to_f16(o).to_float() == float(i)
     assert sf.i32_to_f16(o).to_bytes() == o.to_f16().to_bytes()
+    assert sf.Int32.from_f16(o.to_f16(), sf.RoundingMode.MIN).to_bytes() == o.to_bytes()
 
 
 def test_i32_to_f32() -> None:
@@ -51,6 +52,7 @@ def test_i32_to_f32() -> None:
     o: sf.Int32 = sf.Int32.from_int(i)
     assert sf.i32_to_f32(o).to_float() == float(i)
     assert sf.i32_to_f32(o).to_bytes() == o.to_f32().to_bytes()
+    assert sf.Int32.from_f32(o.to_f32(), sf.RoundingMode.MIN).to_bytes() == o.to_bytes()
 
 
 def test_i32_to_f64() -> None:
@@ -58,6 +60,7 @@ def test_i32_to_f64() -> None:
     o: sf.Int32 = sf.Int32.from_int(i)
     assert sf.i32_to_f64(o).to_float() == float(i)
     assert sf.i32_to_f64(o).to_bytes() == o.to_f64().to_bytes()
+    assert sf.Int32.from_f64(o.to_f64(), sf.RoundingMode.MIN).to_bytes() == o.to_bytes()
 
 
 def test_i32_to_f128() -> None:
@@ -65,6 +68,7 @@ def test_i32_to_f128() -> None:
     o: sf.Int32 = sf.Int32.from_int(i)
     assert sf.i32_to_f128(o).to_float() == float(i)
     assert sf.i32_to_f128(o).to_bytes() == o.to_f128().to_bytes()
+    assert sf.Int32.from_f128(o.to_f128(), sf.RoundingMode.MIN).to_bytes() == o.to_bytes()
 
 
 def test_operators() -> None:
