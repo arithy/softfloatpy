@@ -44,4 +44,4 @@ doc:
 	$(SPHINX_BUILD) -b html $(PYDOCSRCDIR) $(PYDOCOUTDIR)/html
 
 clean:
-	rm -rf $(PYDOCOUTDIR) $(PYROOTDIR)/src/softfloatpy.egg-info ./dist ./wheelhouse $(find . -name '__pycache__')
+	rm -rf $(PYDOCOUTDIR) $(PYROOTDIR)/src/softfloatpy.egg-info $(PYDOCSRCDIR)/apidoc ./dist ./wheelhouse $$(find . -name '__pycache__')
