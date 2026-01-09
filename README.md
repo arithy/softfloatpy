@@ -24,11 +24,11 @@ The following features that are not in the IEEE 754 standard are excluded from S
 
 SoftFloatPy requires Python 3.11 or later. The build configuration provided in the [SoftFloatPy repository](https://github.com/arithy/softfloatpy) assumes platforms with 64-bit integer arithmetic support.
 
-The GitHub page is https://github.com/arithy/softfloatpy .
+The GitHub page is [https://github.com/arithy/softfloatpy](https://github.com/arithy/softfloatpy).
 
 **Links related to Berkeley SoftFloat:**
-- https://www.jhauser.us/arithmetic/SoftFloat.html
-- https://github.com/ucb-bar/berkeley-softfloat-3
+- [https://www.jhauser.us/arithmetic/SoftFloat.html](https://www.jhauser.us/arithmetic/SoftFloat.html)
+- [https://github.com/ucb-bar/berkeley-softfloat-3](https://github.com/ucb-bar/berkeley-softfloat-3)
 
 ## Installation
 
