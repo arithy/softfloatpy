@@ -148,14 +148,14 @@ class UInt32:
         ...
 
     @classmethod
-    def from_f16(cls, src: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f16(cls, src: Float16, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary16 floating point.
 
         The result is the same as that of :func:`f16_to_ui32()`.
 
         Args:
             src: The IEEE 754 binary16 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -177,14 +177,14 @@ class UInt32:
         ...
 
     @classmethod
-    def from_f32(cls, src: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f32(cls, src: Float32, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary32 floating point.
 
         The result is the same as that of :func:`f32_to_ui32()`.
 
         Args:
             src: The IEEE 754 binary32 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -206,14 +206,14 @@ class UInt32:
         ...
 
     @classmethod
-    def from_f64(cls, src: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f64(cls, src: Float64, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary64 floating point.
 
         The result is the same as that of :func:`f64_to_ui32()`.
 
         Args:
             src: The IEEE 754 binary64 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -235,14 +235,14 @@ class UInt32:
         ...
 
     @classmethod
-    def from_f128(cls, src: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f128(cls, src: Float128, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary128 floating point.
 
         The result is the same as that of :func:`f128_to_ui32()`.
 
         Args:
             src: The IEEE 754 binary128 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -433,14 +433,14 @@ class UInt64:
         ...
 
     @classmethod
-    def from_f16(cls, src: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f16(cls, src: Float16, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary16 floating point.
 
         The result is the same as that of :func:`f16_to_ui64()`.
 
         Args:
             src: The IEEE 754 binary16 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -462,14 +462,14 @@ class UInt64:
         ...
 
     @classmethod
-    def from_f32(cls, src: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f32(cls, src: Float32, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary32 floating point.
 
         The result is the same as that of :func:`f32_to_ui64()`.
 
         Args:
             src: The IEEE 754 binary32 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -491,14 +491,14 @@ class UInt64:
         ...
 
     @classmethod
-    def from_f64(cls, src: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f64(cls, src: Float64, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary64 floating point.
 
         The result is the same as that of :func:`f64_to_ui64()`.
 
         Args:
             src: The IEEE 754 binary64 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -520,14 +520,14 @@ class UInt64:
         ...
 
     @classmethod
-    def from_f128(cls, src: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f128(cls, src: Float128, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary128 floating point.
 
         The result is the same as that of :func:`f128_to_ui64()`.
 
         Args:
             src: The IEEE 754 binary128 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -717,14 +717,14 @@ class Int32:
         ...
 
     @classmethod
-    def from_f16(cls, src: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f16(cls, src: Float16, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary16 floating point.
 
         The result is the same as that of :func:`f16_to_i32()`.
 
         Args:
             src: The IEEE 754 binary16 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -746,14 +746,14 @@ class Int32:
         ...
 
     @classmethod
-    def from_f32(cls, src: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f32(cls, src: Float32, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary32 floating point.
 
         The result is the same as that of :func:`f32_to_i32()`.
 
         Args:
             src: The IEEE 754 binary32 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -775,14 +775,14 @@ class Int32:
         ...
 
     @classmethod
-    def from_f64(cls, src: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f64(cls, src: Float64, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary64 floating point.
 
         The result is the same as that of :func:`f64_to_i32()`.
 
         Args:
             src: The IEEE 754 binary64 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -804,14 +804,14 @@ class Int32:
         ...
 
     @classmethod
-    def from_f128(cls, src: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f128(cls, src: Float128, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary128 floating point.
 
         The result is the same as that of :func:`f128_to_i32()`.
 
         Args:
             src: The IEEE 754 binary128 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -1001,14 +1001,14 @@ class Int64:
         ...
 
     @classmethod
-    def from_f16(cls, src: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f16(cls, src: Float16, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary16 floating point.
 
         The result is the same as that of :func:`f16_to_i64()`.
 
         Args:
             src: The IEEE 754 binary16 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -1030,14 +1030,14 @@ class Int64:
         ...
 
     @classmethod
-    def from_f32(cls, src: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f32(cls, src: Float32, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary32 floating point.
 
         The result is the same as that of :func:`f32_to_i64()`.
 
         Args:
             src: The IEEE 754 binary32 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -1059,14 +1059,14 @@ class Int64:
         ...
 
     @classmethod
-    def from_f64(cls, src: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f64(cls, src: Float64, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary64 floating point.
 
         The result is the same as that of :func:`f64_to_i64()`.
 
         Args:
             src: The IEEE 754 binary64 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -1088,14 +1088,14 @@ class Int64:
         ...
 
     @classmethod
-    def from_f128(cls, src: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True) -> Self:
+    def from_f128(cls, src: Float128, rounding_mode: RoundingMode | None = None, exact: bool = True) -> Self:
         """Creates a new instance from the specified IEEE 754 binary128 floating point.
 
         The result is the same as that of :func:`f128_to_i64()`.
 
         Args:
             src: The IEEE 754 binary128 floating point from which a new instance is created.
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -1433,14 +1433,14 @@ class Float16:
         ...
 
     def to_ui32(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> UInt32:
         """Converts the IEEE 754 binary16 floating point to a 32-bit unsigned integer.
 
         The result is the same as that of :func:`f16_to_ui32()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -1466,14 +1466,14 @@ class Float16:
         ...
 
     def to_ui64(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> UInt64:
         """Converts the IEEE 754 binary16 floating point to a 64-bit unsigned integer.
 
         The result is the same as that of :func:`f16_to_ui64()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -1499,14 +1499,14 @@ class Float16:
         ...
 
     def to_i32(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> Int32:
         """Converts the IEEE 754 binary16 floating point to a 32-bit signed integer.
 
         The result is the same as that of :func:`f16_to_i32()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -1532,14 +1532,14 @@ class Float16:
         ...
 
     def to_i64(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> Int64:
         """Converts the IEEE 754 binary16 floating point to a 64-bit signed integer.
 
         The result is the same as that of :func:`f16_to_i64()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -1654,14 +1654,14 @@ class Float16:
         ...
 
     def round_to_int(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> Self:
         """Rounds the number.
 
         The result is the same as that of :func:`f16_round_to_int()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact rounding is unable.
 
@@ -2110,14 +2110,14 @@ class Float32:
         ...
 
     def to_ui32(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> UInt32:
         """Converts the IEEE 754 binary32 floating point to a 32-bit unsigned integer.
 
         The result is the same as that of :func:`f32_to_ui32()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -2143,14 +2143,14 @@ class Float32:
         ...
 
     def to_ui64(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> UInt64:
         """Converts the IEEE 754 binary32 floating point to a 64-bit unsigned integer.
 
         The result is the same as that of :func:`f32_to_ui64()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -2176,14 +2176,14 @@ class Float32:
         ...
 
     def to_i32(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> Int32:
         """Converts the IEEE 754 binary32 floating point to a 32-bit signed integer.
 
         The result is the same as that of :func:`f32_to_i32()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -2209,14 +2209,14 @@ class Float32:
         ...
 
     def to_i64(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> Int64:
         """Converts the IEEE 754 binary32 floating point to a 64-bit signed integer.
 
         The result is the same as that of :func:`f32_to_i64()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -2331,14 +2331,14 @@ class Float32:
         ...
 
     def round_to_int(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> Self:
         """Rounds the number.
 
         The result is the same as that of :func:`f32_round_to_int()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact rounding is unable.
 
@@ -2761,14 +2761,14 @@ class Float64:
         ...
 
     def to_ui32(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> UInt32:
         """Converts the IEEE 754 binary64 floating point to a 32-bit unsigned integer.
 
         The result is the same as that of :func:`f64_to_ui32()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -2794,14 +2794,14 @@ class Float64:
         ...
 
     def to_ui64(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> UInt64:
         """Converts the IEEE 754 binary64 floating point to a 64-bit unsigned integer.
 
         The result is the same as that of :func:`f64_to_ui64()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -2827,14 +2827,14 @@ class Float64:
         ...
 
     def to_i32(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> Int32:
         """Converts the IEEE 754 binary64 floating point to a 32-bit signed integer.
 
         The result is the same as that of :func:`f64_to_i32()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -2860,14 +2860,14 @@ class Float64:
         ...
 
     def to_i64(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> Int64:
         """Converts the IEEE 754 binary64 floating point to a 64-bit signed integer.
 
         The result is the same as that of :func:`f64_to_i64()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -2982,14 +2982,14 @@ class Float64:
         ...
 
     def round_to_int(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> Self:
         """Rounds the number.
 
         The result is the same as that of :func:`f64_round_to_int()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact rounding is unable.
 
@@ -3424,14 +3424,14 @@ class Float128:
         ...
 
     def to_ui32(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> UInt32:
         """Converts the IEEE 754 binary128 floating point to a 32-bit unsigned integer.
 
         The result is the same as that of :func:`f128_to_ui32()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -3457,14 +3457,14 @@ class Float128:
         ...
 
     def to_ui64(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> UInt64:
         """Converts the IEEE 754 binary128 floating point to a 64-bit unsigned integer.
 
         The result is the same as that of :func:`f128_to_ui64()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -3490,14 +3490,14 @@ class Float128:
         ...
 
     def to_i32(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> Int32:
         """Converts the IEEE 754 binary128 floating point to a 32-bit signed integer.
 
         The result is the same as that of :func:`f128_to_i32()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -3523,14 +3523,14 @@ class Float128:
         ...
 
     def to_i64(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> Int64:
         """Converts the IEEE 754 binary128 floating point to a 64-bit signed integer.
 
         The result is the same as that of :func:`f128_to_i64()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact conversion is unable.
 
@@ -3645,14 +3645,14 @@ class Float128:
         ...
 
     def round_to_int(
-        self, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+        self, rounding_mode: RoundingMode | None = None, exact: bool = True
     ) -> Self:
         """Rounds the number.
 
         The result is the same as that of :func:`f128_round_to_int()`.
 
         Args:
-            rounding_mode: The rounding mode.
+            rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
             exact: If ``True`` is specified, the floating-point exception flags are to be set
                    when exact rounding is unable.
 
@@ -4262,13 +4262,13 @@ def i64_to_f128(x: Int64) -> Float128:
 
 
 def f16_to_ui32(
-    x: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float16, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> UInt32:
     """Converts the IEEE 754 binary16 floating point to a 32-bit unsigned integer.
 
     Args:
         x: The IEEE 754 binary16 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -4280,13 +4280,13 @@ def f16_to_ui32(
 
 
 def f16_to_ui64(
-    x: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float16, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> UInt64:
     """Converts the IEEE 754 binary16 floating point to a 64-bit unsigned integer.
 
     Args:
         x: The IEEE 754 binary16 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -4298,13 +4298,13 @@ def f16_to_ui64(
 
 
 def f16_to_i32(
-    x: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float16, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> Int32:
     """Converts the IEEE 754 binary16 floating point to a 32-bit signed integer.
 
     Args:
         x: The IEEE 754 binary16 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -4316,13 +4316,13 @@ def f16_to_i32(
 
 
 def f16_to_i64(
-    x: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float16, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> Int64:
     """Converts the IEEE 754 binary16 floating point to a 64-bit signed integer.
 
     Args:
         x: The IEEE 754 binary16 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -4373,13 +4373,13 @@ def f16_to_f128(x: Float16) -> Float128:
 
 
 def f16_round_to_int(
-    x: Float16, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float16, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> Float16:
     """Rounds the number expressed as an IEEE 754 binary16 floating point.
 
     Args:
         x: The IEEE 754 binary16 floating point to be rounded.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact rounding is unable.
 
@@ -4696,13 +4696,13 @@ def bf16_is_inf(x: BFloat16) -> bool:
 
 
 def f32_to_ui32(
-    x: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float32, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> UInt32:
     """Converts the IEEE 754 binary32 floating point to a 32-bit unsigned integer.
 
     Args:
         x: The IEEE 754 binary32 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -4714,13 +4714,13 @@ def f32_to_ui32(
 
 
 def f32_to_ui64(
-    x: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float32, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> UInt64:
     """Converts the IEEE 754 binary32 floating point to a 64-bit unsigned integer.
 
     Args:
         x: The IEEE 754 binary32 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -4732,13 +4732,13 @@ def f32_to_ui64(
 
 
 def f32_to_i32(
-    x: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float32, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> Int32:
     """Converts the IEEE 754 binary32 floating point to a 32-bit signed integer.
 
     Args:
         x: The IEEE 754 binary32 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -4750,13 +4750,13 @@ def f32_to_i32(
 
 
 def f32_to_i64(
-    x: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float32, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> Int64:
     """Converts the IEEE 754 binary32 floating point to a 64-bit signed integer.
 
     Args:
         x: The IEEE 754 binary32 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -4807,13 +4807,13 @@ def f32_to_f128(x: Float32) -> Float128:
 
 
 def f32_round_to_int(
-    x: Float32, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float32, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> Float32:
     """Rounds the number expressed as an IEEE 754 binary32 floating point.
 
     Args:
         x: The IEEE 754 binary32 floating point to be rounded.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact rounding is unable.
 
@@ -5065,13 +5065,13 @@ def f32_is_inf(x: Float32) -> bool:
 
 
 def f64_to_ui32(
-    x: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float64, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> UInt32:
     """Converts the IEEE 754 binary64 floating point to a 32-bit unsigned integer.
 
     Args:
         x: The IEEE 754 binary64 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -5083,13 +5083,13 @@ def f64_to_ui32(
 
 
 def f64_to_ui64(
-    x: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float64, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> UInt64:
     """Converts the IEEE 754 binary64 floating point to a 64-bit unsigned integer.
 
     Args:
         x: The IEEE 754 binary64 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -5101,13 +5101,13 @@ def f64_to_ui64(
 
 
 def f64_to_i32(
-    x: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float64, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> Int32:
     """Converts the IEEE 754 binary64 floating point to a 32-bit signed integer.
 
     Args:
         x: The IEEE 754 binary64 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -5119,13 +5119,13 @@ def f64_to_i32(
 
 
 def f64_to_i64(
-    x: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float64, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> Int64:
     """Converts the IEEE 754 binary64 floating point to a 64-bit signed integer.
 
     Args:
         x: The IEEE 754 binary64 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -5176,13 +5176,13 @@ def f64_to_f128(x: Float64) -> Float128:
 
 
 def f64_round_to_int(
-    x: Float64, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float64, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> Float64:
     """Rounds the number expressed as an IEEE 754 binary64 floating point.
 
     Args:
         x: The IEEE 754 binary64 floating point to be rounded.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact rounding is unable.
 
@@ -5434,13 +5434,13 @@ def f64_is_inf(x: Float64) -> bool:
 
 
 def f128_to_ui32(
-    x: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float128, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> UInt32:
     """Converts the IEEE 754 binary128 floating point to a 32-bit unsigned integer.
 
     Args:
         x: The IEEE 754 binary128 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -5452,13 +5452,13 @@ def f128_to_ui32(
 
 
 def f128_to_ui64(
-    x: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float128, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> UInt64:
     """Converts the IEEE 754 binary128 floating point to a 64-bit unsigned integer.
 
     Args:
         x: The IEEE 754 binary128 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -5470,13 +5470,13 @@ def f128_to_ui64(
 
 
 def f128_to_i32(
-    x: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float128, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> Int32:
     """Converts the IEEE 754 binary128 floating point to a 32-bit signed integer.
 
     Args:
         x: The IEEE 754 binary128 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -5488,13 +5488,13 @@ def f128_to_i32(
 
 
 def f128_to_i64(
-    x: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float128, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> Int64:
     """Converts the IEEE 754 binary128 floating point to a 64-bit signed integer.
 
     Args:
         x: The IEEE 754 binary128 floating point to be converted.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact conversion is unable.
 
@@ -5545,13 +5545,13 @@ def f128_to_f64(x: Float128) -> Float64:
 
 
 def f128_round_to_int(
-    x: Float128, rounding_mode: RoundingMode = get_rounding_mode(), exact: bool = True
+    x: Float128, rounding_mode: RoundingMode | None = None, exact: bool = True
 ) -> Float128:
     """Rounds the number expressed as an IEEE 754 binary128 floating point.
 
     Args:
         x: The IEEE 754 binary128 floating point to be rounded.
-        rounding_mode: The rounding mode.
+        rounding_mode: The rounding mode. If ``None`` is specified, the current rounding mode is used.
         exact: If ``True`` is specified, the floating-point exception flags are to be set
                when exact rounding is unable.
 
