@@ -42,7 +42,6 @@ jobs:
         run: |
           python -m build
           auditwheel repair dist/softfloatpy-*.whl
-          mv dist/softfloatpy-*.tar.gz wheelhouse/.
 
       - name: Store built wheel
         uses: actions/upload-artifact@v6
@@ -50,7 +49,15 @@ jobs:
           name: python-${{ matrix.python-version }}-package-for-${{ matrix.os }}
           path: |
             wheelhouse/softfloatpy-*.whl
-            wheelhouse/softfloatpy-*.tar.gz
+          retention-days: 1
+
+      - name: Store built source tarball
+        uses: actions/upload-artifact@v6
+        if: ${{ matrix.python-version == '3.11' && matrix.os == 'ubuntu-24.04' }}  # representative
+        with:
+          name: python-source-package-for-all
+          path: |
+            dist/softfloatpy-*.tar.gz
           retention-days: 1
 
   dist-on-macos:
