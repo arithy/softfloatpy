@@ -22,6 +22,7 @@
 
 # cython: language_level=3
 # cython: embedsignature=True
+# cython: freethreading_compatible=True
 
 from typing import Self
 

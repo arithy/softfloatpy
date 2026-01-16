@@ -25,6 +25,7 @@ words:
   - embedsignature
   - errorlevel
   - floordiv
+  - freethreading
   - genindex
   - Hauser
   - iadd
