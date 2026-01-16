@@ -25,11 +25,11 @@ lint:
 	$(PYTHON) -m flake8 --doctests $(PYROOTDIR)
 
 type:
-	$(PYTHON) -m pip install --quiet --force-reinstall $(WHEEL_OUTDIR)/softfloatpy-*.whl
+	$(PYTHON) -m pip install --quiet --force-reinstall --no-index --find-links=$(WHEEL_OUTDIR) softfloatpy
 	$(PYTHON) -m mypy --strict $(PYROOTDIR)
 
 test:
-	$(PYTHON) -m pip install --quiet --force-reinstall $(WHEEL_OUTDIR)/softfloatpy-*.whl
+	$(PYTHON) -m pip install --quiet --force-reinstall --no-index --find-links=$(WHEEL_OUTDIR) softfloatpy
 	$(PYTHON) -m pytest $(PYROOTDIR)/tests -vv --doctest-modules
 
 dist:
@@ -39,7 +39,7 @@ ifneq ($(strip $(AUDITWHEEL)),)
 endif
 
 doc:
-	$(PYTHON) -m pip install --quiet --force-reinstall $(WHEEL_OUTDIR)/softfloatpy-*.whl
+	$(PYTHON) -m pip install --quiet --force-reinstall --no-index --find-links=$(WHEEL_OUTDIR) softfloatpy
 	$(SPHINX_APIDOC) -T -f -o $(PYDOCSRCDIR)/apidoc $(PYROOTDIR)/src
 	$(SPHINX_BUILD) -b html $(PYDOCSRCDIR) $(PYDOCOUTDIR)/html
 
