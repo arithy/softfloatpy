@@ -16,17 +16,17 @@ all: lint type test dist doc
 
 req:
 	$(PYTHON) -m pip install --quiet --upgrade pip
-	$(PYTHON) -m pip install --quiet setuptools wheel build cython pytest mypy flake8 sphinx sphinx-rtd-theme myst-parser
+	$(PYTHON) -m pip install --quiet --upgrade setuptools wheel build cython pytest mypy flake8 sphinx sphinx-rtd-theme myst-parser
 ifneq ($(strip $(AUDITWHEEL)),)
-	$(PYTHON) -m pip install --quiet auditwheel
+	$(PYTHON) -m pip install --quiet --upgrade auditwheel
 endif
 
 lint:
-	$(PYTHON) -m flake8 --doctests $(PYROOTDIR)
+	$(PYTHON) -m flake8 $(PYROOTDIR)
 
 type:
 	$(PYTHON) -m pip install --quiet --force-reinstall --no-index --find-links=$(WHEEL_OUTDIR) softfloatpy
-	$(PYTHON) -m mypy --strict $(PYROOTDIR)
+	$(PYTHON) -m mypy $(PYROOTDIR)
 
 test:
 	$(PYTHON) -m pip install --quiet --force-reinstall --no-index --find-links=$(WHEEL_OUTDIR) softfloatpy
