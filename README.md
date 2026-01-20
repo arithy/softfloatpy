@@ -45,6 +45,7 @@ $ python -m pip install softfloatpy
 You can install the development version by the following commands.
 
 ```sh
+$ git clone --recursive https://github.com/arithy/softfloatpy.git  # NOTICE: `--recursive` option is required
 $ cd softfloatpy  # the repository root directory
 $ make req
 $ make clean
@@ -57,6 +58,7 @@ $ python -m pip install --no-index --find-links=./dist softfloatpy
 ### Import of Module
 
 To use SoftFloatPy in a Python script, import `softfloatpy` module. An example is shown below.
+
 ```py
 import softfloatpy as sf
 ```
